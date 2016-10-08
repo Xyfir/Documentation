@@ -35,24 +35,29 @@ Once you've received the `xid` and `auth` token of the user logging in, you must
 #### API Request
 `GET https://accounts.xyfir.com/api/service/<SERVICE_ID>/<SERVICE_KEY>/<XID>/<AUTH_TOKEN>`
 - `SERVICE_ID`: *number* - Your service ID obtained when you created your service
-- `SERVICE_KEY`: *string* - Your service's secret authentication key, found by viewing your service in the dashboard
+- `SERVICE_KEY`: *string* - Any one of your service's secret authentication keys, found by viewing your service in the service dashboard
 - `XID`: *string* - The user's Xyfir ID returned after login or registration
 - `AUTH_TOKEN`: *string* - The user's authentication token returned after login or registration
 
 #### API Response
-```
-// Returned when xid/auth don't match
-{ error: true }
-```
-**OR**
-```
+```js
 {
-    // The user's Xyfir Ads profile ID
+    // True when service_id/service_key or xid/auth don't match
+    error: boolean,
+
+    // Explains error when error is true
+    message: string,
+
+    // The user's Xyfir Ads profile identifier
     xadid: string,
+
+    // Explained in depth later in documentation
+    // Can be safely ignored if service does not need access tokens
+    accessToken: string,
     
     // Fields you marked as required or optional when creating your service
-    // Fields marked required WILL be in this object
-    // Fields marked optional may not be present
+    // Fields marked required will be in this object
+    // Fields marked optional may or may not be present
     fname: string, lname: string, address: string, zip: string,
     country: string, region: string, email: string,
     phone: string, gender: number,
@@ -63,10 +68,29 @@ Once you've received the `xid` and `auth` token of the user logging in, you must
 #### Working with Response Data
 Once you receive the data from the user, you must check if the `xid` already exists in your database (user is already registered). If the user is not registered yet, add the user and the data returned from the previous API request to your database. If the user was already registered, you **must** update the data in your database with the data the user provided. This is a requirement to being allowed to use our API.
 
-## That's It? Anything Else?
-Once you've verified the login and created a new user or updated an existing user's data, you can then mark their session as logged in. After that there's only one last thing to deal with and then your login system is complete: logging out. Simply add a button or link somewhere that allows a user to logout of your service. This is done by wiping their session data or deleting their session key entirely. While technically this feature is optional, it *is* recommended.
+## Optional
+
+### Logging Out
+Once you've verified the login and created a new user or updated an existing user's data, you can then mark their session as logged in. After that there's only one last thing to deal with and then your login system is complete: logging out. Simply add a button or link somewhere that allows a user to logout of your service. This is done by wiping their session data or deleting their session entirely.
+
+### Access Tokens
+Access tokens allow your service to provide a more persistent type of session system while decreasing the need for your users to keep logging in to your service through Xyfir Accounts.
+
+#### Handling Access Tokens
+An access token is returned as `accessToken` in the response from `GET https://accounts.xyfir.com/api/service/<SERVICE_ID>/<SERVICE_KEY>/<XID>/<AUTH_TOKEN>` when `error` is false. Your service must have some way of linking an access token to a user's Xyfir ID (xid). It is important to remember that a single user can have multiple access tokens for a single service, and also that while unlikely, multiple users can have the same access token.
+
+The way Xyfir services like Ptorx or Vynote handle access tokens is by encrypting a string that contains a user's internal user id (not their Xyfir ID) and the access token and sending this encrypted string to the client. This string is then stored by the client in local storage and then sent to the service's API upon the application loading to create a new session. This setup removes the need for the services to store access tokens on their servers.
+
+#### Using Access Tokens
+`GET https://accounts.xyfir.com/api/service/<SERVICE_ID>/<SERVICE_KEY>/<XID>/<ACCESS_TOKEN>`
+
+Using access tokens is very similar to using a user's Xyfir ID (`xid`) and authentication token (`auth`) after a login from Xyfir Accounts. The access token takes the place of the authentication token while everything else remains the same. The response is the same as if you used an authentication token except that the API will not return an access token because the access token used in the request is still valid.
+
+If the API returns `error` as true, you should clear the user's session if needed and then force the client to login to your service again by directing them to your Xyfir Accounts service login link.
+
+If the API returns `error` as false, you should update your database to reflect the user data returned from the API as well as setting any needed session values.
 
 ## Notes
 
-### Service Authentication Key
-Your service key is used as an extra layer of security when verifying a user's attempt to login to your service. It is important that this key stays secret and is never publicly exposed. You can regenerate this key at any time by viewing your service in the service dashboard and clicking *Generate New Service Key*.
+### Service Authentication Keys
+Your service keys are used as an extra layer of security when verifying a user's attempt to login to your service. It is important that these key stay secret and are never publicly exposed. You can delete and generate new keys at any time by viewing your service in the service dashboard.
