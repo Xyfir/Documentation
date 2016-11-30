@@ -8,8 +8,7 @@ A subscription not purchased directly through Libyq Annotations **cannot** be ex
 
 Your reader application must allow a user to:
 - Purchase a subscription key through your service (you can charge any price you wish)
-- View their purchased subscription key
-- Enter in a subscription key that was purchased directly through Libyq Annotations (or another affiliate)
+- Enter in a subscription key that was purchased directly through Libyq Annotations or another affiliate
 
 ### Subscription Pricing
 As an added incentive for our affiliates we offer the ability for our affiliates to generate subscriptions at a discount. The discount you receive is based on how many subscriptions you have previously generated (and then paid for). Your subscription discount is 1% for every 100 generated subscriptions paid for with a minimum of 10% and a maximum of 25%.
@@ -21,8 +20,8 @@ This discount allows you to either:
 
 #### Base Prices
 Your discount will be applied to these base prices.
-- **One Month** (30 Days) - $1
-- **One Year** (365 Days) - $10
+- **One Month** (30 Days) - $1.50
+- **One Year** (365 Days) - $12.00
 
 
 ### Generating Subscriptions
