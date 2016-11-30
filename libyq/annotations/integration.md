@@ -32,7 +32,7 @@ Your discount will be applied to these base prices.
 - `SUBSCRIPTION`: *number* - A numerical identifier for the subscription length. **1** = 30 days, **2** = 365 days
 
 #### Response
-```
+```js
 { error: boolean, key?: string }
 ```
 If the request was successful and `error` is false, `key` will contain the generated subscription key.
@@ -51,12 +51,12 @@ If for whatever reason you need to delete a subscription key that you generated 
 - `SUBSCRIPTION_KEY`: *string* - The subscription key previously generated
 
 #### Response
-```
+```js
 { error: boolean }
 ```
 
 ## Annotations
-Our annotation system is broken up into *annotation sets*. An annotation set is a set of annotations for a specific book. The annotations within a set we call a *set item*.
+Our annotation system is broken down into repositories called *annotation sets*. An *annotation set* is a set of items that contain annotations for a specific book. A *set item* is further broken down into *searches* and *annotations*. A *search* is a search query that points to a set of text within a book's content. An *annotation* is the specific annotation that will be applied to the book's content matched from the *search*.
 
 ### Finding Annotation Sets
 `GET https://annotations.libyq.com/api/sets?search=<SEARCH>&sort=<SORT>`
@@ -67,7 +67,7 @@ Our annotation system is broken up into *annotation sets*. An annotation set is 
     - `updated` - Sort by recently updated sets
 
 #### Response
-```
+```js
 {
     sets: [{
         id: number, book_title: string, book_authors: string, set_title: string,
@@ -81,20 +81,88 @@ Our annotation system is broken up into *annotation sets*. An annotation set is 
 ### Downloading Annotation Sets
 `GET https://annotations.libyq.com/api/annotations?key=<KEY>&sets=<SETS>`
 `KEY`: *string* - The user's subscription key
-`SETS`: *string* - The annotation sets of which you wish to download the set items from. Format: `set_id|set_version,set_id,...`
+`SETS`: *string* - The annotation sets of which you wish to download the set items from. Format: `set_id|set_version,set_id,...`. You may request up to **3** annotation sets per request.
 
 #### Set Versions
 In `SETS` you can optionally provide the current version of the set that you have saved on the client. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
 
 #### Response
-```
-{ error: boolean, "id"?: {
+```js
+{ error: boolean, message?: string, "id"?: {
     version: date-string, items?: [{
-        id: number, title: string, object: json-string
+        id: number, title: string,
+        searches: [{
+            text: string, regex: boolean, range: {
+                global: boolean, before: string, after: string
+            }
+        }], annotations: [{
+            type: number, name: string, value: string
+        }]
     }]
 }, ... }
 ```
 
-If `error` is true this usually means that the user's subscription key is invalid, expired, or they've hit their request limit for the day. `"id"` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, "5": { ... }, "10": { ... }, "15": { ... }}`.
+If `error` is true this usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
 
-If an annotation set you requested has the same version as you have downloaded locally then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different you can count on `items` being there.
+If `error` is true, a `message` property may also be present that will give you an idea of what went wrong.
+
+`"id"` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, "5": { ... }, "10": { ... }, "15": { ... }}`.
+
+If an annotation set you requested has the same version as you have downloaded locally then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different then you can count on `items` being there.
+
+### Searches
+Every set item contains one or more searches that are used to find content in a book to annotate. All of the set item's annotations should be applied to any content in a book that matches **any** of its searches.
+
+#### Object
+```js
+text: string, regex: boolean, range: {
+    global: boolean, before: string, after: string
+}
+```
+
+- `text`: *string* - This is value to search for in a book's content.
+- `regex`: *boolean* - When true, `text` is a regular expression. Does not apply to `range` properties.
+- `range`: *object* - This object tells you the scope of the search.
+- `range.global`: *boolean* - When true, `text` should be searched for anywhere in the book's content.
+- `range.before`: *string* - If this property is not an empty string, it means that any matches for this search are only valid if they come *before* where this text is present in the book's content.
+- `range.after`: *string* - If this property is not an empty string, it means that any matches for this search are only valid if they come *after* where this text is present in the book's content.
+
+### Annotations
+Every set item contains one or more annotations that will be applied anywhere one of its searches matches in a book's content. A set item can have multiple annotations of the same type.
+
+#### Types
+1. Document
+    - Documents are Markdown format text.
+2. Link
+    - An `HTTP` or `HTTPS` link.
+3. Search
+    - A search query to be used with a search engine (Google, Bing, etc).
+4. Image
+    - A link to an image of no specific format.
+5. Video
+    - A link to a video. Might be a YouTube, Vimeo, etc link or a direct link to a video file.
+6. Audio
+    - A link to audio content.
+7. Map
+    - Can be a direct link to a map of any format (image, interactive, etc).
+    - Can be a search query for use in a real-world map (Google Maps, Bing Maps, etc).
+
+#### OBJECT
+```js
+// -- DOCUMENT --
+{ type: 1, name: "Document", value: "A **document** annotation that *supports* [Markdown](https://en.wikipedia.org/wiki/Markdown)." }
+// -- LINK --
+{ type: 2, name: "Link", value: "https://en.wikipedia.org/wiki/SomeWikipediaLink" }
+// -- SEARCH --
+{ type: 3, name: "Search", value: "some search value" }
+// -- IMAGE --
+{ type: 4, name: "Image", value: "https://xyfir.com/images/SomeImage.jpg" }
+// -- VIDEO --
+{ type: 5, name: "Video", value: "https://www.youtube.com/embed/SomeYouTubeVideo" }
+// -- AUDIO --
+{ type: 6, name: "Audio", value: "https://xyfir.com/audio/SomeFile.mp3" }
+// -- MAP --
+{ type: 7, name: "Map", value: "San Diego, CA" }
+// -- MAP --
+{ type: 7, name: "Special Map", value: "https://xyfir.com/map/SomeMap" }
+```
