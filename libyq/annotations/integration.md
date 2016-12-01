@@ -79,8 +79,8 @@ Our annotation system is broken down into repositories called *annotation sets*.
 
 ### Downloading Annotation Sets
 `GET https://annotations.libyq.com/api/annotations?key=<KEY>&sets=<SETS>`
-`KEY`: *string* - The user's subscription key
-`SETS`: *string* - The annotation sets of which you wish to download the set items from. Format: `set_id|set_version,set_id,...`. You may request up to **3** annotation sets per request.
+- `KEY`: *string* - The user's subscription key
+- `SETS`: *string* - The annotation sets of which you wish to download the set items from. Format: `set_id|set_version,set_id,...`. You may request up to **3** annotation sets per request.
 
 #### Set Versions
 In `SETS` you can optionally provide the current version of the set that you have saved on the client. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
@@ -101,9 +101,7 @@ In `SETS` you can optionally provide the current version of the set that you hav
 }, ... }
 ```
 
-If `error` is true this usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
-
-If `error` is true, a `message` property may also be present that will give you an idea of what went wrong.
+If `error` is true, a `message` property may also be present that will give you an idea of what went wrong. An error usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
 
 `"id"` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, "5": { ... }, "10": { ... }, "15": { ... }}`.
 
