@@ -59,23 +59,30 @@ Our annotation system is broken down into repositories called *annotation sets*.
 
 ### Finding Annotation Sets
 `GET https://annotations.libyq.com/api/sets?search=<SEARCH>&sort=<SORT>`
-- `SEARCH`: *string* - A search query for finding matching annotation sets. Usually this is the set name, a book title, or book authors.
+- `SEARCH`: *string* - A search query for finding matching annotation sets. This can be a set title, a book title, or book authors.
 - `SORT`: *string* - Sort method for matched annotation sets
-    - `newest` - Sort by newest created sets
     - `top` - Sort by top rated sets
+    - `newest` - Sort by newest created sets
     - `updated` - Sort by recently updated sets
 
 #### Response
 ```js
-{
-    sets: [{
-        id: number, book_title: string, book_authors: string, set_title: string,
-        set_description: string, votes: number
-    }]
-}
+{ sets: [{
+    id: number, book_title: string, book_authors: string, set_title: string,
+    set_description: string, votes: number
+}] }
 ```
 
 **Note:** `set_description` may be in Markdown format. It is recommended to parse the Markdown to HTML or plain text. Otherwise you may see formatting characters in the set's description.
+
+#### Advanced Searches
+Advanced searches allow you to provide different search queries for specific annotation set fields. All variables must be present in the query string, even if they have no value. Only sets that match **all** provided queries will be returned.
+
+`GET https://annotations.libyq.com/api/sets?bookTitle=<BOOK_TITLE>&setTitle=<SET_TITLE>&bookAuthors=<BOOK_AUTHORS>sort=<SORT>`
+- `SORT`: *string* - Same variable and possible values as previously explained.
+- `BOOK_TITLE`: *string* - A search query for finding annotation sets by their book's title.
+- `BOOK_AUTHORS`: *string* - A search query for finding annotation sets by their book's authors.
+- `SET_TITLE`: *string* - A search query for finding annotation sets by their title.
 
 ### Downloading Annotation Sets
 `GET https://annotations.libyq.com/api/annotations?key=<KEY>&sets=<SETS>`
