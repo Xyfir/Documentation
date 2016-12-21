@@ -127,7 +127,7 @@ text: string, regex: boolean, range: {
 - `text`: *string* - This is value to search for in a book's content.
 - `regex`: *boolean* - When true, `text` is a regular expression. Does not apply to `range` properties.
 - `range`: *object* - This object tells you the scope of the search.
-- `range.global`: *boolean* - When true, `text` should be searched for anywhere in the book's content.
+- `range.global`: *boolean* - When true, `text` should be searched for anywhere in the book's content. If false, `range.before` and `range.after` should be checked.
 - `range.before`: *string* - If this property is not an empty string, it means that any matches for this search are only valid if they come *before* where this text is present in the book's content.
 - `range.after`: *string* - If this property is not an empty string, it means that any matches for this search are only valid if they come *after* where this text is present in the book's content.
 
@@ -139,8 +139,8 @@ Every set item contains one or more annotations that will be applied anywhere on
     - Documents are Markdown format text.
 2. Link
     - An `HTTP` or `HTTPS` link.
-3. Search
-    - A search query to be used with a search engine (Google, Bing, etc).
+3. Web Search
+    - A web search query to be used with a search engine (Google, Bing, etc). Not to be confused with an annotation set item's *searches*.
 4. Image
     - A link to an image of no specific format.
 5. Video
@@ -157,7 +157,7 @@ Every set item contains one or more annotations that will be applied anywhere on
 { type: 1, name: "Document", value: "A **document** annotation that *supports* [Markdown](https://en.wikipedia.org/wiki/Markdown)." }
 // -- LINK --
 { type: 2, name: "Link", value: "https://en.wikipedia.org/wiki/SomeWikipediaLink" }
-// -- SEARCH --
+// -- WEB SEARCH --
 { type: 3, name: "Search", value: "some search value" }
 // -- IMAGE --
 { type: 4, name: "Image", value: "https://xyfir.com/images/SomeImage.jpg" }
