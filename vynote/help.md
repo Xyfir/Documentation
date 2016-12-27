@@ -68,4 +68,4 @@ Code documents make it easy to work on a wide range of syntaxes for different fi
 A premium subscription unlocks a whole new set of features and customizations as well as removing certain limitations like file and folder count limits. To view everything you receive in a premium subscription check out the feature list [here](https://vynote.com/#Premium).
 
 # Support
-If you have comments, questions, or an issue that needs solving send us an email at <contact@vynote.com>.
+If you have comments, questions, or an issue that needs solving send us an email at <vynote@xyfir.com>.
