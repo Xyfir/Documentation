@@ -1,38 +1,38 @@
-# Libyq Annotations Terms of Service
+# Xyfir Annotations Terms of Service
 
-These terms and conditions outline the rules and regulations for the use of Libyq Annotations's Website. 
+These terms and conditions outline the rules and regulations for the use of Xyfir Annotations' Website. 
 
-Libyq Annotations (operated by Xyfir, LLC) is located at:
+Xyfir Annotations (operated by Xyfir, LLC) is located at:
 3170 Huula Dr \
 Oceanside, California 92058 \
 United States of America
 
-By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Libyq Annotations's website if you do not accept all of the terms and conditions stated on this page.
+By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Xyfir Annotations' website if you do not accept all of the terms and conditions stated on this page.
 The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services/products, in accordance with and subject to, prevailing law of United States. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.
 
 ## Cookies
 
-We employ the use of cookies. By using Libyq Annotations's website you consent to the use of cookies in accordance with Libyq Annotations's privacy policy.
+We employ the use of cookies. By using Xyfir Annotations' website you consent to the use of cookies in accordance with Xyfir Annotations' privacy policy.
 
 Most of the modern day interactive web sites use cookies that enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.
 
 ## License
 
-Unless otherwise stated, Libyq Annotations and/or its licensors own the intellectual property rights for all material on Libyq Annotations All intellectual property rights are reserved. You may view and/or print pages from https://annotations.libyq.com/ for your own personal use subject to restrictions set in these terms and conditions.
+Unless otherwise stated, Xyfir Annotations and/or its licensors own the intellectual property rights for all material on Xyfir Annotations. All intellectual property rights are reserved. You may view and/or print pages from https://annotations.xyfir.com/ for your own personal use subject to restrictions set in these terms and conditions.
 
 You must not:
-- Republish material from https://annotations.libyq.com/
-- Sell, rent or sub-license material from https://annotations.libyq.com/
-- Reproduce, duplicate or copy material from https://annotations.libyq.com/
-- Redistribute content from Libyq Annotations (unless content is specifically made for redistribution).
+- Republish material from https://annotations.xyfir.com/
+- Sell, rent or sub-license material from https://annotations.xyfir.com/
+- Reproduce, duplicate or copy material from https://annotations.xyfir.com/
+- Redistribute content from Xyfir Annotations (unless content is specifically made for redistribution).
 
 ## User Generated Content
 
 This Agreement shall begin on the date hereof.
 
-Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data ('UGC') in areas of the website. Libyq Annotations does not screen, edit, publish or review UGC prior to their appearance on the website and UGC does not reflect the views or opinions of Libyq Annotations, its agents or affiliates. UGC reflects the view and opinion of the person who posts such content. To the extent permitted by applicable laws Libyq Annotations shall not be responsible or liable for the UGC or for any loss, cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the UGC on this website.
+Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data ('UGC') in areas of the website. Xyfir Annotations does not screen, edit, publish or review UGC prior to their appearance on the website and UGC does not reflect the views or opinions of Xyfir Annotations, its agents or affiliates. UGC reflects the view and opinion of the person who posts such content. To the extent permitted by applicable laws Xyfir Annotations shall not be responsible or liable for the UGC or for any loss, cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the UGC on this website.
 
-Libyq Annotations reserves the right to monitor all UGC and to remove any UGC which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.
+Xyfir Annotations reserves the right to monitor all UGC and to remove any UGC which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.
 
 You warrant and represent that:
 - You are entitled to post UGC on our website and have all necessary licenses and consents to do so;
@@ -40,7 +40,7 @@ You warrant and represent that:
 - The UGC does not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy
 - The UGC will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.
 
-You hereby grant to Libyq Annotations a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your UGC in any and all forms, formats or media.
+You hereby grant to Xyfir Annotations a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your UGC in any and all forms, formats or media.
 
 ## Hyperlinking to our Content
 
@@ -62,7 +62,7 @@ We may consider and approve in our sole discretion other link requests from the 
 - accounting, law and consulting firms whose primary clients are businesses;
 - and educational institutions and trade associations.
 
-We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Libyq Annotations; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.
+We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Xyfir Annotations; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.
 
 If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to contact@xyfir.com. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.
 
@@ -92,9 +92,9 @@ Whilst we endeavour to ensure that the information on this website is correct, w
 
 ## Liabilities
 
-While we take care to ensure data integrity, Libyq Annotations is not responsible for lost or corrupted data. Any important data provided to us should have a backup.
+While we take care to ensure data integrity, Xyfir Annotations is not responsible for lost or corrupted data. Any important data provided to us should have a backup.
 
-Libyq Annotations is not responsible for the actions or content posted of other users who utilize our service. Please contact us if you believe another user is abusing our service.
+Xyfir Annotations is not responsible for the actions or content posted of other users who utilize our service. Please contact us if you believe another user is abusing our service.
 
 We make no guarantees about the results of free or paid services offered on our site.
 
@@ -104,9 +104,9 @@ A paid subscription to our service is a one-time payment that gives you special 
 
 ## Termination
 
-Users found to be abusing our service will have their account deleted and access revoked from Libyq Annotations.
+Users found to be abusing our service will have their account deleted and access revoked from Xyfir Annotations.
 
-In the event of an account termination, annotation sets you created may be deleted or transfered to another Libyq Annotations user.
+In the event of an account termination, annotation sets you created may be deleted or transfered to another Xyfir Annotations user.
 
 ## Disclaimer
 

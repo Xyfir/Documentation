@@ -1,14 +1,14 @@
-# Integrating Libyq Annotations
+# Integrating Xyfir Annotations
 
 ## Subscriptions
 
-A user must have access to a Libyq Annotations subscription in order to load annotations into your reader. A reader can purchase subscriptions directly from Libyq Annotations or through your ebook reader system. When a user purchases a subscription they are given a subscription key that will allow them to download annotation sets.
+A user must have access to a Xyfir Annotations subscription in order to load annotations into your reader. A reader can purchase subscriptions directly from Xyfir Annotations or through your ebook reader system. When a user purchases a subscription they are given a subscription key that will allow them to download annotation sets.
 
-A subscription not purchased directly through Libyq Annotations **cannot** be extended. This means a user must wait until their subscription expires to purchase a new one (thus generating a new key) or create an entirely new subscription (thus abandoning their old key).
+A subscription not purchased directly through Xyfir Annotations **cannot** be extended. This means a user must wait until their subscription expires to purchase a new one (thus generating a new key) or create an entirely new subscription (thus abandoning their old key).
 
 Your reader application must allow a user to:
 - Purchase a subscription key through your service (you can charge any price you wish)
-- Enter in a subscription key that was purchased directly through Libyq Annotations or another affiliate
+- Enter in a subscription key that was purchased directly through Xyfir Annotations or another affiliate
 
 ### Subscription Pricing
 As an added incentive for our affiliates we offer the ability for our affiliates to generate subscriptions at a discount. The discount you receive is based on how many subscriptions you have previously generated (and then paid for). Your subscription discount is 1% for every 100 generated subscriptions paid for with a minimum of 10% and a maximum of 25%.
@@ -25,9 +25,9 @@ Your discount will be applied to these base prices.
 
 
 ### Generating Subscriptions
-`POST https://annotations.libyq.com/api/affiliate/<AFFILIATE_ID>/<AFFILIATE_KEY>?subscription=<SUBSCRIPTION>`
-- `AFFILIATE_ID`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.libyq.com/app/#/affiliate)
-- `AFFILIATE_KEY`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.libyq.com/app/#/affiliate)
+`POST https://annotations.xyfir.com/api/affiliate/<AFFILIATE_ID>/<AFFILIATE_KEY>?subscription=<SUBSCRIPTION>`
+- `AFFILIATE_ID`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `AFFILIATE_KEY`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
 - `SUBSCRIPTION`: *number* - A numerical identifier for the subscription length. **1** = 30 days, **2** = 365 days
 
 #### Response
@@ -37,16 +37,16 @@ Your discount will be applied to these base prices.
 If the request was successful and `error` is false, `key` will contain the generated subscription key.
 
 ### Paying for Subscriptions
-You can generate subscriptions anytime you want for free. However, if you want those subscriptions to last, they must be paid for. You can pay off generated subscriptions at any time in your [affiliate panel](https://annotations.libyq.com/app/#/affiliate). Subscriptions that you generate will be deleted after 8 days if they have not been paid for. It is recommended that you pay for your generated subscriptions within 7 days to prevent a user's subscription key from being deleted.
+You can generate subscriptions anytime you want for free. However, if you want those subscriptions to last, they must be paid for. You can pay off generated subscriptions at any time in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate). Subscriptions that you generate will be deleted after 8 days if they have not been paid for. It is recommended that you pay for your generated subscriptions within 7 days to prevent a user's subscription key from being deleted.
 
 Affiliates found exploiting our subscription system will be banned.
 
 ### Deleting Subscriptions
 If for whatever reason you need to delete a subscription key that you generated you can do so here. If the key has not been paid for it will be removed and you will not owe money on it.
 
-`DELETE https://annotations.libyq.com/api/affiliate/<AFFILIATE_ID>/<AFFILIATE_KEY>/<SUBSCRIPTION_KEY>`
-- `AFFILIATE_ID`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.libyq.com/app/#/affiliate)
-- `AFFILIATE_KEY`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.libyq.com/app/#/affiliate)
+`DELETE https://annotations.xyfir.com/api/affiliate/<AFFILIATE_ID>/<AFFILIATE_KEY>/<SUBSCRIPTION_KEY>`
+- `AFFILIATE_ID`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `AFFILIATE_KEY`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
 - `SUBSCRIPTION_KEY`: *string* - The subscription key previously generated
 
 #### Response
@@ -58,7 +58,7 @@ If for whatever reason you need to delete a subscription key that you generated 
 Our annotation system is broken down into repositories called *annotation sets*. An *annotation set* is a set of items that contain annotations for a specific book. A *set item* is further broken down into *searches* and *annotations*. A *search* is a search query that points to a set of text within a book's content. An *annotation* is the specific annotation that will be applied to the book's content matched from the *search*.
 
 ### Finding Annotation Sets
-`GET https://annotations.libyq.com/api/sets?search=<SEARCH>&sort=<SORT>`
+`GET https://annotations.xyfir.com/api/sets?search=<SEARCH>&sort=<SORT>`
 - `SEARCH`: *string* - A search query for finding matching annotation sets. This can be a set title, a book title, or book authors.
 - `SORT`: *string* - Sort method for matched annotation sets
     - `top` - Sort by top rated sets
@@ -78,14 +78,14 @@ Our annotation system is broken down into repositories called *annotation sets*.
 #### Advanced Searches
 Advanced searches allow you to provide different search queries for specific annotation set fields. All variables must be present in the query string, even if they have no value. Only sets that match **all** provided queries will be returned.
 
-`GET https://annotations.libyq.com/api/sets?bookTitle=<BOOK_TITLE>&setTitle=<SET_TITLE>&bookAuthors=<BOOK_AUTHORS>sort=<SORT>`
+`GET https://annotations.xyfir.com/api/sets?bookTitle=<BOOK_TITLE>&setTitle=<SET_TITLE>&bookAuthors=<BOOK_AUTHORS>sort=<SORT>`
 - `SORT`: *string* - Same variable and possible values as previously explained.
 - `BOOK_TITLE`: *string* - A search query for finding annotation sets by their book's title.
 - `BOOK_AUTHORS`: *string* - A search query for finding annotation sets by their book's authors.
 - `SET_TITLE`: *string* - A search query for finding annotation sets by their title.
 
 ### Downloading Annotation Sets
-`GET https://annotations.libyq.com/api/annotations?key=<KEY>&sets=<SETS>`
+`GET https://annotations.xyfir.com/api/annotations?key=<KEY>&sets=<SETS>`
 - `KEY`: *string* - The user's subscription key
 - `SETS`: *string* - The annotation sets of which you wish to download the set items from. Format: `set_id|set_version,set_id,...`. You may request up to **3** annotation sets per request.
 

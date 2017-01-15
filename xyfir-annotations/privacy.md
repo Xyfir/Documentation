@@ -1,4 +1,4 @@
-# annotations.libyq.com Privacy Policy
+# annotations.xyfir.com Privacy Policy
 
 This privacy policy has been compiled to better serve those who are concerned with how their 'Personally Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.
 
@@ -35,7 +35,7 @@ Yes. Cookies are small files that a site or its service provider transfers to yo
 
 ### If users disable cookies in their browser:
 
-- If you turn cookies off, Libyq Annotations will not function properly.
+- If you turn cookies off, Xyfir Annotations will not function properly.
 
 ## Third-party disclosure
 
@@ -104,7 +104,7 @@ The CAN-SPAM Act is a law that sets the rules for commercial email, establishes 
 
 If there are any questions regarding this privacy policy, you may contact us using the information below.
 
-annotations.libyq.com \
+annotations.xyfir.com \
 3170 Huula Dr \
 Oceanside, California 92058 \
 United States of America \
