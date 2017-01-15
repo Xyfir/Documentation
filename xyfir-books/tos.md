@@ -1,38 +1,39 @@
-# Libyq Terms of Service
+# Xyfir Books Terms of Service
 
-These terms and conditions outline the rules and regulations for the use of Libyq's Website. 
+These terms and conditions outline the rules and regulations for the use of Xyfir Books' Website. 
 
-Libyq (operated by Xyfir, LLC) is located at:
+Xyfir Books (operated by Xyfir, LLC) is located at:
+
 3170 Huula Dr \
 Oceanside, California 92058 \
 United States of America
 
-By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Libyq's website if you do not accept all of the terms and conditions stated on this page.
+By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Xyfir Books' website if you do not accept all of the terms and conditions stated on this page.
 The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services/products, in accordance with and subject to, prevailing law of United States. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.
 
 ## Cookies
 
-We employ the use of cookies. By using Libyq's website you consent to the use of cookies in accordance with Libyq's privacy policy.
+We employ the use of cookies. By using Xyfir Books' website you consent to the use of cookies in accordance with Xyfir Books' privacy policy.
 
 Most of the modern day interactive web sites use cookies to enable us to retrieve user details for each visit. Cookies are used in some areas of our site to enable the functionality of this area and ease of use for those people visiting. Some of our affiliate / advertising partners may also use cookies.
 
 ## License
 
-Unless otherwise stated, Libyq and/or its licensors own the intellectual property rights for all material on Libyq All intellectual property rights are reserved. You may view and/or print pages from https://libyq.com/ for your own personal use subject to restrictions set in these terms and conditions.
+Unless otherwise stated, Xyfir Books and/or its licensors own the intellectual property rights for all material on Xyfir Books. All intellectual property rights are reserved. You may view and/or print pages from https://books.xyfir.com/ for your own personal use subject to restrictions set in these terms and conditions.
 
 You must not:
-- Republish material from https://libyq.com/
-- Sell, rent or sub-license material from https://libyq.com/
-- Reproduce, duplicate or copy material from https://libyq.com/
-- Redistribute content from Libyq (unless content is specifically made for redistribution).
+- Republish material from https://books.xyfir.com/
+- Sell, rent or sub-license material from https://books.xyfir.com/
+- Reproduce, duplicate or copy material from https://books.xyfir.com/
+- Redistribute content from Xyfir Books (unless content is specifically made for redistribution).
 
 ## User Generated Content
 
 This Agreement shall begin on the date hereof.
 
-Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data ('UGC') in areas of the website. Libyq does not screen, edit, publish or review UGC prior to their appearance on the website and UGC does not reflect the views or opinions of Libyq, its agents or affiliates. UGC reflects the view and opinion of the person who posts such content. To the extent permitted by applicable laws Libyq shall not be responsible or liable for the UGC or for any loss, cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the UGC on this website.
+Certain parts of this website offer the opportunity for users to post and exchange opinions, information, material and data ('UGC') in areas of the website. Xyfir Books does not screen, edit, publish or review UGC prior to their appearance on the website and UGC does not reflect the views or opinions of Xyfir Books, its agents or affiliates. UGC reflects the view and opinion of the person who posts such content. To the extent permitted by applicable laws Xyfir Books shall not be responsible or liable for the UGC or for any loss, cost, liability, damages or expenses caused and or suffered as a result of any use of and/or posting of and/or appearance of the UGC on this website.
 
-Libyq reserves the right to monitor all UGC and to remove any UGC which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.
+Xyfir Books reserves the right to monitor all UGC and to remove any UGC which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.
 
 You warrant and represent that:
 - You are entitled to post UGC on our website and have all necessary licenses and consents to do so;
@@ -40,7 +41,7 @@ You warrant and represent that:
 - The UGC does not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy
 - The UGC will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.
 
-You hereby grant to Libyq a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your UGC in any and all forms, formats or media.
+You hereby grant to Xyfir Books a non-exclusive royalty-free license to use, reproduce, edit and authorize others to use, reproduce and edit any of your UGC in any and all forms, formats or media.
 
 ## Hyperlinking to our Content
 
@@ -62,7 +63,7 @@ We may consider and approve in our sole discretion other link requests from the 
 - accounting, law and consulting firms whose primary clients are businesses;
 - and educational institutions and trade associations.
 
-We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Libyq; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.
+We will approve link requests from these organizations if we determine that: (a) the link would not reflect unfavorably on us or our accredited businesses (for example, trade associations or other organizations representing inherently suspect types of business, such as work-at-home opportunities, shall not be allowed to link); (b)the organization does not have an unsatisfactory record with us; (c) the benefit to us from the visibility associated with the hyperlink outweighs the absence of Xyfir Books; and (d) where the link is in the context of general resource information or is otherwise consistent with editorial content in a newsletter or similar product furthering the mission of the organization.
 
 These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and it products or services; and (c) fits within the context of the linking party's site.
 
@@ -94,9 +95,9 @@ Whilst we endeavour to ensure that the information on this website is correct, w
 
 ## Liabilities
 
-While we take care to ensure data integrity, Libyq is not responsible for lost or corrupted data. Any important data provided to us should have a backup.
+While we take care to ensure data integrity, Xyfir Books is not responsible for lost or corrupted data. Any important data provided to us should have a backup.
 
-Libyq is not responsible for the actions or content posted of other users who utilize our service. Please contact us if you believe another user is abusing our service.
+Xyfir Books is not responsible for the actions or content posted of other users who utilize our service. Please contact us if you believe another user is abusing our service.
 
 We make no guarantees about the results of free or paid services offered on our site.
 
@@ -106,7 +107,7 @@ A paid subscription to our service is a one-time payment that gives you special 
 
 ## Termination
 
-Users found to be abusing our service will have their account deleted and access revoked from Libyq.
+Users found to be abusing our service will have their account deleted and access revoked from Xyfir Books.
 
 ## Disclaimer
 
