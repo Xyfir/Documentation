@@ -18,7 +18,7 @@ Most of the modern day interactive web sites use cookies to enable us to retriev
 
 ## License
 
-Unless otherwise stated, Ptorx and/or its licensors own the intellectual property rights for all material on Ptorx All intellectual property rights are reserved. You may view and/or print pages from https://ptorx.com/ for your own personal use subject to restrictions set in these terms and conditions.
+Unless otherwise stated, Ptorx and/or its licensors own the intellectual property rights for all material on Ptorx. All intellectual property rights are reserved. You may view and/or print pages from https://ptorx.com/ for your own personal use subject to restrictions set in these terms and conditions.
 
 You must not:
 - Republish material from https://ptorx.com/
