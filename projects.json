@@ -1,10 +1,14 @@
 {
     "ptorx": {
-        "name": "Ptorx - Proxy Emails",
+        "name": "Ptorx",
         "link": "https://ptorx.com/",
-        "description": "An extra layer of security, privacy, and control for your emails.",
+        "description": "Proxy emails for an extra layer of security, privacy, and control for your emails.",
         "documentation": {
             "legal": {
+                "help": {
+                    "name": "Help Documents",
+                    "location": "ptorx/help"
+                },
                 "privacy": {
                     "name": "Privacy Policy",
                     "location": "ptorx/privacy"
