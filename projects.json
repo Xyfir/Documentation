@@ -4,11 +4,11 @@
         "link": "https://ptorx.com/",
         "description": "Proxy emails for an extra layer of security, privacy, and control for your emails.",
         "documentation": {
+            "help": {
+                "name": "Help Documents",
+                "location": "ptorx/help"
+            },
             "legal": {
-                "help": {
-                    "name": "Help Documents",
-                    "location": "ptorx/help"
-                },
                 "privacy": {
                     "name": "Privacy Policy",
                     "location": "ptorx/privacy"
