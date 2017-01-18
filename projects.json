@@ -6,7 +6,8 @@
         "documentation": {
             "help": {
                 "name": "Help Documents",
-                "location": "ptorx/help"
+                "location": "ptorx/help",
+                "description": "Learn more about Ptorx's terminology and how to utilize its features."
             },
             "legal": {
                 "privacy": {
