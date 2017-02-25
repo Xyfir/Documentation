@@ -85,34 +85,35 @@ Advanced searches allow you to provide different search queries for specific ann
 - `SET_TITLE`: *string* - A search query for finding annotation sets by their title.
 
 ### Downloading Annotation Sets
-`GET https://annotations.xyfir.com/api/annotations?key=<KEY>&sets=<SETS>`
+`GET https://annotations.xyfir.com/api/annotations?subscriptionKey=<KEY>&sets=<SETS>`
 - `KEY`: *string* - The user's subscription key
-- `SETS`: *string* - The annotation sets of which you wish to download the set items from. Format: `set_id|set_version,set_id,...`. You may request up to **3** annotation sets per request.
+- `SETS`: *json-string* - The annotation sets you wish to download set items from. The value should be a JSON string of an object array: `[{ id: number, version?: date-string }]`. You may request up to **3** annotation sets per request.
 
 #### Set Versions
 In `SETS` you can optionally provide the current version of the set that you have saved on the client. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
 
 #### Response
 ```js
-{ error: boolean, message?: string, "id"?: {
+{
+  error: boolean, message?: string, [setId]?: {
     version: date-string, items?: [{
-        id: number, title: string,
-        searches: [{
-            text: string, regex: boolean, range: {
-                global: boolean, before: string, after: string
-            }
-        }], annotations: [{
-            type: number, name: string, value: string
-        }]
+      id: number, title: string, searches: [{
+        text: string, regex: boolean, range: {
+          global: boolean, before: string, after: string
+        }
+      }], annotations: [{
+        type: number, name: string, value: string
+      }]
     }]
-}, ... }
+  }, [setId]: {...}, ...
+}
 ```
 
 If `error` is true, a `message` property may also be present that will give you an idea of what went wrong. An error usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
 
-`"id"` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, "5": { ... }, "10": { ... }, "15": { ... }}`.
+`[setId]` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, "5": { ... }, "10": { ... }, "15": { ... }}`.
 
-If an annotation set you requested has the same version as you have downloaded locally then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different then you can count on `items` being there.
+If an annotation set you requested has the same version as you have downloaded locally then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different, then you can count on `items` being there.
 
 ### Searches
 Every set item contains one or more searches that are used to find content in a book to annotate. All of the set item's annotations should be applied to any content in a book that matches **any** of its searches.
