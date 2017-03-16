@@ -5,7 +5,7 @@
 
 ## Required Query Data
 - `pubid`: *number* - Your campaign's id number
-- `type` OR `types` - See [Ad Types](#AdTypes)
+- `type` OR `types` - See [Ad Types](#ad-types)
     - `type`: *number* - Numerical value representing advert type you want (text/video/etc)
     - `types`: *string* - A comma delimited list of the ad types you want. If you want a specific amount of ads with each ad type we recommend making multiple requests for each type with ?type and ?count.
 
@@ -14,11 +14,11 @@
 - `xadid`: *string* - User's Xyfir Ads id received when user logs into your service via Xyfir Accounts
 - `speed`: *number* - (default 0), If set to 1: certain filters and checks will be ignored. The result is a faster response at the cost of less personalized ads
 - `ip`: *string* - (default uses request IP), If your server acts as a middle-man between your client and Xyfir Ads: this should be set to the client's IP address
-- `age`: *number* - User's age range (See [Age Ranges](#AgeRanges))
-- `gender`: *number* - User's gender (See [Genders](#Genders))
+- `age`: *number* - User's age range (See [Age Ranges](#age-ranges))
+- `gender`: *number* - User's gender (See [Genders](#genders))
 - `categories`: *string* - A comma delimited list of categories (must be in our list of approved categories) that describe the page/content/etc the user is currently viewing
 - `keywords`: *string* - A comma delimited list of keywords that describe the page/content/etc the user is currently viewing
-- `test`: *string* - See [Test Mode](#TestMode)
+- `test`: *string* - See [Test Mode](#test-mode)
 
 ## Return Object
 ```
@@ -31,13 +31,13 @@
 ```
 
 ### Media Property
-This property is optional and only available for image and video advertisements. It is a comma delimited key value list `(key:value,key:value,...)` where the key is a numerical identifier matching a preset image/video dimensions/resolution and the value is a link to the actual content. See [Image Source Types](#ImageSourceTypes) and [Video Source Types](#VideoSourceTypes)
+This property is optional and only available for image and video advertisements. It is a comma delimited key value list `(key:value,key:value,...)` where the key is a numerical identifier matching a preset image/video dimensions/resolution and the value is a link to the actual content. See [Image Source Types](#image-source-types) and [Video Source Types](#video-source-types)
 
 #### Notes
 - Be sure to check the length of response.ads as it's possible we were unable to find enough suitable matches to meet your `count` value
 - Also be sure to check the type of the ads returned if you provided a list of ad types with `types` instead of a single type with `type`
 
-## Test Mode #TestMode
+## Test Mode
 - When developing and testing with our API you should be sure to enable test mode. Test mode is enabled by providing your test key (found when viewing your campaign) via `GET ads.xyfir.com/api/ads?pubid=XX&test=XX`. We will not charge advertisers for views or clicks and you won't receive earnings for ads served in test mode. Reports for both publisher and advertiser will not be updated.
 - We highly recommend keeping your test key private, and generating a new key if your old one is made public. It is important to keep private since it prevents you from earning anything when provided to our API. You can generate a new key under the 'Edit' menu of each campaign.
 - Each campaign has its own unique test key. The test key and pubid must match for test mode to be enabled. There are no warnings or errors when they don't match.
@@ -68,7 +68,7 @@ There is no premade middle-man system as it's implementation is unique to all sy
 
 ---
 
-## Ad Types #AdTypes
+## Ad Types
 
 ### Shared Properties
 - `description`: *string* - 150 characters
@@ -90,23 +90,23 @@ There is no premade middle-man system as it's implementation is unique to all sy
 - Numerical Identifier: **3**
 - Properties
     - `media`: *string* - `0:sourceLink,1:...,3:sourceLink`
-    - See [Image Source Types](#ImageSourceTypes)
+    - See [Image Source Types](#image-source-types)
 
 ### Video
 - Numerical Identifier: **4**
 - Properties
     - `media`: *string* - `0:sourceLink,1:...,3:sourceLink`
-    - See [Video Source Types](#VideoSourceTypes)
+    - See [Video Source Types](#video-source-types)
 
-## Image Source Types #ImageSourceTypes
+## Image Source Types
 - Each key:value pair in the media property of an ads object represents an image of certain preset dimensions. Below you'll find the image dimensions that match each key.
 - Key $X: $Yx$Z
 
-## Video Source Types #VideoSourceTypes
+## Video Source Types
 - Each key:value pair in the media property of an ads object represents a video of a certain preset resolution. Below you'll find the video resolution that match each key.
 - Key $X: $Yx$Z
 
-## Age Ranges #AgeRanges
+## Age Ranges
 - Each age range has a specific numerical identifier used throughout our system.
 - 18-24: **1**
 - 25-34: **2**
@@ -115,7 +115,7 @@ There is no premade middle-man system as it's implementation is unique to all sy
 - 55-64: **5**
 - 65+: **6**
 
-## Genders #Genders
+## Genders
 - Each gender has a specific numerical identifier used throughout our system.
 - Male: **1**
 - Female: **2**
