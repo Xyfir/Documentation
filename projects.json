@@ -136,12 +136,12 @@
       },
       "help": {
         "name": "Help Documents",
-        "location": "xyfir-books/help",
+        "location": "xyfir-buttons/help",
         "description": "Learn how to utilize Xyfir Buttons' features to control the web."
       },
       "button-scripts": {
         "name": "Button Script API",
-        "location": "xyfir-books/button-scripts",
+        "location": "xyfir-buttons/button-scripts",
         "description": "Learn how to build a script for your button."
       }
     }
