@@ -1,122 +1,149 @@
 {
-    "ptorx": {
-        "name": "Ptorx",
-        "link": "https://ptorx.com/",
-        "description": "Proxy emails for an extra layer of security, privacy, and control for your emails.",
-        "documentation": {
-            "help": {
-                "name": "Help Documents",
-                "location": "ptorx/help",
-                "description": "Learn more about Ptorx's terminology and how to utilize its features."
-            },
-            "legal": {
-                "privacy": {
-                    "name": "Privacy Policy",
-                    "location": "ptorx/privacy"
-                },
-                "tos": {
-                    "name": "Terms of Service",
-                    "location": "ptorx/tos"
-                }
-            }
+  "ptorx": {
+    "name": "Ptorx",
+    "link": "https://ptorx.com/",
+    "description": "Proxy emails for an extra layer of security, privacy, and control for your emails.",
+    "documentation": {
+      "help": {
+        "name": "Help Documents",
+        "location": "ptorx/help",
+        "description": "Learn more about Ptorx's terminology and how to utilize its features."
+      },
+      "legal": {
+        "privacy": {
+          "name": "Privacy Policy",
+          "location": "ptorx/privacy"
+        },
+        "tos": {
+          "name": "Terms of Service",
+          "location": "ptorx/tos"
         }
-    },
-    "xyfir-accounts": {
-        "name": "Xyfir Accounts",
-        "link": "https://accounts.xyfir.com/",
-        "description": "Account management system for the Xyfir Network.",
-        "documentation": {
-            "integration": {
-                "name": "Integration For Developers",
-                "location": "xyfir-accounts/integration",
-                "description": "Learn how to integrate Xyfir Accounts into your site or app."
-            },
-            "legal": {
-                "privacy": {
-                    "name": "Privacy Policy",
-                    "location": "xyfir-accounts/privacy"
-                },
-                "tos": {
-                    "name": "Terms of Service",
-                    "location": "xyfir-accounts/tos"
-                }
-            }
-        }
-    },
-    "xyfir-ads": {
-        "name": "Xyfir Ads",
-        "link": "https://ads.xyfir.com/",
-        "description": "Native advertisement system for advertisers and publishers.",
-        "documentation": {
-            "developers": {
-                "name": "For Developers",
-                "location": "xyfir-ads/developers",
-                "description": "Learn how to integrate Xyfir Ads into your site, app, etc."
-            },
-            "advertisers": {
-                "name": "For Advertisers",
-                "location": "xyfir-ads/advertisers",
-                "description": "Learn how to manage your account and advertisement campaigns."
-            },
-            "publishers": {
-                "name": "For Publishers",
-                "location": "xyfir-ads/publishers",
-                "description": "Learn how to manage your account and publisher campaigns."
-            },
-            "users": {
-                "name": "For Users",
-                "location": "xyfir-ads/users",
-                "description": "Xyfir Ads was developed with the end user in mind. Learn about what makes us different."
-            },
-            "legal": {
-                "privacy": {
-                    "name": "Privacy Policy",
-                    "location": "xyfir-ads/privacy"
-                },
-                "tos": {
-                    "name": "Terms of Service",
-                    "location": "xyfir-ads/tos"
-                }
-            }
-        }
-    },
-    "xyfir-annotations": {
-        "name": "Xyfir Annotations",
-        "link": "https://annotations.xyfir.com/",
-        "description": "A single platform for storing, finding, and managing interactive annotations for ebooks.",
-        "documentation": {
-            "integration": {
-                "name": "Integration For Ebook Reader Developers",
-                "location": "xyfir-annotations/integration",
-                "description": "Learn how to integrate Xyfir Annotations into your ebook reader."
-            },
-            "legal": {
-                "privacy": {
-                    "name": "Privacy Policy",
-                    "location": "xyfir-annotations/privacy"
-                },
-                "tos": {
-                    "name": "Terms of Service",
-                    "location": "xyfir-annotations/tos"
-                }
-            }
-        }
-    },
-    "xyfir-books": {
-        "name": "Xyfir Books",
-        "link": "https://books.xyfir.com/",
-        "description": "An all-in-one cloud-synced ebook reader, storage, and management system.",
-        "documentation": {
-            "legal": {
-                "privacy": {
-                    "name": "Privacy Policy",
-                    "location": "xyfir-books/privacy"
-                },
-                "tos": {
-                    "name": "Terms of Service",
-                    "location": "xyfir-books/tos"
-                }
-            }
-        }
+      }
     }
+  },
+  "xyfir-accounts": {
+    "name": "Xyfir Accounts",
+    "link": "https://accounts.xyfir.com/",
+    "description": "Account management system for the Xyfir Network.",
+    "documentation": {
+      "integration": {
+        "name": "Integration For Developers",
+        "location": "xyfir-accounts/integration",
+        "description": "Learn how to integrate Xyfir Accounts into your site or app."
+      },
+      "legal": {
+        "privacy": {
+          "name": "Privacy Policy",
+          "location": "xyfir-accounts/privacy"
+        },
+        "tos": {
+          "name": "Terms of Service",
+          "location": "xyfir-accounts/tos"
+        }
+      }
+    }
+  },
+  "xyfir-ads": {
+    "name": "Xyfir Ads",
+    "link": "https://ads.xyfir.com/",
+    "description": "Native advertisement system for advertisers and publishers.",
+    "documentation": {
+      "developers": {
+        "name": "For Developers",
+        "location": "xyfir-ads/developers",
+        "description": "Learn how to integrate Xyfir Ads into your site, app, etc."
+      },
+      "advertisers": {
+        "name": "For Advertisers",
+        "location": "xyfir-ads/advertisers",
+        "description": "Learn how to manage your account and advertisement campaigns."
+      },
+      "publishers": {
+        "name": "For Publishers",
+        "location": "xyfir-ads/publishers",
+        "description": "Learn how to manage your account and publisher campaigns."
+      },
+      "users": {
+        "name": "For Users",
+        "location": "xyfir-ads/users",
+        "description": "Xyfir Ads was developed with the end user in mind. Learn about what makes us different."
+      },
+      "legal": {
+        "privacy": {
+          "name": "Privacy Policy",
+          "location": "xyfir-ads/privacy"
+        },
+        "tos": {
+          "name": "Terms of Service",
+          "location": "xyfir-ads/tos"
+        }
+      }
+    }
+  },
+  "xyfir-annotations": {
+    "name": "Xyfir Annotations",
+    "link": "https://annotations.xyfir.com/",
+    "description": "A single platform for storing, finding, and managing interactive annotations for ebooks.",
+    "documentation": {
+      "integration": {
+        "name": "Integration For Ebook Reader Developers",
+        "location": "xyfir-annotations/integration",
+        "description": "Learn how to integrate Xyfir Annotations into your ebook reader."
+      },
+      "legal": {
+        "privacy": {
+          "name": "Privacy Policy",
+          "location": "xyfir-annotations/privacy"
+        },
+        "tos": {
+          "name": "Terms of Service",
+          "location": "xyfir-annotations/tos"
+        }
+      }
+    }
+  },
+  "xyfir-books": {
+    "name": "Xyfir Books",
+    "link": "https://books.xyfir.com/",
+    "description": "An all-in-one cloud-synced ebook reader, storage, and management system.",
+    "documentation": {
+      "legal": {
+        "privacy": {
+          "name": "Privacy Policy",
+          "location": "xyfir-books/privacy"
+        },
+        "tos": {
+          "name": "Terms of Service",
+          "location": "xyfir-books/tos"
+        }
+      }
+    }
+  },
+  "xyfir-buttons": {
+    "name": "Xyfir Buttons",
+    "link": "https://buttons.xyfir.com/",
+    "description": "Control the web with floating buttons.",
+    "documentation": {
+      "legal": {
+        "privacy": {
+          "name": "Privacy Policy",
+          "location": "xyfir-buttons/privacy"
+        },
+        "tos": {
+          "name": "Terms of Service",
+          "location": "xyfir-buttons/tos"
+        }
+      },
+      "help": {
+        "name": "Help Documents",
+        "location": "xyfir-books/help",
+        "description": "Learn how to utilize Xyfir Buttons' features to control the web."
+      },
+      "button-scripts": {
+        "name": "Button Script API",
+        "location": "xyfir-books/button-scripts",
+        "description": "Learn how to build a script for your button."
+      }
+    }
+  }
 }
