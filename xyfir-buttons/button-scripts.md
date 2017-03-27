@@ -41,22 +41,24 @@ Button.on('click', event => {
  */
 Button.load(file);
 
-/* Examples */
+/* Example 1 */
 
 const func = Button.load('my-file.js')
 func('hello');
 
 // prints 'hello' to console
 // where my-file.js is
-function(val) { console.log(val); }
+exports = function(val) { console.log(val); }
 
-//
+/* Example 2 */
 
-Button.load('some/path/to/file.js');
+const obj = Button.load('my-object.js');
+console.log(obj.test); // 'hello'
+console.log(obj.someFunction()); // 'hello'
 
-// prints 'hello' to console
-// where some/path/to/file.js is
-console.log('hello');
+// where my-object.js is
+exports.test = 'hello';
+exports.someFunction = function() { return exports.test; }
 ```
 
 ## Storage
