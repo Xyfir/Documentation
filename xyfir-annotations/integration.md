@@ -58,12 +58,17 @@ If for whatever reason you need to delete a subscription key that you generated 
 Our annotation system is broken down into repositories called *annotation sets*. An *annotation set* is a set of items that contain annotations for a specific book. A *set item* is further broken down into *searches* and *annotations*. A *search* is a search query that points to a set of text within a book's content. An *annotation* is the specific annotation that will be applied to the book's content matched from the *search*.
 
 ### Finding Annotation Sets
-`GET https://annotations.xyfir.com/api/sets?search=<SEARCH>&sort=<SORT>`
+`GET https://annotations.xyfir.com/api/sets?search=<SEARCH>&sort=<SORT>&direction=<DIRECTION>&lastId=<LAST_ID>`
 - `SEARCH`: *string* - A search query for finding matching annotation sets. This can be a set title, a book title, or book authors.
 - `SORT`: *string* - Sort method for matched annotation sets
-    - `top` - Sort by top rated sets
-    - `newest` - Sort by newest created sets
-    - `updated` - Sort by recently updated sets
+  - `top` - Sort by top rated sets
+  - `newest` - Sort by newest created sets
+  - `updated` - Sort by recently updated sets
+- `DIRECTION`: *string* - The direction to sort the sets
+  - `desc` - Descending sort (greatest to least)
+  - `asc` - Ascending sort (least to greatest)
+- `LAST_ID`: *number* (optional) - Used for pagination. The last id in the previously returned list.
+
 
 #### Response
 ```js
@@ -78,8 +83,10 @@ Our annotation system is broken down into repositories called *annotation sets*.
 #### Advanced Searches
 Advanced searches allow you to provide different search queries for specific annotation set fields. All variables must be present in the query string, even if they have no value. Only sets that match **all** provided queries will be returned.
 
-`GET https://annotations.xyfir.com/api/sets?bookTitle=<BOOK_TITLE>&setTitle=<SET_TITLE>&bookAuthors=<BOOK_AUTHORS>sort=<SORT>`
+`GET https://annotations.xyfir.com/api/sets?bookTitle=<BOOK_TITLE>&setTitle=<SET_TITLE>&bookAuthors=<BOOK_AUTHORS>&sort=<SORT>&direction=<DIRECTION>&lastId=<LAST_ID>`
 - `SORT`: *string* - Same variable and possible values as previously explained.
+- `DIRECTION`: *string* - Same variable and possible values as previously explained.
+- `LAST_ID`: *number* (optional) - Same variable as previously explained.
 - `BOOK_TITLE`: *string* - A search query for finding annotation sets by their book's title.
 - `BOOK_AUTHORS`: *string* - A search query for finding annotation sets by their book's authors.
 - `SET_TITLE`: *string* - A search query for finding annotation sets by their title.
@@ -137,20 +144,20 @@ Every set item contains one or more annotations that will be applied anywhere on
 
 #### Types
 1. Document
-    - Documents are Markdown format text.
+  - Documents are Markdown format text.
 2. Link
-    - An `HTTP` or `HTTPS` link.
+  - An `HTTP` or `HTTPS` link.
 3. Web Search
-    - A web search query to be used with a search engine (Google, Bing, etc). Not to be confused with an annotation set item's *searches*.
+  - A web search query to be used with a search engine (Google, Bing, etc). Not to be confused with an annotation set item's *searches*.
 4. Image
-    - A link to an image of no specific format.
+  - A link to an image of no specific format.
 5. Video
-    - A link to a video. Might be a YouTube, Vimeo, etc link or a direct link to a video file.
+  - A link to a video. Might be a YouTube, Vimeo, etc link or a direct link to a video file.
 6. Audio
-    - A link to audio content.
+  - A link to audio content.
 7. Map
-    - Can be a direct link to a map of any format (image, interactive, etc).
-    - Can be a search query for use in a real-world map (Google Maps, Bing Maps, etc).
+  - Can be a direct link to a map of any format (image, interactive, etc).
+  - Can be a search query for use in a real-world map (Google Maps, Bing Maps, etc).
 
 #### OBJECT
 ```js
