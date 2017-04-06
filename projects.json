@@ -143,6 +143,16 @@
         "name": "Button Script API",
         "location": "xyfir-buttons/button-scripts",
         "description": "Learn how to build a script for your button."
+      },
+      "remote-repos": {
+        "name": "Remote Button Repositories",
+        "location": "xyfir-buttons/remote-button-repositories",
+        "description": "Use remote repositories to host your button."
+      },
+      "manifest-file": {
+        "name": "Manifest File Format",
+        "location": "xyfir-buttons/manifest-file-format",
+        "description": "A manifest file gives you more control when using remote repositories."
       }
     }
   }
