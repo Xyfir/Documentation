@@ -13,9 +13,9 @@ There are three main things we must do to before users can login to your service
 3. Setup a system that can handle redirects and data passed from Xyfir Accounts after a login or registration
 
 ### Login/Register With Xyfir
-These two steps are basically identical, and extremely easy to complete. Somewhere on your site, in your app, etc, you must place a link that'll take the user to Xyfir Accounts where they can then link your service to their account, or login to your service with their account. This is done by taking our login and registration links (`https://accounts.xyfir.com/app/#/login/` and `https://accounts.xyfir.com/app/#/register/`) and appending your service's identifier number given to you when viewing your service in the *Service Dashboard*.
+These two steps are basically identical, and extremely easy to complete. Somewhere on your site, in your app, etc, you must place a link that'll take the user to Xyfir Accounts where they can then link your service to their account, or login to your service with their account. This is done by taking our login and registration links (`https://accounts.xyfir.com/#/login/` and `https://accounts.xyfir.com/#/register/`) and appending your service's identifier number given to you when viewing your service in the *Service Dashboard*.
 
-For example if your service's ID was `55`, your login link would be `https://accounts.xyfir.com/app/#/login/55`. Once you've added those links, your first two steps are done.
+For example if your service's ID was `55`, your login link would be `https://accounts.xyfir.com/#/login/55`. Once you've added those links, your first two steps are done.
 
 ### Validating Logins and Registrations
 After a user has logged into your service or linked your service to their account via Xyfir Accounts, we redirect their browser back to your site with two important variables in the url's query string: `auth` and `xid`. The address we direct them to is the link you set when you created your service.
