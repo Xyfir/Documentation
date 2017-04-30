@@ -23,7 +23,7 @@ After a user has logged into your service or linked your service to their accoun
 #### The Redirect
 The link you provided when creating your service must be able to accept a `GET` request containing the following variables:
 - `xid`: *string* - The user's Xyfir ID which is a unique identifier for a user on a specific service. The Xyfir ID will be used for you to link a user to a set of data in your database. If the provided XID does not exist in your database, you create a new user. If the XID *does* exist, you update the user's data.
-    - `xid` is always a 64 character string that contains alphanumeric characters. Make sure your database is case-sensitive for this value to prevent matching a user on your service with the wrong xyfir id (and therefore the wrong data).
+  - `xid` is always a 64 character string that contains alphanumeric characters. Make sure your database is case-sensitive for this value to prevent matching a user on your service with the wrong xyfir id (and therefore the wrong data).
 - `auth`: *string* - The XID acts like a username while `auth` acts like a password. This prevents unauthorized logins in the event that a user's XID is compromised.
 
 ##### Example
@@ -33,35 +33,38 @@ If the website link you set when creating your service was `https://mywebsite.co
 Once you've received the `xid` and `auth` token of the user logging in, you must call Xyfir Accounts to verify the `xid`/`auth` and to retrieve the user's data.
 
 #### API Request
-`GET https://accounts.xyfir.com/api/service/<SERVICE_ID>/<SERVICE_KEY>/<XID>/<AUTH_TOKEN>`
-- `SERVICE_ID`: *number* - Your service ID obtained when you created your service
-- `SERVICE_KEY`: *string* - Any one of your service's secret authentication keys, found by viewing your service in the service dashboard
+`GET https://accounts.xyfir.com/api/service/:service/user?key=<KEY>&xid=<XID>&token=<TOKEN>`
+- `:service`: *number* - Your service ID obtained when you created your service
+- `KEY`: *string* - Any one of your service's secret authentication keys, found by viewing your service in the service dashboard
 - `XID`: *string* - The user's Xyfir ID returned after login or registration
-- `AUTH_TOKEN`: *string* - The user's authentication token returned after login or registration
+- `TOKEN`: *string* - The user's authentication or access token
 
 #### API Response
 ```js
 {
-    // True when service_id/service_key or xid/auth don't match
-    error: boolean,
+  // True when service_id/service_key or xid/auth don't match
+  error: boolean,
 
-    // Explains error when error is true
-    message: string,
+  // Explains error when error is true
+  message: string,
 
-    // The user's Xyfir Ads profile identifier
-    xadid: string,
+  // The user's Xyfir Ads profile identifier
+  xadid: string,
 
-    // Explained in depth later in documentation
-    // Can be safely ignored if service does not need access tokens
-    accessToken: string,
-    
-    // Fields you marked as required or optional when creating your service
-    // Fields marked required will be in this object
-    // Fields marked optional may or may not be present
-    fname: string, lname: string, address: string, zip: string,
-    country: string, region: string, email: string,
-    phone: string, gender: number,
-    birthdate: string
+  // Explained in depth later in documentation
+  // Can be safely ignored if service does not need access tokens
+  accessToken: string,
+  
+  // Fields you marked as required or optional when creating your service
+  // Fields marked required will be in this object
+  // Fields marked optional may or may not be present
+  fname: string, lname: string, address: string, zip: string, country: string,
+  region: string, email: string, phone: string, gender: number,
+  // In the following format: YYYY-MM-DD
+  birthdate: string,
+  // Base64 encoded data url of image.
+  // Max size 2mb; no resolution limits or requirements
+  picture: string
 }
 ```
 
@@ -77,12 +80,12 @@ Once you've verified the login and created a new user or updated an existing use
 Access tokens allow your service to provide a more persistent type of session system while decreasing the need for your users to keep logging in to your service through Xyfir Accounts.
 
 #### Handling Access Tokens
-An access token is returned as `accessToken` in the response from `GET https://accounts.xyfir.com/api/service/<SERVICE_ID>/<SERVICE_KEY>/<XID>/<AUTH_TOKEN>` when `error` is false. Your service must have some way of linking an access token to a user's Xyfir ID (xid). It is important to remember that a single user can have multiple access tokens for a single service, and also that while unlikely, multiple users can have the same access token.
+An access token is returned as `accessToken` in the response from `GET https://accounts.xyfir.com/api/service/:service/user` when `error` is false. Your service must have some way of linking an access token to a user's Xyfir ID (xid). It is important to remember that a single user can have multiple access tokens for a single service, and also that while unlikely, multiple users can have the same access token.
 
 The way Xyfir services like Ptorx or Vynote handle access tokens is by encrypting a string that contains a user's internal user id (not their Xyfir ID) and the access token and sending this encrypted string to the client. This string is then stored by the client in local storage and then sent to the service's API upon the application loading to create a new session. This setup removes the need for the services to store access tokens on their servers.
 
 #### Using Access Tokens
-`GET https://accounts.xyfir.com/api/service/<SERVICE_ID>/<SERVICE_KEY>/<XID>/<ACCESS_TOKEN>`
+`GET https://accounts.xyfir.com/api/service/:service/user`
 
 Using access tokens is very similar to using a user's Xyfir ID (`xid`) and authentication token (`auth`) after a login from Xyfir Accounts. The access token takes the place of the authentication token while everything else remains the same. The response is the same as if you used an authentication token except that the API will not return an access token because the access token used in the request is still valid.
 
