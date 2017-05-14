@@ -15,9 +15,9 @@ There are three main things we must do to before users can login to your service
 
 ## Login/Register With Xyfir
 
-These two steps are basically identical, and extremely easy to complete. Somewhere on your site, in your app, etc, you must place a link that'll take the user to Xyfir Accounts where they can then link your service to their account, or login to your service with their account. This is done by taking our login and registration links (`https://accounts.xyfir.com/#/login/` and `https://accounts.xyfir.com/#/register/`) and appending your service's identifier number given to you when viewing your service in the *Developer Dashboard*.
+These two steps are basically identical, and extremely easy to complete. Somewhere on your site, in your app, etc, you must place a link that'll take the user to Xyfir Accounts where they can then link your service to their account, or login to your service with their account. This is done by taking our login and registration links (`https://accounts.xyfir.com/#/login/service/` and `https://accounts.xyfir.com/#/register/service/`) and appending your service's identifier number given to you when viewing your service in the *Developer Dashboard*.
 
-For example if your service's ID was `10`, your login link would be `https://accounts.xyfir.com/#/login/10`. Once you've added those links, your first two steps are done.
+For example if your service's ID was `10`, your login link would be `https://accounts.xyfir.com/#/login/service/10`. Once you've added those links, your first two steps are done.
 
 ## Validating Logins (and Registrations)
 
