@@ -23,10 +23,10 @@ Your discount will be applied to these base prices.
 
 
 ## Generating Subscriptions
-`POST https://annotations.xyfir.com/api/affiliate/<AFFILIATE_ID>/<AFFILIATE_KEY>?subscription=<SUBSCRIPTION>`
-- `AFFILIATE_ID`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
-- `AFFILIATE_KEY`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
-- `SUBSCRIPTION`: *number* - A numerical identifier for the subscription length. **1** = 30 days, **2** = 365 days
+`POST https://annotations.xyfir.com/api/affiliate/subscriptions`
+- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `subscription`: *number* - A numerical identifier for the subscription length. **1** = 30 days, **2** = 365 days
 
 ### Response
 ```ts
@@ -42,10 +42,10 @@ Affiliates found exploiting our subscription system will be banned.
 ## Deleting Subscriptions
 If for whatever reason you need to delete a subscription key that you generated you can do so here. If the key has not been paid for it will be removed and you will not owe money on it.
 
-`DELETE https://annotations.xyfir.com/api/affiliate/<AFFILIATE_ID>/<AFFILIATE_KEY>/<SUBSCRIPTION_KEY>`
-- `AFFILIATE_ID`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
-- `AFFILIATE_KEY`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
-- `SUBSCRIPTION_KEY`: *string* - The subscription key previously generated
+`DELETE https://annotations.xyfir.com/api/affiliate/subscriptions`
+- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `subscriptionKey`: *string* - The subscription key previously generated
 
 ### Response
 ```ts
@@ -53,7 +53,7 @@ If for whatever reason you need to delete a subscription key that you generated 
 ```
 
 # Annotations
-Our annotation system is broken down into repositories called *annotation sets*. An *annotation set* is a set of items that contain annotations for a specific book. A *set item* is further broken down into *searches* and *annotations*. A *search* is a search query that points to a set of text within a book's content. An *annotation* is the specific annotation that will be applied to the book's content matched from the *search*.
+Our annotation system is broken down into repositories called *annotation sets*. An *annotation set* is a set of items that contain annotations for a specific book. A *set item* is further broken down into *searches* and *annotations*. A *search* is a search query that points to a set of text within a book's content. An *annotation* is the specific annotation that will be applied to the book's content matched from the *search*. A *set item* can have multiple *searches* and multiple *annotations*.
 
 ## Finding Annotation Sets
 `GET https://annotations.xyfir.com/api/sets?search=<SEARCH>&sort=<SORT>&direction=<DIRECTION>&lastId=<LAST_ID>`
@@ -147,7 +147,7 @@ text: string, regex: boolean, range: {
 - `range.after`: *string* (optional) - If this property is truthy, it means that any matches for this search are only valid if they come *after* where this text is present in the book's content.
 
 ## Annotations
-Every set item contains one or more annotations that will be applied anywhere one of its searches matches in a book's content. A set item can have multiple annotations of the same type.
+Every set item contains one or more annotations that will be applied anywhere one of its searches match in a book's content. A set item can have multiple annotations of the same type.
 
 ### Types
 1. Document
@@ -155,7 +155,8 @@ Every set item contains one or more annotations that will be applied anywhere on
 2. Link
   - An `HTTP` or `HTTPS` link.
 3. Web Search
-  - A web search query to be used with a search engine (Google, Bing, etc). Not to be confused with an annotation set item's *searches*.
+  - A web search query to be used with a search engine (Google, Bing, etc).
+  - Not to be confused with an annotation set item's *searches*.
 4. Image
   - A link to an image of no specific format.
 5. Video
@@ -166,22 +167,112 @@ Every set item contains one or more annotations that will be applied anywhere on
   - Can be a direct link to a map of any format (image, interactive, etc).
   - Can be a search query for use in a real-world map (Google Maps, Bing Maps, etc).
 
-### OBJECT
+### Objects
 ```js
 // -- DOCUMENT --
-{ type: 1, name: 'Document', value: 'A **document** annotation that *supports* [Markdown](https://en.wikipedia.org/wiki/Markdown).' }
+{
+  type: 1, name: 'Document',
+  value: 'A **document** *annotation* that supports [Markdown](https://en.wikipedia.org/wiki/Markdown).'
+}
+
 // -- LINK --
-{ type: 2, name: 'Link', value: 'https://en.wikipedia.org/wiki/SomeWikipediaLink' }
+{
+  type: 2, name: 'Link',
+  value: 'https://en.wikipedia.org/wiki/SomeWikipediaLink'
+}
+
 // -- WEB SEARCH --
 { type: 3, name: 'Search', value: 'some search value' }
-// -- IMAGE --
+
+// -- IMAGE (SINGLE) --
 { type: 4, name: 'Image', value: 'https://xyfir.com/images/SomeImage.jpg' }
-// -- VIDEO --
-{ type: 5, name: 'Video', value: 'https://www.youtube.com/embed/SomeYouTubeVideo' }
-// -- AUDIO --
+
+// -- IMAGE (ALBUM) --
+{
+  type: 4, name: 'Images', value: [
+    'https://xyfir.com/images/SomeImage.jpg',
+    'https://xyfir.com/images/AnotherImage.jpg'
+  ]
+}
+
+// -- VIDEO (SINGLE) --
+{
+  type: 5, name: 'Video',
+  value: 'https://www.youtube.com/embed/SomeYouTubeVideo'
+}
+
+// -- VIDEO (PLAYLIST) --
+{
+  type: 5, name: 'Videos', value: [
+    'https://www.youtube.com/embed/SomeYouTubeVideo',
+    'https://www.youtube.com/embed/AnotherVideo'
+  ]
+}
+
+// -- AUDIO (SINGLE) --
 { type: 6, name: 'Audio', value: 'https://xyfir.com/audio/SomeFile.mp3' }
-// -- MAP --
+
+// -- AUDIO (PLAYLIST) --
+{
+  type: 6, name: 'Playlist', value: [
+    'https://xyfir.com/audio/SomeFile.mp3',
+    'https://xyfir.com/audio/Another.mp3'
+  ]
+}
+
+// -- MAP (SEARCH) --
 { type: 7, name: 'Map', value: 'San Diego, CA' }
-// -- MAP --
-{ type: 7, name: 'Special Map', value: 'https://xyfir.com/map/SomeMap' }
+
+// -- MAP (LINK) --
+{ type: 7, name: 'Map', value: 'https://xyfir.com/map/SomeMap' }
 ```
+
+## Highlighting Annotations
+
+xyAnnotations just provides the data, and from there it's up to you to determine how you want your application to highlight the annotations within a book. You have complete freedom to implement xyAnnotations into your reader however you wish, but an outline of how Xyfir Books implements the api may be helpful when developing your own implementation. The following section will give a rough outline of how xyBooks uses the annotations returned from the api. xyBooks' implementation is not the perfect or recommended way, especially since it only works with book formats that render to HTML. There are many flaws and limitations with its configuration, but for now it can serve as a pointer in the right direction.
+
+### Step 1: Downloading Annotations
+
+The first step is of course downloading the annotations themselves. Annotations are downloaded at two different times: when a book is opened and when a user clicks 'Save' on an annotation set in the 'Manage Annotations' section. In the first situation xyBooks checks for annotations stored in local storage for the book that is being opened. If annotations are stored for the book, then xyBooks uses the id and version for the stored annotation sets and calls xyAnnotations to get an updated version of those annotation sets.
+
+### Step 2: Building 'Markers' for Non-Global Searches
+
+Since xyAnnotations is built to support all types of ebook formats and multiple versions of any single ebook, there are no specified locations for where a set item's search can be found within an ebook's content. This means that we must search the book's content in its entirety to highlight everywhere a set item's search matches. This is straightforward for global searches that can match anywhere in a book, but dealing with non-global searches is a little more difficult.
+
+xyBooks handles non-global searches by looping through every single search within every single set item and filtering out all global searches. From here, xyBooks begins to build a `markers` object that contains keys whose names follow a format of: `${itemId}-${searchIndex}-${type}`. `itemId` is the unique id of the set item; `searchIndex` is the index of the specific search within the item's searches array; and `type` can be `1` for a 'before' marker and `2` for an 'after' marker. These keys point to an object that contains two properties: `chapter` and `index` where `chapter` is the index of the chapter the marker is present in and `index` is an index within the chapter's HTML string where the marker is present.
+
+For example, if we have an object at `markers['5-0-1']` that contains `{ chapter: 4, index: 1992 }`:
+
+This means that item `5`'s search at array index `0` has a `range.before` that is present within the book at the chapter with an index of `4` and within the chapter's HTML string at index `1992`. This data can now be used later when we need to determine whether a search's match should be highlighted.
+
+### Step 3: Sorting Searches By Length
+
+xyBooks only supports EPUB format ebooks, which are rendered to HTML. xyBooks then manipulates this HTML to insert highlights by wrapping matching text with a `span` element. Due to how xyBooks handles highlighting, there is a potential problem where a search that matches a small amount of text will prevent a longer section of text from being matched because of the addition of span elements into the HTML.
+
+To handle this issue, xyBooks sorts searches based on length, so that the longest searches are ran first. This is done by looping through all of a set's items and then through all of an item's searches, comparing the length of the search object's `text` property, and building an array of the following object: `{ item, search }`. `item` is the id of the item and `search` is the index of the search within the item's searches array.
+
+Now, xyBooks can loop through this new array and load the appropriate item and search as needed.
+
+### Step 4: Running Searches, Wrapping Matches
+
+At this point we have two important variables that will now be used: `markers` and `searches`.
+
+xyBooks starts by looping through the `searches` array and then loading the appropriate search from the specified item and search index. xyBooks first runs a search using Regular Expressions on the current chapter's HTML string using `search.text`. Remember to escape regex characters in `search.text` if `search.regex` is false!
+
+If there were any matches, xyBooks then checks if `search.range.global` is false and if so checks for both `search.range.before` and `search.range.after`. If either of those variables are truthy, it loads the corresponding objects from the `matches` object.
+
+Now it loops through the matches returned from the regex search and gets their start and end indexes within the current chapter's HTML string. It throws out any matches that come *after* `search.range.before` or *before* `search.range.after` if `search.range.global` is true.
+
+The matches that are left are now wrapped in a `span` element with a class name of `annotation` and an `onclick` attribute that calls a function that is passed the annotation set item's id.
+
+xyBooks now updates the chapter's HTML and moves on to the next loop of the `searches` array.
+
+### Step 5: Handling Highlight Clicks
+
+A function is setup that accepts an `item` argument which is the id of an item within the active annotation set. When this function is called, it pulls the `annotations` object array for the item from the annotation set and opens a fullscreen overlay that allows the user to view the item's annotations.
+
+xyBooks must also account for an issue that is in a ways the opposite of the issue described in Step 3. Since the longest searches are matched first, it is possible that a highlight might be *within* another highlight. xyBooks does not differentiate in the styling of highlights that exist within other highlights, so the user does not know that they might be clicking on a highlight different than what they believe they're clicking on. To solve this issue, xyBooks passes the click *up* to any parent element that is a `span` element with the class `annotation`.
+
+### Step 6: Unwrapping Highlights
+
+Should the user want to disable annotation highlights or switch to another annotation set, the current highlights must be removed. There are many ways to do this but xyBooks does it by 'unwrapping' all `span` elements within the chapter's HTML that has a class of `annotation`. The content within a `span.annotation` element is pulled out and put into its parent element. Afterward the `span.annotation` element is removed from the DOM.
