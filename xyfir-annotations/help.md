@@ -45,6 +45,7 @@ There are multiple annotation types:
 - (3) Web Search
   - A web search query to be used with a search engine (Google, Bing, etc).
   - Not to be confused with an annotation set item's *searches*.
+  - Supports optional [contextual web searches](#contextual-web-searches).
 - (4) Image
   - A link to an image of no specific format.
   - If multiple links are provided it becomes an album.
@@ -58,6 +59,10 @@ There are multiple annotation types:
 - (7) Map
   - Can be a direct link to a map of any format (image, interactive, etc).
   - Can be a search query for use in a real-world map (Google Maps, Bing Maps, etc).
+
+#### Contextual Web Searches
+
+This feature allows you to add context to a 'Web Search' annotation. When a reader views an annotation that has a context value, they can optionally enable the context which will add the 'Context Search' value to the normal web search query. Typically, this is the book title, series, or some other text that can be used to narrow down the scope of possible results to increase relevancy. Imagine you're creating annotations for a historical fiction book and you're creating an annotation for the text 'George Washington'. You might want the search query to default to just his name while allowing an optional search that adds the name of the book title.
 
 ### Generating Annotations
 
@@ -91,9 +96,7 @@ Removing an added item will only remove it from the *Create Item* section and wi
 
 **Generating a map annotation:** By checking the box for *Map Annotation* our system will automatically create a map annotation using the item's text as a search query (for Google Maps, etc). Enable map annotation generation if your selected item's text is a place that can be found on an actual map (a place, city, zip code, etc).
 
-**When to enable *Prepend Value:*** You should use this feature when you wish to create a more relevant search annotation using the selected item's text. For example, with this feature disabled, the created annotation's search query would simply be the selected item's text. However when it is enabled, an additional 'Web Search' annotation would also be created with the search query being `prepend-value item-text`. Usually this `prepend-value` should be the book's title or a shortened version of it that a search engine will understand.
-
-**What *Create All* does:** Create all will automatically create a single set item for every found item listed. Each item will contain one search (the item's text) and one annotation (of type 'Web Search'). As usual, if you have **Prepend Value** enabled, each item will have *two* 'Web Search' annotations: one with the prepend value, and one without.
+**What *Create All* does:** Create all will automatically create a single set item for every found item listed. Each item will contain one search (the item's text) and one annotation (of type 'Web Search'). If 'Search Context' has a value then context will be added to all of the created annotations.
 
 ## Changes
 
