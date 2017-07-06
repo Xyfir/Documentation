@@ -1,4 +1,4 @@
-Prior to reading through the integration documentation, you should first familiarize yourself with Xyfir Annotations' [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#terminology).
+Prior to reading through the integration documentation, you should first familiarize yourself with Xyfir Annotations' [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md).
 
 # Subscriptions
 
@@ -168,64 +168,28 @@ Every set item contains one or more annotations that will be applied anywhere on
 
 ### Objects
 
-```js
-// -- DOCUMENT --
-{
-  type: 1, name: 'Document',
-  value: 'A **document** *annotation* that supports [Markdown](https://en.wikipedia.org/wiki/Markdown).'
-}
+All annotation objects contain the following properties:
 
-// -- LINK --
-{
-  type: 2, name: 'Link',
-  value: 'https://en.wikipedia.org/wiki/SomeWikipediaLink'
-}
+- **type**: *number* - A number between 1 and 7. See [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#annotations).
+- **name**: *string* - A short name/title/description that explains the annotation.
 
-// -- WEB SEARCH --
-{ type: 3, name: 'Search', value: 'some search value' }
+Annotation objects of different types have different properties and values:
 
-// -- IMAGE (SINGLE) --
-{ type: 4, name: 'Image', value: 'https://xyfir.com/images/SomeImage.jpg' }
-
-// -- IMAGE (ALBUM) --
-{
-  type: 4, name: 'Images', value: [
-    'https://xyfir.com/images/SomeImage.jpg',
-    'https://xyfir.com/images/AnotherImage.jpg'
-  ]
-}
-
-// -- VIDEO (SINGLE) --
-{
-  type: 5, name: 'Video',
-  value: 'https://www.youtube.com/embed/SomeYouTubeVideo'
-}
-
-// -- VIDEO (PLAYLIST) --
-{
-  type: 5, name: 'Videos', value: [
-    'https://www.youtube.com/embed/SomeYouTubeVideo',
-    'https://www.youtube.com/embed/AnotherVideo'
-  ]
-}
-
-// -- AUDIO (SINGLE) --
-{ type: 6, name: 'Audio', value: 'https://xyfir.com/audio/SomeFile.mp3' }
-
-// -- AUDIO (PLAYLIST) --
-{
-  type: 6, name: 'Playlist', value: [
-    'https://xyfir.com/audio/SomeFile.mp3',
-    'https://xyfir.com/audio/Another.mp3'
-  ]
-}
-
-// -- MAP (SEARCH) --
-{ type: 7, name: 'Map', value: 'San Diego, CA' }
-
-// -- MAP (LINK) --
-{ type: 7, name: 'Map', value: 'https://xyfir.com/map/SomeMap' }
-```
+- (1) Document
+  - **value**: *string* - A [Markdown](https://en.wikipedia.org/wiki/Markdown) document string.
+- (2) Link
+  - **value**: *string* - A link that starts with 'http' or 'https'.
+- (3) Web Search
+  - **value**: *string* - A search query to be used in a search engine like Google or Bing.
+  - **context**: *string* (optional) - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
+- (4) Image
+  - **value**: *string* OR *string[]* - Either a single image link or an album of images if an array.
+- (5) Video
+  - **value**: *string* OR *string[]* - Either a single video link or a playlist of videos if an array. Each link *should* be either a direct video link or an embed link for YouTube, Vimeo, etc.
+- (6) Audio
+  - **value**: *string* OR *string[]* - Either a single audio file link or a playlist of audio files if an array. Each link *should* be either a direct link to an audio file.
+- (7) Map
+  - **value**: *string* - Either a link to a map of any format (image, interactive, etc) or a search query to be used with a real-world map like Google Maps.
 
 ## Highlighting Annotations
 
