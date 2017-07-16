@@ -35,7 +35,7 @@ There are multiple filter types that allow you to filter by different components
   - Filters by the HTML content of an incoming email message.
 - **Header**
   - All emails sent and received on the internet use [headers](http://whatismyipaddress.com/email-header) to store data about the piece of mail. Header filters have two parts: the name of the header, and the value for that header.
-  - If you have *Use Regular Expressions* enabled for the filter, you can only use regular expressions for the header value, not the header name. The value for the header name must be an exact match.
+  - If you have *Regular Expression* enabled for the filter, you can only use regular expressions for the header value, not the header name. The value for the header name must be an exact match.
 
 # Modifiers
 
@@ -45,13 +45,13 @@ Modifiers give you expanded control over the content of the mail that gets sent 
 
 - **Find and Replace**
   - Finds and replaces content in the email's message body.
-  - When *Use Regular Expressions* is enabled, you gain special capabilities in the 'Replace' value via the `$` character.
+  - When *Regular Expression* is enabled, you gain special capabilities in the 'Replace' value via the `$` character.
     - `$$`: If you just want to insert a '$' character, you'll have to use `$$`.
     - `$&`: Inserts the matched substring.
     - ``$` ``: Inserts the portion of the string that precedes the matched substring.
     - `$'`: Inserts the portion of the string that follows the matched substring.
     - `$n`: Where *n* is a non-negative integer lesser than 100, inserts the nth parenthesized submatch string.
-  - When *Use Regular Expressions* is enabled, a handful of regular expression flags are available to you.
+  - When *Regular Expression* is enabled, a handful of regular expression flags are available to you.
     - `g`: Global match - Find all matches rather than stopping after the first match.
     - `i`: Ignore case - Treat A and a, B and b, C and c, etc as the same characters.
     - `m`: Multiline - Treat beginning and end characters (^ and $) as working over multiple lines (i.e., match the beginning or end of each line (delimited by \n or \r), not only the very beginning or end of the whole input string).
@@ -59,7 +59,7 @@ Modifiers give you expanded control over the content of the mail that gets sent 
     - Flags are entered all in one string of characters. For example if you wanted all of them: `gimu` or if you just wanted global and multiline flags: `gm`.
 - **Subject Overwrite**
   - Completely replaces a message's subject with a value.
--  **Subject Tag**
+- **Subject Tag**
   - Tags a message's subject with a value.
   - If *Prepend Tag* is enabled, the tag is prepended to the beginning of the subject, otherwise it is appended to the end.
 - **Concatenate**
@@ -76,6 +76,7 @@ Modifiers give you expanded control over the content of the mail that gets sent 
     - `::body-html::` - The message body's HTML.
     - `::body-text::` - The message body's plain text. In the event that the email contains HTML, this is the same value but with the HTML stripped out.
     - `::sender-name::` - The sender's name, taken from the `::sender::` variable *if* the variable contains the sender's name.
+    - `::real-address::` - The email address that the message will be redirected to.
     - `::proxy-address::` - The address of your proxy email that received the message.
     - `::sender-domain::` - The domain of the sender's address.
     - `::sender-address::` - The email address of the sender.
