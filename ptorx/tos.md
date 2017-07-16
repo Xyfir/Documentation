@@ -120,7 +120,7 @@ In the event of termination, emails will no longer be redirected or stored.
 
 ## Limitations
 
-To prevent abuse of our service, Ptorx limits the amount of proxy email addresses that can be created. These limitations vary from each account and may be modified at any moment without notice. Ptorx also reserves the right to either stop redirects from or remove entirely from our system any proxy email addresses that are found to be redirecting large amounts of emails, especially if large portions of the received mail is spam.
+To prevent abuse of our service, Ptorx limits the amount of proxy email addresses that can be created. These limitations vary from each account and may be modified at any moment without notice. Ptorx also reserves the right to either stop redirects from or remove entirely from our system any proxy email addresses that are found to be redirecting large amounts of emails, especially if large portions of the received mail are spam.
 
 ## Disclaimer
 
