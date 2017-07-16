@@ -1,7 +1,7 @@
 # Terminology
 
 - **Main / Real Emails**
-  - 'Main' email (also known as normal or real emails) are your actual email addresses where you normally receive mail. These emails are where mail sent to your 'proxy' email addresses will be redirected to if the mail matches your filters.
+  - 'Main' emails (also known as normal or real emails) are your actual email addresses where you normally receive mail. These emails are where mail sent to your 'proxy' email addresses will be redirected to if the mail matches your filters.
 - **Proxy Emails**
   - 'Proxy' emails (also known as redirect emails) are email addresses created via Ptorx that typically act as a middleman for your main emails by receiving mail and redirecting allowed mail to your real email address. Proxy emails increase your security and privacy by keeping your real email address hidden away from spammers, hackers, and other people who shouldn't have it. Proxy emails also allow you to gain more control over the emails you receive and how you receive them via Ptorx's 'filter' and 'modifier' systems.
 - **Filters**
@@ -13,12 +13,14 @@
 - **Modifiers**
   - Modifiers are used to manipulate incoming mail that has passed all filters before it is redirected to a main email. 
 - **Regular Expressions**
-  - Regular expressions (also known as regex) are used to increase the abilities of your filters and modifiers. See [RegexOne.com](https://regexone.com/) for tutorials and explanations. Do *not* enable 'Use Regular Expressions' if you don't know how to use them.
+  - Regular expressions (also known as regex) are used to increase the abilities of your filters and modifiers. See [RegexOne.com](https://regexone.com/) for tutorials and explanations. Do *not* enable regular expressions if you don't know how to use them.
 
 # Filters
+
 Filters can be used to whitelist or blacklist what type of incoming mail is allowed to be redirected to your main address.
 
 ## Filter Types
+
 There are multiple filter types that allow you to filter by different components of incoming mail.
 
 - **Subject**
@@ -36,12 +38,11 @@ There are multiple filter types that allow you to filter by different components
   - If you have *Use Regular Expressions* enabled for the filter, you can only use regular expressions for the header value, not the header name. The value for the header name must be an exact match.
 
 # Modifiers
+
 Modifiers give you expanded control over the content of the mail that gets sent to you. Modifiers are only applied to mail being redirected to a main email. If you have 'Save Mail' enabled on a proxy email, the saved mail will be unmodified.
 
 ## Modifier Types
 
-- **Encrypt**
-  - Encrypt modifiers allow you to encrypt the content of received mail via AES-256 with a user-provided encryption key. Since the mail is redirected, you must have the ability to decrypt the content wherever the mail is received.
 - **Find and Replace**
   - Finds and replaces content in the email's message body.
   - When *Use Regular Expressions* is enabled, you gain special capabilities in the 'Replace' value via the `$` character.
@@ -64,6 +65,20 @@ Modifiers give you expanded control over the content of the mail that gets sent 
 - **Concatenate**
   - Allow you to concatenate (add) two variables within an email together.
   - Example: if your 'Add' variable is 'Sender Address' and your 'To' variable is 'Subject' and you receive an email where the sender's email is 'sender@ptorx.com' and the subject is 'Hello!', your modified email subject will be 'Hello! - sender@ptorx.com'. This assumes you're using the default separator value of ' - ' which can also be modified.
+  - If *Prepend* is enabled, the 'Add' variable and separator are prepended to the 'To' variable instead of appended.
+- **Builder**
+  - A 'Builder' modifier allows you to build the value of a specified email variable. You can write out the exact value that you want the field to be set as while also using variables from the email itself.
+  - Variables are accessed using the `::variable::` syntax where `varable` is the name of the variable you wish to insert at that location.
+  - In the event that an email does not provide the needed data for a variable, the variable referrence will simply be removed from the 'Builder' value.
+  - Available variables are:
+    - `::sender::` - Depending on the email itself, this can be either just the sender's email address (like `::sender-address::`) *or* a value of the following format: `::sender-name:: <::sender-address::>`.
+    - `::subject::` - The email's subject.
+    - `::body-html::` - The message body's HTML.
+    - `::body-text::` - The message body's plain text. In the event that the email contains HTML, this is the same value but with the HTML stripped out.
+    - `::sender-name::` - The sender's name, taken from the `::sender::` variable *if* the variable contains the sender's name.
+    - `::proxy-address::` - The address of your proxy email that received the message.
+    - `::sender-domain::` - The domain of the sender's address.
+    - `::sender-address::` - The email address of the sender.
 
 ### Global Modifiers
 
