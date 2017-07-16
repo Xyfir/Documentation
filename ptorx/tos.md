@@ -7,8 +7,8 @@ Ptorx (operated by Xyfir, LLC) is located at:
 Oceanside, California 92058 \
 United States of America
 
-By accessing this website we assume you accept these terms and conditions in full. Do not continue to use Ptorx's website if you do not accept all of the terms and conditions stated on this page.
-The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services/products, in accordance with and subject to, prevailing law of United States. Any use of the above terminology or other words in the singular, plural, capitalisation and/or he/she or they, are taken as interchangeable and therefore as referring to same.
+By accessing Ptorx's website or using its applications we assume you accept these terms and conditions in full. Do not continue to use Ptorx's website or applications if you do not accept all of the terms and conditions stated on this page.
+The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services/products, in accordance with and subject to, prevailing law of United States. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
 
 ## Cookies
 
@@ -90,7 +90,7 @@ We reserve the right at any time and in its sole discretion to request that you 
 
 If you find any link on our Web site or any linked web site objectionable for any reason, you may contact us about this. We will consider requests to remove links but will have no obligation to do so or to respond directly to you.
 
-Whilst we endeavour to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.
+Whilst we endeavor to ensure that the information on this website is correct, we do not warrant its completeness or accuracy; nor do we commit to ensuring that the website remains available or that the material on the website is kept up to date.
 
 ## Liabilities
 
@@ -114,9 +114,13 @@ Abusing our services will result in an account termination. Abuse of our service
 
 ## Termination
 
-Users found to be abusing our service will have their account deleted and access revoked from Ptorx.
+Users found to be abusing our service will have their account deleted and access revoked from Ptorx. If the user has made any purchases on Ptorx, they will not receive a refund.
 
 In the event of termination, emails will no longer be redirected or stored.
+
+## Limitations
+
+To prevent abuse of our service, Ptorx limits the amount of proxy email addresses that can be created. These limitations vary from each account and may be modified at any moment without notice. Ptorx also reserves the right to either stop redirects from or remove entirely from our system any proxy email addresses that are found to be redirecting large amounts of emails, especially if large portions of the received mail is spam.
 
 ## Disclaimer
 
