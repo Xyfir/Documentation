@@ -90,3 +90,25 @@ Global modifiers are modifiers available to everyone and do not need to be creat
 - **Asana**
   - A modifier for users who utilize Asana's email service and want to see the sender's address in the subject of the mail they receive.
   - Example: if you receive an email where the sender's email is 'sender@ptorx.com' and the subject is 'Hello!', your modified email subject will be 'Hello! - sender@ptorx.com'.
+
+---
+
+# Using Ptorx
+
+The following section will explain how Ptorx works and how to utilize its user interface.
+
+## Creating or Editing Proxy Emails
+
+- **Name** (optional, defaults to untitled) - A proxy email's name is there to be used as an extra identifier to help with searches. This is best used when you randomly generate your proxy email addresses.
+- **Description** (optional, defaults to creation date) - A proxy email's description serves mostly the same purpose as its name, however it has a higher character limit.
+- **Address** (optional) - This is the 'user' portion of a proxy email: `[user]@domain.com`. You can enter in whatever name you want (if it's available and of valid length and characters), or you can leave it blank and Ptorx will automatically generate one for you using a random English word and random numbers.
+- **Domain** (optional) - This is the 'domain' portion of a proxy email: `user@[domain.com]`. Currently this only has a single possible value: 'ptorx.com'.
+- **Redirect To** - This is your 'real' email address where any mail that is sent to your proxy email will be redirected to. This is the only required field when creating a proxy email *unless* you choose the 'No Redirect' option, at which point this field's value will be ignored.
+- **Spam Filter** (optional, enabled by default) - When enabled, Ptorx will automatically block redirects or saves for any emails that are determined to be spam. Mail marked as spam **cannot** be viewed in any way.
+- **Save Mail** (optional, disabled by default) - When enabled, Ptorx will temporarily save all mail for three days. If **Spam Filter** is enabled, any messages marked as spam will not be saved. Mail saved to Ptorx can be viewed in the 'Messages' section when viewing a proxy email. Saving mail is required if you wish to be able to reply to mail sent to your proxy email and the process of replying must be done from Ptorx's website or application.
+- **No Redirect** (optional, disabled by default) - When enabled, mail will **not** be redirected to a real address, even if you set a value for **Redirect To**. Incoming mail will be saved to Ptorx for three days and will only be viewable from Ptorx's website or application.
+- **Modifiers** and **Filters** (optional, none linked by default) - You can optionally 'link' modifiers and filters to your proxy email.
+
+## Deleting Proxy Emails
+
+By deleting a proxy email, that specific email is completely removed from your account, however it remains on Ptorx's system simply as a placeholder to prevent that address from ever being claimed again in the future. This means that once you delete a proxy address there is no way for you or another user to claim that address. Deleted proxy emails will of course not redirect or save received mail.
