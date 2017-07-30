@@ -85,6 +85,11 @@
     "link": "https://annotations.xyfir.com/",
     "description": "A single platform for storing, finding, and managing interactive annotations for ebooks.",
     "documentation": {
+      "help": {
+        "name": "Help Documents",
+        "location": "xyfir-annotations/help",
+        "description": "Learn more about xyAnnotations' terminology and how to utilize its features."
+      },
       "integration": {
         "name": "Integration For Ebook Reader Developers",
         "location": "xyfir-annotations/integration",
