@@ -1,0 +1,1 @@
+This is where documentation for abandoned projects or old versions of active projects go. Archived documentation may be deleted at some point in the future.
