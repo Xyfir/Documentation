@@ -45,34 +45,15 @@
   },
   "xyfir-ads": {
     "name": "Xyfir Ads",
-    "link": "https://ads.xyfir.com/",
-    "description": "Native advertisement system for advertisers and publishers.",
+    "link": "https://github.com/Xyfir/Ads",
+    "description": "Advertisement system for the entire Xyfir Network.",
     "documentation": {
-      "developers": {
-        "name": "For Developers",
-        "location": "xyfir-ads/developers",
-        "description": "Learn how to integrate Xyfir Ads into your site, app, etc."
-      },
-      "advertisers": {
-        "name": "For Advertisers",
-        "location": "xyfir-ads/advertisers",
-        "description": "Learn how to manage your account and advertisement campaigns."
-      },
-      "publishers": {
-        "name": "For Publishers",
-        "location": "xyfir-ads/publishers",
-        "description": "Learn how to manage your account and publisher campaigns."
-      },
-      "users": {
-        "name": "For Users",
-        "location": "xyfir-ads/users",
-        "description": "Xyfir Ads was developed with the end user in mind. Learn about what makes us different."
+      "info": {
+        "name": "Information",
+        "location": "xyfir-ads/info",
+        "description": "Information explaining how Xyfir Ads works and how to purchase ad slots."
       },
       "legal": {
-        "privacy": {
-          "name": "Privacy Policy",
-          "location": "xyfir-ads/privacy"
-        },
         "tos": {
           "name": "Terms of Service",
           "location": "xyfir-ads/tos"
