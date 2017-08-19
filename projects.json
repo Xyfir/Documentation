@@ -141,5 +141,27 @@
         "description": "A manifest file gives you more control when using remote repositories."
       }
     }
+  },
+  "xyfir-market": {
+    "name": "Xyfir Market (/r/xyMarket)",
+    "link": "https://www.reddit.com/r/xyMarket",
+    "description": "A strictly structured and heavily automated marketplace built on Reddit.",
+    "documentation": {
+      "info": {
+        "name": "Information",
+        "location": "xyfir-market/info",
+        "description": "Information explaining how xyMarket works and how to utilize its features."
+      },
+      "seller": {
+        "name": "Seller Docs",
+        "location": "xyfir-market/seller",
+        "description": "Documentation for sellers."
+      },
+      "buyer": {
+        "name": "Buyer Docs",
+        "location": "xyfir-market/buyer",
+        "description": "Documentation for buyers."
+      }
+    }
   }
 }
