@@ -143,7 +143,7 @@
     }
   },
   "xyfir-market": {
-    "name": "Xyfir Market (/r/xyMarket)",
+    "name": "Xyfir Market",
     "link": "https://www.reddit.com/r/xyMarket",
     "description": "A strictly structured and heavily automated marketplace built on Reddit.",
     "documentation": {
@@ -154,14 +154,15 @@
       },
       "seller": {
         "name": "Seller Docs",
-        "location": "xyfir-market/seller",
+        "location": "xyfir-market/sellers",
         "description": "Documentation for sellers."
       },
       "buyer": {
         "name": "Buyer Docs",
-        "location": "xyfir-market/buyer",
+        "location": "xyfir-market/buyers",
         "description": "Documentation for buyers."
-      }
+      },
+      "legal": {}
     }
   }
 }
