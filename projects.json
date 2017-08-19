@@ -152,12 +152,12 @@
         "location": "xyfir-market/info",
         "description": "Information explaining how xyMarket works and how to utilize its features."
       },
-      "seller": {
+      "sellers": {
         "name": "Seller Docs",
         "location": "xyfir-market/sellers",
         "description": "Documentation for sellers."
       },
-      "buyer": {
+      "buyers": {
         "name": "Buyer Docs",
         "location": "xyfir-market/buyers",
         "description": "Documentation for buyers."
