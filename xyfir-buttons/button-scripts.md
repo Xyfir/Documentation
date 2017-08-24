@@ -2,7 +2,7 @@
 
 A button's script starts with a `main.js` file that is run when the button is injected into the page. This file has access to a variable called `Button` that contains some very simple methods and properties relating to the button. Since a button is injected into each page where it and its parent preset match the current URL, the script has complete access to the DOM and any global variables saved to the page.
 
-## Button Properties
+## Properties
 
 ```js
 /**
@@ -23,7 +23,7 @@ Button.container;
 Button.element;
 ```
 
-## Button Methods
+## Methods
 
 ```js
 /**
@@ -46,12 +46,6 @@ Button.on('contextmenu', event => {
 ```
 
 ```js
-/**
- * An alias for `Button.require(file)`.
- * @deprecated Will be removed in V2.
- */
-Button.load(file);
-
 /**
   * Requires a local script file or a remote file. The page's CSP is (mostly)
   * bypassed.

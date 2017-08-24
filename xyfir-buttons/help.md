@@ -24,18 +24,6 @@ Just because a preset's url match string matches a page's url, does not mean its
 
 A URL match string that matches all possible urls is called a 'global' match.
 
-# Xyfir Buttons' Button and Preset Repository
-
-All buttons and presets that anyone creates through Xyfir Buttons are automatically added to our remote repository. This means anyone can access, download, and modify the buttons or presets that you create. It is possible to create 'unlisted' buttons and presets, that will not show up in the search results, but it does not make it completely private. You should avoid creating a button or preset that contains any sensitive data that you do not wish to be public.
-
-Because anyone can create presets or buttons, you should be very careful downloading from untrusted sources. View the source code if you understand it, check the comments, and check the reputation of the creator, to help determine if a preset or button is safe to download.
-
-## Forking
-
-Xyfir Buttons' forking system allows users to create duplicates of their own, or another user's preset or button. By forking an item, a duplicate of that item will be created under your account with a new id. Only the item's necessary data is duplicated, not things like comments, download stats, or anything else.
-
-If a user somehow finds an unlisted preset or button, it *can* be forked and made completely public.
-
 # Keyboard Commands
 
 `SHIFT + ALT + X` enters Xyfir Buttons into listening mode. The next key pressed (after letting go of the previous keys), will trigger an action if the key is matched to a command.
