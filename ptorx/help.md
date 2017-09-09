@@ -1,9 +1,9 @@
 # Terminology
 
-- **Main / Real Emails**
-  - 'Main' emails (also known as normal or real emails) are your actual email addresses where you normally receive mail. These emails are where mail sent to your 'proxy' email addresses will be redirected to if the mail matches your filters.
+- **Primary Emails**
+  - 'Primary' emails (also known as main, normal, or real emails) are your actual email addresses where you normally receive mail. These emails are where mail sent to your 'proxy' email addresses will be redirected to if the mail matches your filters.
 - **Proxy Emails**
-  - 'Proxy' emails (also known as redirect emails) are email addresses created via Ptorx that typically act as a middleman for your main emails by receiving mail and redirecting allowed mail to your real email address. Proxy emails increase your security and privacy by keeping your real email address hidden away from spammers, hackers, and other people who shouldn't have it. Proxy emails also allow you to gain more control over the emails you receive and how you receive them via Ptorx's 'filter' and 'modifier' systems.
+  - 'Proxy' emails (also known as redirect, or forwarding emails) are email addresses created via Ptorx that typically act as a middleman for your main emails by receiving mail and redirecting allowed mail to your real email address. Proxy emails increase your security and privacy by keeping your real email address hidden away from spammers, hackers, and other people who shouldn't have it. Proxy emails also allow you to gain more control over the emails you receive and how you receive them via Ptorx's 'filter' and 'modifier' systems.
 - **Filters**
   - Filters are searches for a specific component of received mail that check if the specified component does or does not contain a user-specified value. Incoming mail is accepted or rejected based on if the mail matches the user's filters and each filter's 'on match' action.
   - **'Reject on Match' Filters**
@@ -14,6 +14,38 @@
   - Modifiers are used to manipulate incoming mail that has passed all filters before it is redirected to a main email. 
 - **Regular Expressions**
   - Regular expressions (also known as regex) are used to increase the abilities of your filters and modifiers. See [RegexOne.com](https://regexone.com/) for tutorials and explanations. Do *not* enable regular expressions if you don't know how to use them.
+- **Messages**
+  - Messages (also known as mail) are any emails sent, received, or redirected by proxy email addresses.
+
+# Proxy Emails
+
+## Fields
+
+- **Name** (optional, defaults to untitled) - A proxy email's name is there to be used as an extra identifier to help with searches. This is best used when you randomly generate your proxy email addresses.
+- **Description** (optional, defaults to creation date) - A proxy email's description serves mostly the same purpose as its name, however it has a higher character limit.
+- **Address** (optional) - This is the 'user' portion of a proxy email: `[user]@domain.com`. You can enter in whatever name you want (if it's available and of valid length and characters), or you can leave it blank and Ptorx will automatically generate one for you using a random English word and random numbers.
+- **Domain** (optional, defaults to `ptorx.com`) - This is the 'domain' portion of a proxy email: `user@[domain.com]`. Possible values for this are global domains like `ptorx.com` and any custom domains that you have added to your account.
+- **Redirect To** - This is your 'real' email address where any mail that is sent to your proxy email will be redirected to. This is the only required field when creating a proxy email *unless* you choose the 'No Redirect' option, at which point this field's value will be ignored.
+- **Spam Filter** (optional, enabled by default) - When enabled, Ptorx will automatically block redirects or saves for any emails that are determined to be spam. Mail marked as spam *cannot* be viewed in any way.
+- **Save Mail** (optional, disabled by default) - When enabled, Ptorx will temporarily save incoming mail for three days, and certain parts of each message for thirty days. If **Spam Filter** is enabled, any messages marked as spam will not be saved. Mail saved to Ptorx can be viewed in the 'Messages' section when viewing a proxy email. Saving mail is required if you wish to be able to reply to messages sent to your proxy email.
+- **No Redirect** (optional, disabled by default) - When enabled, mail will *not* be redirected to a real address, even if you set a value for **Redirect To**. Incoming mail will be saved to Ptorx for three days and will only be viewable from Ptorx's website or application.
+- **Direct Forward** (optional, disabled by default) - When enabled, mail will be forwarded to your real email directly from the sender's address. This means instead of the sender showing as your Ptorx proxy email, it will be the email address of the person who sent the original message. Due to the way direct forward works, there are limitations on what features you can use. Certain filters, `Save Mail`, `No Redirect`, and all modifiers will be disabled. WARNING: You will be able to reply to the original sender from within your preferred email app/site/client, however it will *not* send from your Ptorx address. Replying to mail sent with `Direct Forward` enabled will cause your primary email to be shown to the person you are replying to.
+- **Modifiers** and **Filters** (optional, none linked by default) - You can optionally 'link' modifiers and filters to your proxy email.
+
+## Deleting Proxy Emails
+
+By deleting a proxy email, that specific email is completely removed from your account, however it remains on Ptorx's system simply as a placeholder to prevent that address from ever being claimed again in the future. This means that once you delete a proxy address there is no way for you or another user to claim that address. Deleted proxy emails will of course not redirect or save received mail.
+
+## Replying to Redirected Mail
+
+You can safely reply to mail that is sent to a proxy email if that proxy email has `Save Mail` enabled. You can reply to this mail either from within the Ptorx application by viewing the proxy email and going to the 'Messages' tab, or by simply replying to the message you received in your email client as you would reply to any other message.
+
+There are some limitations with this feature:
+- You will only be able to reply to mail from within the Ptorx application for 3 days.
+- You will only be able to reply to mail from your email client for 30 days after receiving the original message.
+- If you reply to mail from within your email client, that client must support the `Reply-To` email header. Most popular clients (like Gmail) should support this.
+
+The replies will be sent to the original sender using the address of the proxy email that received the message.
 
 # Filters
 
@@ -86,30 +118,68 @@ Modifiers give you expanded control over the content of the mail that gets sent 
 Global modifiers are modifiers available to everyone and do not need to be created, they can simply be linked to any proxy email without any customization needed.
 
 - **Text Only**
-  - Strips out all HTML and leaves only the text content.
+  - Only uses the text/plain portion of an incoming message. **Beware:** This content may contain unescaped HTML code. However, because it's being sent as text and not as HTML it *should* just render as text in whatever email client you receive the modified message in.
 - **Asana**
   - A modifier for users who utilize Asana's email service and want to see the sender's address in the subject of the mail they receive.
   - Example: if you receive an email where the sender's email is 'sender@ptorx.com' and the subject is 'Hello!', your modified email subject will be 'Hello! - sender@ptorx.com'.
 
----
+# Domains
 
-# Using Ptorx
+A domain on Ptorx is a normal domain name that can be used to create proxy emails. All Ptorx users get access to the `ptorx.com` domain. Optionally, you can add your own domain to Ptorx, or request access to a domain added by another Ptorx user.
 
-The following section will explain how Ptorx works and how to utilize its user interface.
+Using your own domain, or those used by few other users, decreases the chance of that domain being blacklisted by websites that want to prevent accounts from being created on their service with what they see as 'throwaway' emails.
 
-## Creating or Editing Proxy Emails
+## Adding Your Domain to Ptorx
 
-- **Name** (optional, defaults to untitled) - A proxy email's name is there to be used as an extra identifier to help with searches. This is best used when you randomly generate your proxy email addresses.
-- **Description** (optional, defaults to creation date) - A proxy email's description serves mostly the same purpose as its name, however it has a higher character limit.
-- **Address** (optional) - This is the 'user' portion of a proxy email: `[user]@domain.com`. You can enter in whatever name you want (if it's available and of valid length and characters), or you can leave it blank and Ptorx will automatically generate one for you using a random English word and random numbers.
-- **Domain** (optional) - This is the 'domain' portion of a proxy email: `user@[domain.com]`. Currently this only has a single possible value: 'ptorx.com'.
-- **Redirect To** - This is your 'real' email address where any mail that is sent to your proxy email will be redirected to. This is the only required field when creating a proxy email *unless* you choose the 'No Redirect' option, at which point this field's value will be ignored.
-- **Spam Filter** (optional, enabled by default) - When enabled, Ptorx will automatically block redirects or saves for any emails that are determined to be spam. Mail marked as spam *cannot* be viewed in any way.
-- **Save Mail** (optional, disabled by default) - When enabled, Ptorx will temporarily save all mail for three days. If **Spam Filter** is enabled, any messages marked as spam will not be saved. Mail saved to Ptorx can be viewed in the 'Messages' section when viewing a proxy email. Saving mail is required if you wish to be able to reply to mail sent to your proxy email and the process of replying must be done from Ptorx's website or application.
-- **No Redirect** (optional, disabled by default) - When enabled, mail will *not* be redirected to a real address, even if you set a value for **Redirect To**. Incoming mail will be saved to Ptorx for three days and will only be viewable from Ptorx's website or application.
-- **Direct Forward** (optional, disabled by default) - When enabled, mail will be forwarded to your real email directly from the sender's address. This means instead of the sender showing as your Ptorx proxy email, it will be the email address of the person who sent the original message. Due to the way direct forward works, there are limitations on what features you can use. Certain filters, **Save Mail**, **No Redirect**, and all modifiers will be disabled. WARNING: You will be able to reply to the original sender from within your preferred email app/site/client, however it will *not* send from your Ptorx address. Replying to mail sent with **Direct Forward** enabled will cause your real email to be shown to the person you are replying to.
-- **Modifiers** and **Filters** (optional, none linked by default) - You can optionally 'link' modifiers and filters to your proxy email.
+You can add your own domains to Ptorx, and use them to create proxy emails just like you would with a normal `@ptorx.com` proxy email. This is available at no extra cost and you can add as many domains as you like!
 
-## Deleting Proxy Emails
+After initiating the process of adding your domain to Ptorx, you must verify that you own the domain, so don't bother trying to add a domain you don't own to Ptorx. You will verify ownership by setting a few DNS records:
 
-By deleting a proxy email, that specific email is completely removed from your account, however it remains on Ptorx's system simply as a placeholder to prevent that address from ever being claimed again in the future. This means that once you delete a proxy address there is no way for you or another user to claim that address. Deleted proxy emails will of course not redirect or save received mail.
+Type|Hostname|Value
+---|---|---
+TXT|yourdomain.com|v=spf1 include:mailgun.org ~all
+TXT|krs._domainkey.yourdomain.com|k=rsa; p=... (full value given on Ptorx)
+CNAME|email.yourdomain.com|mailgun.org
+
+and the following MX DNS records:
+
+Type|Priority|Value
+---|---|---
+MX|10|mxa.mailgun.org
+MX|10|mxb.mailgun.org
+
+`yourdomain.com` should be whatever domain you entered into Ptorx. If you already have MX records set on your domain for another service, you should use a subdomain for mail that Ptorx will handle.
+
+**Note:** Ptorx uses [MailGun](https://www.mailgun.com/)'s infrastructure for handling emails, so your domain needs the previous records to communicate with their servers. Removing these records after verification will prevent your domain from working with Ptorx.
+
+If may take up to a day or two for these records to propagate. Use the 'verify' button when viewing your domain on Ptorx to check the values again.
+
+## Requesting Access to Domains
+
+If another user has already added a domain to Ptorx, you can request access to it by using the 'request access key' that is generated for you when you attempt to add the domain. You must send that key to the user who originally added the domain to Ptorx, and they must then authorize that key to use their domain.
+
+A request key is used to prevent your account's information from needing to be shared with the domain owner.
+
+**Warning!** Using another user's domain can be risky! If they decide to remove their domain from Ptorx, or don't renew its registration before it expires, you will lose access to any proxy emails you have created with that domain.
+
+## Deleting a Domain
+
+Deleting a domain from your account if you are the domain's creator will result in all users of your domain, including you, losing any proxy emails they have created with your domain. Your domain will be completely removed from Ptorx. You will be able to add your domain back to Ptorx in the future should you wish.
+
+Deleting a domain from your account if you are a user of the domain will result in any proxy emails you have with the domain being deleted. You will not be able to regain access to those proxy emails, even if you add the domain back to your account.
+
+Deleting a user from your domain if you are the domain's creator will result in all of the user's proxy emails linked to your domain being deleted. The user will not be able to access your domain again without you authorizing their new request key.
+
+# Free Trial
+
+All new users are given a free, two week trial.
+
+To prevent abuse to our system, some restrictions are placed on free trial users:
+- Cannot create more than 5 proxy emails a day
+- Cannot create more than 15 proxy emails total
+- Must complete a verification captcha before creating a proxy email
+- Cannot have more than one primary email address
+- Cannot send messages or reply to received mail
+- Cannot add or request access to custom domains
+
+These restrictions can be removed by purchasing a subscription.
