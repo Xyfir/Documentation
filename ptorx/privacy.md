@@ -16,7 +16,7 @@ Ptorx itself does not save any mail that is sent or received by our proxy emails
 
 Ptorx uses [MailGun](https://www.mailgun.com/)'s email infrastructure. All incoming and outgoing mail goes through MailGun's servers. MailGun keeps a temporary log of events for thirty days. Ptorx has access to most of these logs, however they are not used except in the instance of an undeliverable message from MailGun to Ptorx. In this instance, only the message's metadata and error messages, and not its body's content, is used to attempt to discover why the message was undeliverable and to update Ptorx to handle it accordingly. This does not usually happen often.
 
-### Information Protection
+## Information Protection
 
 - Our website is scanned for security holes and known vulnerabilities and updated on a regular basis in order to make your visit to our site as safe as possible.
 - Your personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems, and are required to keep the information confidential. In addition, all sensitive information you supply is encrypted via Secure Socket Layer (SSL) technology.
