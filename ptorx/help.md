@@ -119,9 +119,6 @@ Global modifiers are modifiers available to everyone and do not need to be creat
 
 - **Text Only**
   - Only uses the text/plain portion of an incoming message. **Beware:** This content may contain unescaped HTML code. However, because it's being sent as text and not as HTML it *should* just render as text in whatever email client you receive the modified message in.
-- **Asana**
-  - A modifier for users who utilize Asana's email service and want to see the sender's address in the subject of the mail they receive.
-  - Example: if you receive an email where the sender's email is 'sender@ptorx.com' and the subject is 'Hello!', your modified email subject will be 'Hello! - sender@ptorx.com'.
 
 # Domains
 
