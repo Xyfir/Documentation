@@ -100,8 +100,8 @@ Modifiers give you expanded control over the content of the mail that gets sent 
   - If *Prepend* is enabled, the 'Add' variable and separator are prepended to the 'To' variable instead of appended.
 - **Builder**
   - A 'Builder' modifier allows you to build the value of a specified email variable. You can write out the exact value that you want the field to be set as while also using variables from the email itself.
-  - Variables are accessed using the `::variable::` syntax where `varable` is the name of the variable you wish to insert at that location.
-  - In the event that an email does not provide the needed data for a variable, the variable referrence will simply be removed from the 'Builder' value.
+  - Variables are accessed using the `::variable::` syntax where `variable` is the name of the variable you wish to insert at that location.
+  - In the event that an email does not provide the needed data for a variable, the variable reference will simply be removed from the 'Builder' value.
   - Available variables are:
     - `::sender::` - Depending on the email itself, this can be either just the sender's email address (like `::sender-address::`) *or* a value of the following format: `::sender-name:: <::sender-address::>`.
     - `::subject::` - The email's subject.
@@ -135,7 +135,7 @@ After initiating the process of adding your domain to Ptorx, you must verify tha
 Type|Hostname|Value
 ---|---|---
 TXT|yourdomain.com|v=spf1 include:mailgun.org ~all
-TXT|krs._domainkey.yourdomain.com|k=rsa; p=... (full value given on Ptorx)
+TXT|`somename`._domainkey.yourdomain.com|`k=rsa; p=` (actual name and value given on Ptorx)
 CNAME|email.yourdomain.com|mailgun.org
 
 and the following MX DNS records:
@@ -149,7 +149,7 @@ MX|10|mxb.mailgun.org
 
 **Note:** Ptorx uses [MailGun](https://www.mailgun.com/)'s infrastructure for handling emails, so your domain needs the previous records to communicate with their servers. Removing these records after verification will prevent your domain from working with Ptorx.
 
-If may take up to a day or two for these records to propagate. Use the 'verify' button when viewing your domain on Ptorx to check the values again.
+It may take up to a day or two for these records to propagate. Use the 'verify' button when viewing your domain on Ptorx to check the values again.
 
 ## Requesting Access to Domains
 
