@@ -2,6 +2,8 @@
 
 Xyfir Annotations' annotation system is broken down into repositories called `annotation sets`. An `annotation set` is a set of `items` that contain annotations for a specific book. A `set item` is further broken down into `searches` and `annotations`. A `search` is a search query that points to text within a book's content. An `annotation` is the specific annotation that will be applied to the book's content matched from the `search`. A `set item` can have multiple `searches` and multiple `annotations`.
 
+In certain contexts `annotations` may be used to refer to all of the items within an `annotation set`.
+
 Continue reading for more in-depth descriptions.
 
 # Annotation Sets
@@ -108,4 +110,14 @@ Annotation set changes work on a review system. Any user on xyAnnotations can pr
 - **Considering:** This means that the change proposal is being considered and is open for discussion from the set's collaborators.
 - **Rejected:** The proposal was reviewed by the creator and/or moderator(s) and consequently rejected. A rejected change proposal can still have its status changed to 'Considering' or 'Accepted' anytime after being rejected.
 - **Accepted:** The proposal was reviewed by the creator and/or moderator(s) and implemented into the annotation set. This cannot be undone.
-- **Deleted:** Technically not a status because the change is completed removed from xyAnnotations, but the set creator and moderators can delete a change should they wish.
+- **Deleted:** Technically not a status because the change is completely removed from xyAnnotations, but the set creator and moderators can delete a change should they wish.
+
+## Reader
+
+Xyfir Annotations' reader allows you to import any `EPUB` format ebook and have an annotation set's items inserted into the book's content. This allows you to easily view the annotations without needing to switch to another ebook reader application or device that supports xyAnnotations.
+
+### Editing
+
+The reader also doubles as an editor for the set's items. You can add, edit, and remove items from within the reader itself. Simply click the edit button to toggle the edit mode. Once in edit mode you can click on highlighted text to manage the item that matched the highlighted text. You can also select text while in edit mode and the edit button will change into a 'create' button that when clicked allows you to create an annotation set item from the selected text.
+
+If you are the creator of, or a moderator for the annotation set, any additions, removals, or modifications will be made directly to the annotation set immediately. If you are only a normal user, any edits you make will create a change proposal. The annotation set will remain unchanged until the set creator or a moderator accepts your change. Be careful not to create conflicting changes.
