@@ -7,6 +7,8 @@ A sales thread will remain 'active' for one week. After this time the sales thre
 In the body text of your submission, you'll need to post everything in a specific format which will look like this:
 
 ```
+@structured
+
 **Field Name** Some value
 
 **Another Field** Another value
@@ -20,7 +22,7 @@ multiple lines.
 
 Be careful with your spaces. Adding a space before `**Field**` or *not* adding one after `**Field**` will cause xyMarketBot to miss the data. Field names and their values (with the exception of `**Category**`'s value) are case-insensitive.
 
-Note that this format is strictly for what xyMarket calls *structured* threads. A structured thread is a sales thread posted in a specific format/syntax that xyMarketBot can read and understand. Structured threads are given access to all of xyMarket's features like escrow, autobuy, feedback, etc. There are also *unstructured* threads, the only requirement of which is that the first line of the body text is `@unstructured`.
+Note that this format is strictly for what xyMarket calls *structured* threads. A structured thread is a sales thread posted in a specific format/syntax that xyMarketBot can read and understand. Structured threads are given access to all of xyMarket's features like autobuy or feedback. Any thread that does not begin with `@structured` (must be the first line!) will be considered an *unstructured* thread.
 
 **Required** fields are:
 
@@ -39,10 +41,10 @@ Note that this format is strictly for what xyMarket calls *structured* threads. 
 - `**Price**`
   - The price (in USD) of whatever you're selling. This price will be converted to the appropriate currency upon purchase.
   - The price must be like `$X.XX` where `X.XX` is the dollar and cents amount. Cents are required, even if it is just `00`.
-  - The minimum price is `$5.00` if `**Verifiable** True`.
+  - The minimum price is `$5.00` if `**Tracking** True`.
 - `**Currency**`
   - This is a space-delimited list of currencies that you'll accept.
-  - You can add any currency of any name here, however xyMarketBot will look for three currencies if you have set `**Verifiable** True`: `BTC` (Bitcoin), `LTC` (Litecoin), and `ETH` (Ether/Ethereum). It's recommended that you stick to the same format of all-caps and known shortened names for currencies. For example `PP` for PayPal or `WU` for Western Union.
+  - You can add any currency of any name here, however xyMarketBot will look for three currencies if you have set `**Tracking** True`: `BTC` (Bitcoin), `LTC` (Litecoin), and `ETH` (Ether/Ethereum). It's recommended that you stick to the same format of all-caps and known shortened names for currencies. For example `PP` for PayPal or `WU` for Western Union.
   - Your currency field might look something like this: `**Currency** BTC PP ETH`.
 
 **Optional** fields are:
@@ -54,27 +56,29 @@ Note that this format is strictly for what xyMarket calls *structured* threads. 
 - `**NSFW**`
   - When `True`, the sales thread will be marked as NSFW.
   - Use this if some of the content in your post is NSFW but the item being sold fits better in a category other than NSFW.
-- `**Verifiable`**`
-  - When `True`, purchases using supported currency will go through xyMarketBot, meaning the purchase/sale will be verifiable for both the buyer and the seller. Both buyers and sellers will be able to leave positive or negative feedback after the purchase is complete.
+- `**Tracking`**`
+  - When `True`, purchases using supported currency will be tracked by xyMarketBot, meaning the purchase/sale will be verifiable for both the buyer and the seller. Both buyers and sellers will be able to leave positive or negative feedback after the purchase is complete.
   - Supported currencies are `BTC`, `LTC`, and `ETH`.
-  - A 2.5% fee will be taken from the seller for any purchases that go through xyMarketBot.
   - Remember to set `**Addresses**` when this is enabled.
+  - There is no fee, and xyMarketBot does not act as a middleman. It simply *tracks* a payment from a buyer to a seller for a specific order.
 - `**Escrow**`
+  - **NOTE:** Escrow is currently disabled while we determine its feasiblity and consider other possible implementations.
   - When `True`, the buyer can *optionally* decide to make a purchase using escrow.
   - The buyer will pay an added 1% fee.
   - Payment is not released to the seller until the buyer sends the `release escrow` command. The seller can request the escrow to be released at any time to remind the buyer. In the event of a dispute, a subreddit moderator will become involved and choose who gets the payment.
-  - `**Verifiable**` must be `True`.
+  - `**Tracking**` must be `True`.
 - `**Autobuy**`
   - When `True`, the seller will provide 'autobuy items', each of which is a line of text representing whatever the buyer purchased.
   - After the sales thread is approved, the seller can private message commands to xyMarketBot to manage stored autobuy items.
   - After a purchase, the buyer will automatically receive the oldest autobuy item stored, and then that item will be removed from the list.
-  - This will automatically add the **Stock** field to the reposted sales thread. **Stock** will be updated based on the amount of autobuy items currently available.
-  - `**Verifiable**` must be `True`.
+  - This will automatically add the `**Stock**` field to the reposted sales thread. `**Stock**` will be updated based on the amount of autobuy items currently available.
+  - `**Tracking**` must be `True`.
   - `**Type**` must be `Digital Item`.
 - `**Addresses**`
-  - This field is **required** if `**Verifiable** True`.
+  - This field is **required** if `**Tracking** True`.
   - You must provide payment addresses for whichever of the three supported currencies you accept: `BTC`, `LTC`, and/or `ETH`.
   - The value should look like: `BTC=1YourBitcoinAddressObR76b53LETtpyT LTC=3YourLitecoinAddressHXHXEeLygMXoAj ETH=0xYourEthereumAddress32487E1EfdD8729b87445`.
+  - Due to the way xyMarket's payment verification system works, it is highly recommended that you use unique addresses for each sales thread, and that you do not use the addresses to receive payments outside of xyMarket.
 
 # Revising a Sales Thread
 
@@ -170,21 +174,6 @@ request escrow for 54321
 You have received the item. Please release funds. Thank you.
 ```
 
-# Give Feedback
-
-Give feedback for a completed order.
-
-**Syntax**
-```
-give positive|negative feedback for :orderId: <optional message here>
-```
-
-**Example**
-
-```
-give positive feedback for 54321 Thanks, good buyer!
-```
-
 # Repost Sales Thread
 
 Repost an expired, removed, (or active, if promoted) sales thread.
@@ -212,6 +201,17 @@ PM me for proof.
 ```
 
 # Promote Thread
+
+## Features
+- Is not expired and removed from the subreddit after one week, but instead expires when the promotion period ends.
+- Can remove and repost their sales thread whenever they want in order to bump it back to the top of r/xyMarket/new (or for whatever other reason).
+- Is added to the top of its category in the stickied daily thread.
+- Receives a gem/diamond emoji next to its title in the stickied daily thread to make it stand out.
+- Will receive new features that are added for promoted threads in the future.
+
+Promoting a thread currently costs $2.50 (USD) per month.
+
+## Command
 
 Initiates the process of promoting your sales thread.
 
