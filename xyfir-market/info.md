@@ -6,6 +6,6 @@ You should avoid attempting to send commands to expired or removed threads excep
 
 # Links and Resources
 
-- [Shared (buyer & seller) documentation](https://xyfir.com/#/documentation/xyfir-market/shared)
-- [Seller documentation](https://xyfir.com/#/documentation/xyfir-market/sellers)
-- [Buyer documentation](https://xyfir.com/#/documentation/xyfir-market/buyers)
+- [Shared (buyer & seller) documentation](https://github.com/Xyfir/Documentation/blob/master/xyfir-market/shared.md)
+- [Seller documentation](https://github.com/Xyfir/Documentation/blob/master/xyfir-market/sellers.md)
+- [Buyer documentation](https://github.com/Xyfir/Documentation/blob/master/xyfir-market/buyers.md)
