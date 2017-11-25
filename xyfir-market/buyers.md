@@ -2,8 +2,8 @@
 
 In this section we'll explain what all the fields and values on a sales thread mean.
 
-- **Price** - The price of the item being sold in USD. Why USD? Because it is stable, widely used, and easily converted to fiat or crypto currencies. USD is always used as the fixed price point, but not always accepted directly by the seller.
-- **Sold By** - The user who is selling the item, followed by a link to their r/xyMarketStats thread.
+- **Price** - The price of the item being sold in USD. Why USD? It's generally stable, widely used, and easily converted to fiat or crypto currencies. USD is always used as the fixed price point, but not always accepted directly by the seller.
+- **Sold By** - The user who is selling the item, followed by a link to their [r/xyMarketStats](https://www.reddit.com/r/xyMarketStats) thread.
 - **Description** - The seller's description of what they're selling.
 - **Type** - The type of item being sold. Has four possible values: `Digital Item`, `Digital Service`, `Physical Item`, `Physical Service`.
 - **Category** - The category for the item being sold.
