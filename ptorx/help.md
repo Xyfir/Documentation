@@ -100,18 +100,18 @@ Modifiers give you expanded control over the content of the mail that gets sent 
   - If *Prepend* is enabled, the 'Add' variable and separator are prepended to the 'To' variable instead of appended.
 - **Builder**
   - A 'Builder' modifier allows you to build the value of a specified email variable. You can write out the exact value that you want the field to be set as while also using variables from the email itself.
-  - Variables are accessed using the `::variable::` syntax where `variable` is the name of the variable you wish to insert at that location.
+  - Variables are accessed using the `{{variable}}` syntax where `variable` is the name of the variable you wish to insert at that location.
   - In the event that an email does not provide the needed data for a variable, the variable reference will simply be removed from the 'Builder' value.
   - Available variables are:
-    - `::sender::` - Depending on the email itself, this can be either just the sender's email address (like `::sender-address::`) *or* a value of the following format: `::sender-name:: <::sender-address::>`.
-    - `::subject::` - The email's subject.
-    - `::body-html::` - The message body's HTML.
-    - `::body-text::` - The message body's plain text. In the event that the email contains HTML, this is the same value but with the HTML stripped out.
-    - `::sender-name::` - The sender's name, taken from the `::sender::` variable *if* the variable contains the sender's name.
-    - `::real-address::` - The email address that the message will be redirected to.
-    - `::proxy-address::` - The address of your proxy email that received the message.
-    - `::sender-domain::` - The domain of the sender's address.
-    - `::sender-address::` - The email address of the sender.
+    - `{{sender}}` - Depending on the email itself, this can be either just the sender's email address (like `{{sender-address}}`) *or* a value of the following format: `{{sender-name}} <{{sender-address}}>`.
+    - `{{subject}}` - The email's subject.
+    - `{{body-html}}` - The message body's HTML.
+    - `{{body-text}}` - The message body's plain text. In the event that the email contains HTML, this is the same value but with the HTML stripped out.
+    - `{{sender-name}}` - The sender's name, taken from the `{{sender}}` variable *if* the variable contains the sender's name.
+    - `{{real-address}}` - The email address that the message will be redirected to.
+    - `{{proxy-address}}` - The address of your proxy email that received the message.
+    - `{{sender-domain}}` - The domain of the sender's address.
+    - `{{sender-address}}` - The email address of the sender.
 
 ### Global Modifiers
 
