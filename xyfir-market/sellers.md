@@ -30,9 +30,8 @@ Note that this format is strictly for what xyMarket calls *structured* threads. 
   - This describes what type of item you're selling.
   - Possible values are: `Physical Item`, `Physical Service`, `Digital Item`, `Digital Service`.
 - `**Category**`
-  - This allows the bot to categorize your sales thread in the Daily Thread.
-  - The category you choose must match *exactly* with one in the list below, even capitalization.
-  - Possible values: `Advertising`, `Automotives`, `Books`, `Collectibles`, `Computers`, `Cryptocurrency`, `Digital Goods`, `Electronics`, `Entertainment`, `Fashion`, `Fiat`, `Food and Beverage`, `Home & Garden`, `Industrial`, `NSFW`, `Other`, `Precious Metals`, `Printed Media`, `Real Estate`, `Services`, `Sports & Hobbies`, `Vouchers & Gift Cards`, `Web`.
+  - This allows the bot to properly categorize your sales thread in the Daily Thread.
+  - The category you choose must match *exactly* (even capitalization) with one in the dropdown list found [here](https://xyfir.com/#/market).
 - `**Description**`
   - Describe what you're selling.
   - While multiple lines here are supported, you should try and keep this as short as possible.
