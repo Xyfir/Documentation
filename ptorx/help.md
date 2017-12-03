@@ -112,13 +112,14 @@ Modifiers give you expanded control over the content of the mail that gets sent 
     - `{{proxy-address}}` - The address of your proxy email that received the message.
     - `{{sender-domain}}` - The domain of the sender's address.
     - `{{sender-address}}` - The email address of the sender.
+    - `{{header('Header-Name')}}` - Allows you to get the value of a specified email header. `Header-Name` should be replaced with the name of the header whose value you wish to insert. If the specified header is not present in an email, `{{header('Header-Name')}}` will remain as-is, without being replaced or removed in the modified email.
 
 ### Global Modifiers
 
 Global modifiers are modifiers available to everyone and do not need to be created, they can simply be linked to any proxy email without any customization needed.
 
 - **Text Only**
-  - Only uses the text/plain portion of an incoming message. **Beware:** This content may contain unescaped HTML code. However, because it's being sent as text and not as HTML it *should* just render as text in whatever email client you receive the modified message in.
+  - Only uses the `text/plain` portion of an incoming message. **Beware:** This content may contain unescaped HTML code. However, because it's being sent as text and not as HTML it *should* just render as text in whatever email client you receive the modified message in.
 
 # Domains
 
