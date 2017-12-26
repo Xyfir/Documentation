@@ -1,8 +1,23 @@
 # Terminology
 
-Xyfir Annotations' annotation system is broken down into repositories called `annotation sets`. An `annotation set` is a set of `items` that contain annotations for a specific book. A `set item` is further broken down into `searches` and `annotations`. A `search` is a search query that points to text within a book's content. An `annotation` is the specific annotation that will be applied to the book's content matched from the `search`. A `set item` can have multiple `searches` and multiple `annotations`.
+Xyfir Annotations' annotation system is broken down into repositories called `annotation sets`. An `annotation set` is a set of `items` that contain annotations for a specific book. A `set item` is further broken down into `searches` and `annotations`. A `search` is a collection of search queries (`main search`, `before search`, `after search`) that together point to certain text within a book's content where the `item`'s `annotations` will be applied. An `annotation` is the specific annotation that will be applied to the book's content matched from the `search`. A `set item` can have multiple `searches` and multiple `annotations`.
 
-In certain contexts `annotations` may be used to refer to all of the items within an `annotation set`.
+## Visual Hierarchy
+
+- Annotation set
+  - Set item
+    - Search
+      - Main search
+      - Before search
+      - After search
+    - Annotation
+
+## Notes
+
+- `Annotation sets` are typically shortened to just `sets`.
+- `Set items` are typically shortened to just `items`.
+- In certain contexts `annotations` may be used to refer to all of the items within a single `annotation set`.
+- In certain contexts, a `search` may be used to refer to a single `set item` search, or to a `main`, `before`, or `after` search within a single `set item` search.
 
 Continue reading for more in-depth descriptions.
 
@@ -28,11 +43,42 @@ A set item's searches point to sections of a book where the item's annotations s
 
 Searches contain the following values:
 
-- **Search Query**: This is the actual search query that will be looked for to be highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
-- **Regular Expression**: This is a true/false value that tells whether the search query and range (before/after) queries are just normal strings or regular expressions.
-- **Only Match If Before**: This is another search query (string or regular expression) that prevents a potential match for the main search query from matching if it's position within the book does not come before the instance of where the match for this range search query is. This search query should only have a single match within a book's content.
-- **Only Match If After**: This is another search query (string or regular expression) that prevents a potential match for the main search query from matching if it's position within the book does not come after the instance of where the match for this range search query is. This search query should only have a single match within a book's content.
-- **Global**: A search is considered 'global' if there are no 'only match if before|after' search queries. A global search can match anywhere within a book.
+- **Main Search**
+  - This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
+- **Searches are Regular Expressions**
+  - This is a true/false value that tells whether the search queries (main/before/after) are just normal strings or regular expressions.
+- **Before Search**
+  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "before" search does not come *before* the match for the main search. This search query should only have a single match within a book's entire content.
+  - Imagine the book's content: `... :before-search-match: ... :main-search-match: ...`. If `:before-search-match:` does not come *before* `:main-search-match:`, then `:main-search-match:` will *not* be accepted.
+- **After Search**
+  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "after" search does not come *after* the match for the main search. This search query should only have a single match within a book's entire content.
+  - Imagine the book's content: `... :main-search-match: ... :after-search-match: ...`. If `:after-search-match:` does not come *after* `:main-search-match:`, then `:main-search-match:` will *not* be accepted.
+
+#### Notes
+
+##### Global Searches
+
+A search is considered 'global' if there are no before/after search queries. A global search can match anywhere within a book.
+
+##### Avoid Multiple Paragraphs
+
+You should avoid including more than one paragraph of text into a main/before/after search query. Due to the way different ebook formats handle separating paragraphs, it is very likely that your search will not find any matches. If you want your annotation to highlight multiple paragraphs or parts of multiple paragraphs, you will need to create a separate Search for each.
+
+##### Avoid Specially Formatted Text
+
+You should avoid including portions of specially formatted text within your search if your search is not entirely just the specially formatted text. For example, assume the text below is part of a book you are annotating.
+
+> The quick **brown fox** jumps over the *lazy dog*.
+
+As you can see there are two different sets of specially formatted text within the content. In this instance you could create a search for `jumps over the` or `brown fox`, but you *should not* create a search for `quick brown fox` or `the lazy dog` because when the ebook reader searches through the content there will be hidden special characters that signify the formatted text, and they will break your search.
+
+For example, in an ebook format that uses HTML, that same text might look like:
+
+    The quick <strong>brown fox</strong> jumps over the <em>lazy dog</em>.
+
+Those special characters prevent your search from matching, unless you create a regular expression and account for those hidden characters.
+
+To make things simple, it's recommended to just avoid including specially formatted text in your search *unless* your search contains *only* that specially formatted text. If you need to match the entire thing you should use multiple searches and take advantage of before/after searches to ensure you're only matching what you really want.
 
 ### Annotations
 
@@ -40,31 +86,51 @@ A set item can contain multiple annotations of the same or different types. Anno
 
 There are multiple annotation types:
 
-- (1) Document
-  - Documents are Markdown format text.
-- (2) Link
-  - An `HTTP` or `HTTPS` link.
-- (3) Web Search
-  - A web search query to be used with a search engine (Google, Bing, etc).
-  - Not to be confused with an annotation set item's *searches*.
-  - Supports optional [contextual web searches](#contextual-web-searches).
-- (4) Image
-  - A link to an image of no specific format.
-  - If multiple links are provided it becomes an album.
-- (5) Video
-  - A link to a video of no specific format.
-  - Might be a YouTube, Vimeo, etc embed link or a direct link to a video file.
-  - If multiple links are provided it becomes a playlist.
-- (6) Audio
-  - A direct link to an audio file.
-  - If multiple links are provided it becomes a playlist.
-- (7) Map
-  - Can be a direct link to a map of any format (image, interactive, etc).
-  - Can be a search query for use in a real-world map (Google Maps, Bing Maps, etc).
+#### (1) Document Annotation
 
-#### Contextual Web Searches
+Documents are Markdown-supported text.
 
-This feature allows you to add context to a 'Web Search' annotation. When a reader views an annotation that has a context value, they can optionally enable the context which will add the 'Context Search' value to the normal web search query. Typically, this is the book title, series, or some other text that can be used to narrow down the scope of possible results to increase relevancy. Imagine you're creating annotations for a historical fiction book and you're creating an annotation for the text 'George Washington'. You might want the search query to default to just his name while allowing an optional search that adds the name of the book title.
+#### (2) Link Annotation
+
+An `HTTP` or `HTTPS` link. Most reader apps will attempt to display the link within the app first, and fallback to or optionally support navigating to the link directly.
+
+#### (3) Web Search Annotation
+
+Not to be confused with an annotation set item's *searches*, this is a web search query to be used with any general search engine (Google, Bing, etc).
+
+##### Context
+
+When a reader views an annotation that has a context value, they can optionally enable the context which will add the 'Context Search' value to the normal web search query. Typically, this is the book title, series, or some other text that can be used to narrow down the scope of possible results to increase relevancy. Imagine you're creating annotations for a historical fiction book and you're creating an annotation for the text 'George Washington'. You might want the search query to default to just his name while allowing an optional search that adds the name of the book title.
+
+#### (4) Image Annotation
+
+A direct `HTTP`/`HTTPS` link to a `PNG`, `JPG`, or `GIF` formatted image. It should be *direct* link, to the image file, and not simply a webpage that loads the image.
+
+If multiple links are provided it becomes an album.
+
+#### (5) Video Annotation
+
+A direct `HTTP`/`HTTPS` link to a `WEBM` or `MP4` video file, or a YouTube or Vimeo *embed* link.
+
+If multiple links are provided it becomes a playlist.
+
+#### (6) Audio Annotation
+
+A *direct* `HTTP`/`HTTPS` link to an audio file, no specific format is required.
+
+If multiple links are provided it becomes a playlist.
+
+#### (7) Map Annotation
+
+Can be a direct link to an *interactive* map or a search query for use in a real-world map (Google Maps, Bing Maps, etc).
+
+If the map is just a static image, use the **Image** annotation type.
+
+#### Linking to External Content
+
+When linking to external content (links, images, videos, audio, maps), be sure that the site you're linking to allows you to do so.
+
+You should also check if the site has any restrictions in place, like a [CSP](https://en.wikipedia.org/wiki/Content_Security_Policy) that will prevent another site from embedding their content, as this can prevent ebook readers from properly rendering the content you linked to.
 
 ### Generating Annotations
 
@@ -121,3 +187,21 @@ Xyfir Annotations' reader allows you to import any `EPUB` format ebook and have 
 The reader also doubles as an editor for the set's items. You can add, edit, and remove items from within the reader itself. Simply click the edit button to toggle the edit mode. Once in edit mode you can click on highlighted text to manage the item that matched the highlighted text. You can also select text while in edit mode and the edit button will change into a 'create' button that when clicked allows you to create an annotation set item from the selected text.
 
 If you are the creator of, or a moderator for the annotation set, any additions, removals, or modifications will be made directly to the annotation set immediately. If you are only a normal user, any edits you make will create a change proposal. The annotation set will remain unchanged until the set creator or a moderator accepts your change. Be careful not to create conflicting changes.
+
+# Formatting Descriptions and Posts
+
+Descriptions and posts on xyAnnotations support [Markdown](https://daringfireball.net/projects/markdown/syntax) which allows you to format your text.
+
+## Reference Syntax
+
+xyAnnotations adds special syntax on top of Markdown that allows you to easily reference things on xyAnnotations like annotation sets, items, users, etc.
+
+- **Users**
+  - `u/AutoAnnotator` -> `[u/AutoAnnotator](#/users/AutoAnnotator)`
+  - `u/1234` -> `[u/1234](#/users/1234)`
+- **Sets**
+  - `s/1234` -> `[s/1234](#/sets/1234)`
+- **Items**
+  - `i/1234` -> `[i/1234](#/item/1234)`
+- **Changes**
+  - `c/1234` -> `[c/1234](#/change/1234)`
