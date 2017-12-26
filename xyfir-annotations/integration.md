@@ -1,4 +1,4 @@
-Prior to reading through the integration documentation, you should first familiarize yourself with Xyfir Annotations' [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md).
+Prior to reading through the integration documentation, you should first familiarize yourself with the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md).
 
 # Subscriptions
 
@@ -65,16 +65,16 @@ If for whatever reason you need to delete a subscription key that you generated 
 
 ## Finding Annotation Sets
 
-`GET https://annotations.xyfir.com/api/sets?search=<SEARCH>&sort=<SORT>&direction=<DIRECTION>&lastId=<LAST_ID>`
-- `SEARCH`: *string* - A search query for finding matching annotation sets. This can be a set title, a book title, or book authors.
-- `SORT`: *string* - Sort method for matched annotation sets
+`GET https://annotations.xyfir.com/api/sets`
+- `search`: *string* - A search query for finding matching annotation sets. This can be a set title, a book title, or book authors.
+- `sort`: *string* - Sort method for matched annotation sets
   - `top` - Sort by top rated sets
   - `newest` - Sort by newest created sets
   - `updated` - Sort by recently updated sets
-- `DIRECTION`: *string* - The direction to sort the sets
+- `direction`: *string* - The direction to sort the sets
   - `desc` - Descending sort (greatest to least)
   - `asc` - Ascending sort (least to greatest)
-- `LAST_ID`: *number* (optional) - Used for pagination. The last id in the previously returned list.
+- `lastId`: *number* (optional) - Used for pagination. The last id in the previously returned list.
 
 
 ### Response
@@ -82,8 +82,11 @@ If for whatever reason you need to delete a subscription key that you generated 
 ```ts
 {
   sets: [{
-    id: number, book_title: string, book_authors: string, set_title: string,
-    set_description: string, votes: number
+    id: number,
+    book_title: string,
+    book_authors: string,
+    set_title: string,
+    set_description: string
   }]
 }
 ```
@@ -94,19 +97,19 @@ If for whatever reason you need to delete a subscription key that you generated 
 
 Advanced searches allow you to provide different search queries for specific annotation set fields. All variables must be present in the query string, even if they have no value. Only sets that match **all** provided queries will be returned.
 
-`GET https://annotations.xyfir.com/api/sets?bookTitle=<BOOK_TITLE>&setTitle=<SET_TITLE>&bookAuthors=<BOOK_AUTHORS>&sort=<SORT>&direction=<DIRECTION>&lastId=<LAST_ID>`
-- `SORT`: *string* - Same variable and possible values as previously explained.
-- `DIRECTION`: *string* - Same variable and possible values as previously explained.
-- `LAST_ID`: *number* (optional) - Same variable as previously explained.
-- `BOOK_TITLE`: *string* - A search query for finding annotation sets by their book's title.
-- `BOOK_AUTHORS`: *string* - A search query for finding annotation sets by their book's authors.
-- `SET_TITLE`: *string* - A search query for finding annotation sets by their title.
+`GET https://annotations.xyfir.com/api/sets`
+- `sort`: *string* - Same variable and possible values as previously explained.
+- `direction`: *string* - Same variable and possible values as previously explained.
+- `lastId`: *number* (optional) - Same variable as previously explained.
+- `bookTitle`: *string* - A search query for finding annotation sets by their book's title.
+- `bookAuthors`: *string* - A search query for finding annotation sets by their book's authors.
+- `setTitle`: *string* - A search query for finding annotation sets by their title.
 
 ## Downloading Annotation Sets
 
-`GET https://annotations.xyfir.com/api/annotations?subscriptionKey=<KEY>&sets=<SETS>`
-- `KEY`: *string* - The user's subscription key
-- `SETS`: *json-string* - The annotation sets you wish to download set items from. The value should be a JSON string of an object array: `[{ id: number, version?: date-string }]`. You may request up to **3** annotation sets per request.
+`GET https://annotations.xyfir.com/api/annotations`
+- `subscriptionKey`: *string* - The user's subscription key
+- `sets`: *json-string* - The annotation sets you wish to download set items from. The value should be a JSON string of an object array: `[{ id: number, version?: date-string }]`. You may request up to **3** annotation sets per request.
 
 ### Set Versions
 
@@ -117,23 +120,20 @@ In `SETS` you can optionally provide the current version of the set that you hav
 ```ts
 {
   error: boolean, message?: string,
-  [setId]?: {
+  [setId: number]?: {
     version: date-string,
     items?: [{
       id: number, title: string,
       searches: [{
-        text: string, regex: boolean,
-        range: {
-          global: boolean, before?: string, after?: string
-        }
+        main: string, regex?: boolean, before?: string, after?: string
       }],
       annotations: [{
         type: number, name: string, value: string
       }]
     }]
   },
-  [setId]?: { },
-  [setId]?: { }
+  [setId: number]?: { },
+  [setId: number]?: { }
 }
 ```
 
@@ -150,17 +150,25 @@ Every set item contains one or more searches that are used to find content in a 
 ### Object
 
 ```ts
-text: string, regex: boolean, range: {
-  global: boolean, before?: string, after?: string
+{
+  main: string,
+  after?: string,
+  regex?: boolean,
+  before?: string
 }
 ```
 
-- `text`: *string* - This is value to search for in a book's content.
-- `regex`: *boolean* - When true, `text`, `range.before`, and `range.after` are regular expressions.
-- `range`: *object* - This object tells you the scope of the search.
-- `range.global`: *boolean* - When true, `text` should be searched for anywhere in the book's content. If false, `range.before` and `range.after` should be checked.
-- `range.before`: *string* (optional) - If this property is truthy, it means that any matches for this search are only valid if they come *before* where this text is present in the book's content.
-- `range.after`: *string* (optional) - If this property is truthy, it means that any matches for this search are only valid if they come *after* where this text is present in the book's content.
+- `main`: *string*
+  - This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
+- `regex`: *boolean* (optional)
+  - When true, `main`, `before`, and `after` are regular expressions.
+  - This property has three possible values: `undefined` (missing, treat as false), `false`, and `true`.
+- `before`: *string* (optional)
+  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "before" search does not come *before* the match for the main search. This search query should only have a single match within a book's entire content.
+  - This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
+- `after`: *string* (optional)
+  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "after" search does not come *after* the match for the main search. This search query should only have a single match within a book's entire content.
+  - This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
 
 ## Annotations
 
@@ -168,9 +176,11 @@ Every set item contains one or more annotations that will be applied anywhere on
 
 ### Objects
 
+See the various annotation types explained in the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#annotations) for more information.
+
 All annotation objects contain the following properties:
 
-- **type**: *number* - A number between 1 and 7. See [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#annotations).
+- **type**: *number* - A number between 1 and 7.
 - **name**: *string* - A short name/title/description that explains the annotation.
 
 Annotation objects of different types have different properties and values:
@@ -178,18 +188,18 @@ Annotation objects of different types have different properties and values:
 - (1) Document
   - **value**: *string* - A [Markdown](https://en.wikipedia.org/wiki/Markdown) document string.
 - (2) Link
-  - **value**: *string* - A link that starts with 'http' or 'https'.
+  - **value**: *string* - A link that starts with 'http://' or 'https://'.
 - (3) Web Search
   - **value**: *string* - A search query to be used in a search engine like Google or Bing.
   - **context**: *string* (optional) - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
 - (4) Image
-  - **value**: *string* OR *string[]* - Either a single image link or an album of images if an array.
+  - **value**: *string|string[]* - Either a single image link or an album of images if an array. Each link will be a direct link to a JPG, JPEG, PNG, or GIF image.
 - (5) Video
-  - **value**: *string* OR *string[]* - Either a single video link or a playlist of videos if an array. Each link *should* be either a direct video link or an embed link for YouTube, Vimeo, etc.
+  - **value**: *string|string[]* - Either a single video link or a playlist of videos if an array. Each link will be either a direct video link (MP4 or WEBM) or an embed link for YouTube or Vimeo.
 - (6) Audio
-  - **value**: *string* OR *string[]* - Either a single audio file link or a playlist of audio files if an array. Each link *should* be either a direct link to an audio file.
+  - **value**: *string|string[]* - Either a single audio file link or a playlist of audio files if an array. Each link *should* be a direct link to an audio file.
 - (7) Map
-  - **value**: *string* - Either a link to a map of any format (image, interactive, etc) or a search query to be used with a real-world map like Google Maps.
+  - **value**: *string* - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
 
 ## Highlighting Annotations
 
@@ -207,13 +217,13 @@ xyBooks handles non-global searches by looping through every single search withi
 
 For example, if we have an object at `markers['5-0-1']` that contains `{ chapter: 4, index: 1992 }`:
 
-This means that item `5`'s search at array index `0` has a `range.before` that is present within the book at the chapter with an index of `4` and within the chapter's HTML string at index `1992`. This data can now be used later when we need to determine whether a search's match should be highlighted.
+This means that item `5`'s search at array index `0` has a `before` that is present within the book at the chapter with an index of `4` and within the chapter's HTML string at index `1992`. This data can now be used later when we need to determine whether a search's match should be highlighted.
 
 ### Step 3: Sorting Searches By Length
 
 xyBooks only supports EPUB format ebooks, which are rendered to HTML. xyBooks then manipulates this HTML to insert highlights by wrapping matching text with a `span` element. Due to how xyBooks handles highlighting, there is a potential problem where a search that matches a small amount of text will prevent a longer section of text from being matched because of the addition of span elements into the HTML.
 
-To handle this issue, xyBooks sorts searches based on length, so that the longest searches are ran first. This is done by looping through all of a set's items and then through all of an item's searches, comparing the length of the search object's `text` property, and building an array of the following object: `{ item, search }`. `item` is the id of the item and `search` is the index of the search within the item's searches array.
+To handle this issue, xyBooks sorts searches based on length, so that the longest searches are ran first. This is done by looping through all of a set's items and then through all of an item's searches, comparing the length of the search object's `main` property, and building an array of the following object: `{ item, search }`. `item` is the id of the item and `search` is the index of the search within the item's searches array.
 
 Now, xyBooks can loop through this new array and load the appropriate item and search as needed.
 
@@ -221,11 +231,11 @@ Now, xyBooks can loop through this new array and load the appropriate item and s
 
 At this point we have two important variables that will now be used: `markers` and `searches`.
 
-xyBooks starts by looping through the `searches` array and then loading the appropriate search from the specified item and search index. xyBooks first runs a search using Regular Expressions on the current chapter's HTML string using `search.text`. Remember to escape regex characters in `search.text` if `search.regex` is false!
+xyBooks starts by looping through the `searches` array and then loading the appropriate search from the specified item and search index. xyBooks first runs a search using Regular Expressions on the current chapter's HTML string using `search.main`. Remember to escape regex characters in `search.main` if `search.regex` is false/undefined!
 
-If there were any matches, xyBooks then checks if `search.range.global` is false and if so checks for both `search.range.before` and `search.range.after`. If either of those variables are truthy, it loads the corresponding objects from the `matches` object.
+If there were any matches, xyBooks then checks for both `search.before` and `search.after`. If either of those variables are truthy, it loads the corresponding objects from the `matches` object.
 
-Now it loops through the matches returned from the regex search and gets their start and end indexes within the current chapter's HTML string. It throws out any matches that come *after* `search.range.before` or *before* `search.range.after` if `search.range.global` is true.
+Now it loops through the matches returned from the regex search and gets their start and end indexes within the current chapter's HTML string. It throws out any matches that come *before* `search.before` or *after* `search.after` if the search is not global.
 
 The matches that are left are now wrapped in a `span` element with a class name of `annotation` and an `onclick` attribute that calls a function that is passed the annotation set item's id.
 
