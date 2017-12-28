@@ -10,6 +10,16 @@ Your reader application must allow a user to:
 - Purchase a subscription key through your service (you can charge any price you wish)
 - Enter in a subscription key that was purchased directly through Xyfir Annotations or another affiliate
 
+## Requesting a Subscription Key
+
+To make things easier for users who have a xyAnnotations subscription key that they wish to bring to your application, you can request access to their subscription key.
+
+Simply send the user to the following url: `https://annotations.xyfir.com/#/account/subscription/request`. Appended to that url should be `?redirect=REDIRECT_URL` where `REDIRECT_URL` is a url that the user will be redirected to after they approve or deny your request. The redirect url should contain the string `SUBSCRIPTION_KEY`, which will be replaced either by the user's subscription key, or by the number `0` if they decline the request.
+
+For example if the redirect url was `https://example.com/?subscriptionKey=SUBSCRIPTION_KEY`, the user would be redirected to `https://example.com/?subscriptionKey=0` if they decline the request and `https://example.com/?subscriptionKey=THEIR_SUBSCRIPTION_KEY_HERE` if they allow it.
+
+Remember to encode the value for the redirect variable before sending the user to the request page.
+
 ## Subscription Pricing
 
 As an added incentive for our affiliates we offer the ability for our affiliates to generate subscriptions at a discount. The discount you receive is based on how many subscriptions you have previously generated (and then paid for). Your subscription discount is 1% for every 100 generated subscriptions paid for with a minimum of 10% and a maximum of 25%.
