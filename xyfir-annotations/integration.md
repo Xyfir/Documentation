@@ -39,8 +39,8 @@ Your discount will be applied to these base prices.
 ## Generating Subscriptions
 
 `POST https://annotations.xyfir.com/api/affiliate/subscriptions`
-- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
-- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
+- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
 - `subscription`: *number* - A numerical identifier for the subscription length. **1** = 30 days, **2** = 365 days
 
 ### Response
@@ -52,7 +52,7 @@ If the request was successful and `error` is false, `key` will contain the gener
 
 ## Paying for Subscriptions
 
-You can generate subscriptions anytime you want for free. However, if you want those subscriptions to last, they must be paid for. You can pay off generated subscriptions at any time in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate). Subscriptions that you generate will be deleted after 8 days if they have not been paid for. It is recommended that you pay for your generated subscriptions within 7 days to prevent a user's subscription key from being deleted.
+You can generate subscriptions anytime you want for free. However, if you want those subscriptions to last, they must be paid for. You can pay off generated subscriptions at any time in your [affiliate panel](https://annotations.xyfir.com/#/affiliate). Subscriptions that you generate will be deleted after 8 days if they have not been paid for. It is recommended that you pay for your generated subscriptions within 7 days to prevent a user's subscription key from being deleted.
 
 Affiliates found exploiting our subscription system will be banned.
 
@@ -61,8 +61,8 @@ Affiliates found exploiting our subscription system will be banned.
 If for whatever reason you need to delete a subscription key that you generated you can do so here. If the key has not been paid for it will be removed and you will not owe money on it.
 
 `DELETE https://annotations.xyfir.com/api/affiliate/subscriptions`
-- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
-- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/app/#/affiliate)
+- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
+- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
 - `subscriptionKey`: *string* - The subscription key previously generated
 
 ### Response
@@ -119,19 +119,21 @@ Advanced searches allow you to provide different search queries for specific ann
 
 `GET https://annotations.xyfir.com/api/annotations`
 - `subscriptionKey`: *string* - The user's subscription key
-- `sets`: *json-string* - The annotation sets you wish to download set items from. The value should be a JSON string of an object array: `[{ id: number, version?: date-string }]`. You may request up to **3** annotation sets per request.
+- `sets`: *json-string* - The annotation sets you wish to download set items from. The value should be a JSON string of an object array: `[{ id: number, version?: number }]`. You may request up to **3** annotation sets per request.
 
 ### Set Versions
 
-In `SETS` you can optionally provide the current version of the set that you have saved on the client. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
+In `sets` you can optionally provide the current version of the set that you have saved on the client. `version` is a unix timestamp (in milliseconds, not seconds!) of the set's last update. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
 
 ### Response
+
+Be warned, this response can be quite large for certain annotation sets, especially if you are downloading multiple sets.
 
 ```ts
 {
   error: boolean, message?: string,
   [setId: number]?: {
-    version: date-string,
+    version: number,
     items?: [{
       id: number, title: string,
       searches: [{
@@ -139,6 +141,8 @@ In `SETS` you can optionally provide the current version of the set that you hav
       }],
       annotations: [{
         type: number, name: string, value: string
+        // other properties may be present based on `type`
+        // keep reading for more info
       }]
     }]
   },
@@ -149,9 +153,9 @@ In `SETS` you can optionally provide the current version of the set that you hav
 
 If `error` is true, a `message` property may also be present that will give you an idea of what went wrong. An error usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
 
-`[setId]` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, "5": { ... }, "10": { ... }, "15": { ... }}`.
+`[setId]` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, 5: { ... }, 10: { ... }, 15: { ... }}`.
 
-If an annotation set you requested has the same version as you have downloaded locally then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different, then you can count on `items` being there.
+If an annotation set you requested has the same version as you already have saved locally, then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different, then you can count on `items` being there.
 
 ## Searches
 
