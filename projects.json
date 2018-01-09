@@ -93,6 +93,11 @@
     "link": "https://books.xyfir.com/",
     "description": "An all-in-one cloud-synced ebook reader, storage, and management system.",
     "documentation": {
+      "help": {
+        "name": "Help Documents",
+        "location": "xyfir-books/help",
+        "description": "Learn how to utilize Xyfir Books' features to store, manage, and read your ebooks."
+      },
       "legal": {
         "privacy": {
           "name": "Privacy Policy",
