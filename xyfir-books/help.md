@@ -25,8 +25,6 @@ Available search fields are:
 - `title` - *string*
 - `pubdate` - *iso utc date string*
 - `publisher` - *string*
-- `last_modified` - *iso utc date string*
-- `size` - *number*
 - `timestamp` - *iso utc date string*
 - `comments` - *string*
 
@@ -36,7 +34,7 @@ You can switch your book list view by clicking the button next to the search box
 - **Compact**
   - This view was designed to work well on any screen size. Only the most important details and controls are available.
 - **Grid**
-  - This view was designed to work well on tablets, or other large screens with limited controls. It shows large covers, only the most necessary information, and no controls.
+  - This view was designed to work well on tablets, or other large screens with limited controls. It shows large covers, only the most necessary information, and limited controls.
 - **Table**
   - This view was designed only for large screens, and mainly for desktop environments. If your screen is too small, this option will not be available. The table view shows you the most information, gives you the most controls for your books, and also offers extended sorting features that the other views lack.
 
