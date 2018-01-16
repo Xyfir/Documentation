@@ -8,11 +8,11 @@ By default, just typing in a search query will return any books whose title or a
 
 ### Advanced Searches
 
-You can also use advanced search queries using the following syntax: `field:value field2:value_with_spaces ...`
+You can also use advanced search queries using the following syntax: `field:value "field2:search with spaces" ...`
 
-In this example, xyBooks will return any books whose `field` property contains `value`, *AND* whose `field2` property contains `value with spaces`. As you can see, if your search query contains spaces, you must replace the space with an underscore character.
+In this example, xyBooks will return any books whose `field` property contains `value`, *AND* whose `field2` property contains `value with spaces`. As you can see, if your search query contains spaces, you must enclose the entire search within double quotes. The search value cannot contain double quotes.
 
-A better, real-world example would be: `title:Huckleberry_Finn authors:Mark_Twain`. This will only return books whose `title` property contains `Huckleberry Finn` and whose `authors` (always plural) property contains `Mark Twain`.
+A better, real-world example would be: `"title:Huckleberry Finn" "authors:Mark Twain"`. This will only return books whose `title` property contains `Huckleberry Finn` and whose `authors` (always plural) property contains `Mark Twain`.
 
 Available search fields are:
 - `author_sort` - *string*
