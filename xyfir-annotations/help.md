@@ -1,15 +1,15 @@
 # Terminology
 
-Xyfir Annotations' annotation system is broken down into repositories called `annotation sets`. An `annotation set` is a set of `items` that contain annotations for a specific book. A `set item` is further broken down into `searches` and `annotations`. A `search` is a collection of search queries (`main search`, `before search`, `after search`) that together point to certain text within a book's content where the `item`'s `annotations` will be applied. An `annotation` is the specific annotation that will be applied to the book's content matched from the `search`. A `set item` can have multiple `searches` and multiple `annotations`.
+Xyfir Annotations' annotation system is broken down into repositories called `annotation sets`. An `annotation set` is a set of `items` that contain annotations for a specific book. A `set item` is further broken down into `searches` and `annotations`. A `search` is a collection of `subsearches` (`main subsearch`, `before subsearch`, `after subsearch`) that together point to certain text within a book's content where the `item`'s `annotations` will be applied. An `annotation` is the specific annotation that will be applied to the book's content matched from the `search`. A `set item` can have multiple `searches` and multiple `annotations`.
 
 ## Visual Hierarchy
 
 - Annotation set
   - Set item
     - Search
-      - Main search
-      - Before search
-      - After search
+      - Main subsearch
+      - Before subsearch
+      - After subsearch
     - Annotation
 
 ## Notes
@@ -17,7 +17,7 @@ Xyfir Annotations' annotation system is broken down into repositories called `an
 - `Annotation sets` are typically shortened to just `sets`.
 - `Set items` are typically shortened to just `items`.
 - In certain contexts `annotations` may be used to refer to all of the items within a single `annotation set`.
-- In certain contexts, a `search` may be used to refer to a single `set item` search, or to a `main`, `before`, or `after` search within a single `set item` search.
+- In certain contexts, a `search` may be used to refer to a single `set item` search, or to a `main`, `before`, or `after` subsearch within a single `set item` search.
 
 Continue reading for more in-depth descriptions.
 
@@ -43,26 +43,26 @@ A set item's searches point to sections of a book where the item's annotations s
 
 Searches contain the following values:
 
-- **Main Search**
+- **Main Subsearch**
   - This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
 - **Searches are Regular Expressions**
-  - This is a true/false value that tells whether the search queries (main/before/after) are just normal strings or regular expressions.
-- **Before Search**
-  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "before" search does not come *before* the match for the main search. This search query should only have a single match within a book's entire content.
+  - This is a true/false value that tells whether the subsearch queries (main/before/after) are just normal strings or regular expressions.
+- **Before Subsearch**
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come *before* the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
   - Imagine the book's content: `... :before-search-match: ... :main-search-match: ...`. If `:before-search-match:` does not come *before* `:main-search-match:`, then `:main-search-match:` will *not* be accepted.
-- **After Search**
-  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "after" search does not come *after* the match for the main search. This search query should only have a single match within a book's entire content.
+- **After Subsearch**
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come *after* the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
   - Imagine the book's content: `... :main-search-match: ... :after-search-match: ...`. If `:after-search-match:` does not come *after* `:main-search-match:`, then `:main-search-match:` will *not* be accepted.
 
 #### Notes
 
-##### Global Searches
+##### Global and Specific Searches
 
-A search is considered 'global' if there are no before/after search queries. A global search can match anywhere within a book.
+A search is considered 'global' if there are no before/after subsearch queries. A global search can match anywhere within a book. Inversely, a search that is not 'global' is considered a 'specific' search.
 
 ##### Avoid Multiple Paragraphs
 
-You should avoid including more than one paragraph of text into a main/before/after search query. Due to the way different ebook formats handle separating paragraphs, it is very likely that your search will not find any matches. If you want your annotation to highlight multiple paragraphs or parts of multiple paragraphs, you will need to create a separate Search for each.
+You should avoid including more than one paragraph of text into a main/before/after subsearch query. Due to the way different ebook formats handle separating paragraphs, it is very likely that your search will not find any matches. If you want your annotation to highlight multiple paragraphs or parts of multiple paragraphs, you will need to create a separate Search for each.
 
 ##### Avoid Specially Formatted Text
 
@@ -70,7 +70,7 @@ You should avoid including portions of specially formatted text within your sear
 
 > The quick **brown fox** jumps over the *lazy dog*.
 
-As you can see there are two different sets of specially formatted text within the content. In this instance you could create a search for `jumps over the` or `brown fox`, but you *should not* create a search for `quick brown fox` or `the lazy dog` because when the ebook reader searches through the content there will be hidden special characters that signify the formatted text, and they will break your search.
+As you can see there are two different sets of specially formatted text within the normally-formatted content. In this instance you could create a search for `jumps over the` or `brown fox`, but you *should not* create a search for `quick brown fox` or `the lazy dog` because when the ebook reader searches through the content there will be hidden special characters that signify the formatted text, and they will break your search.
 
 For example, in an ebook format that uses HTML, that same text might look like:
 
@@ -78,7 +78,7 @@ For example, in an ebook format that uses HTML, that same text might look like:
 
 Those special characters prevent your search from matching, unless you create a regular expression and account for those hidden characters.
 
-To make things simple, it's recommended to just avoid including specially formatted text in your search *unless* your search contains *only* that specially formatted text. If you need to match the entire thing you should use multiple searches and take advantage of before/after searches to ensure you're only matching what you really want.
+To make things simple, it's recommended to just avoid including specially formatted text in your search *unless* your search contains *only* that specially formatted text. If you need to match the entire thing you should use multiple searches and take advantage of before/after subsearches to ensure you're only matching what you really want.
 
 ### Annotations
 
@@ -162,7 +162,7 @@ Removing an added item will only remove it from the *Create Item* section and wi
 
 **Generating a Web Search annotation:** By checking the box for *Web Search Annotation* our system will automatically create a search annotation using the item's text and optionally the book's title as a search query (for Google, Bing, etc).
 
-**Generating a map annotation:** By checking the box for *Map Annotation* our system will automatically create a map annotation using the item's text as a search query (for Google Maps, etc). Enable map annotation generation if your selected item's text is a place that can be found on an actual map (a place, city, zip code, etc).
+**Generating a Map annotation:** By checking the box for *Map Annotation* our system will automatically create a map annotation using the item's text as a search query (for Google Maps, etc). Enable map annotation generation if your selected item's text is a place that can be found on an actual map (a place, city, zip code, etc).
 
 **What *Create All* does:** Create all will automatically create a single set item for every found item listed. Each item will contain one search (the item's text) and one annotation (of type 'Web Search'). If 'Search Context' has a value then context will be added to all of the created annotations.
 

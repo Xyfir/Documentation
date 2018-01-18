@@ -178,10 +178,10 @@ Every set item contains one or more searches that are used to find content in a 
   - When true, `main`, `before`, and `after` are regular expressions.
   - This property has three possible values: `undefined` (missing, treat as false), `false`, and `true`.
 - `before`: *string* (optional)
-  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "before" search does not come *before* the match for the main search. This search query should only have a single match within a book's entire content.
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come *before* the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
   - This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
 - `after`: *string* (optional)
-  - This is another string or regex search query that prevents a potential match for the main search query from being accepted if the match for the "after" search does not come *after* the match for the main search. This search query should only have a single match within a book's entire content.
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come *after* the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
   - This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
 
 ## Annotations
@@ -223,11 +223,11 @@ xyAnnotations just provides the data, and from there it's up to you to determine
 
 The first step is of course downloading the annotations themselves. Annotations are downloaded at two different times: when a book is opened and when a user clicks 'Save' on an annotation set in the 'Manage Annotations' section. In the first situation xyBooks checks for annotations stored in local storage for the book that is being opened. If annotations are stored for the book, then xyBooks uses the id and version for the stored annotation sets and calls xyAnnotations to get an updated version of those annotation sets.
 
-### Step 2: Building 'Markers' for Non-Global Searches
+### Step 2: Building 'Markers' for Specific Searches
 
-Since xyAnnotations is built to support all types of ebook formats and multiple versions of any single ebook, there are no specified locations for where a set item's search can be found within an ebook's content. This means that we must search the book's content in its entirety to highlight everywhere a set item's search matches. This is straightforward for global searches that can match anywhere in a book, but dealing with non-global searches is a little more difficult.
+Since xyAnnotations is built to support all types of ebook formats and multiple versions of any single ebook, there are no specified locations for where a set item's search can be found within an ebook's content. This means that we must search the book's content in its entirety to highlight everywhere a set item's search matches. This is straightforward for global searches that can match anywhere in a book, but dealing with non-global (specific) searches is a little more difficult.
 
-xyBooks handles non-global searches by looping through every single search within every single set item and filtering out all global searches. From here, xyBooks begins to build a `markers` object that contains keys whose names follow a format of: `${itemId}-${searchIndex}-${type}`. `itemId` is the unique id of the set item; `searchIndex` is the index of the specific search within the item's searches array; and `type` can be `1` for a 'before' marker and `2` for an 'after' marker. These keys point to an object that contains two properties: `chapter` and `index` where `chapter` is the index of the chapter the marker is present in and `index` is an index within the chapter's HTML string where the marker is present.
+xyBooks handles specific searches by looping through every single search within every single set item and filtering out all global searches. From here, xyBooks begins to build a `markers` object that contains keys whose names follow a format of: `${itemId}-${searchIndex}-${type}`. `itemId` is the unique id of the set item; `searchIndex` is the index of the specific search within the item's searches array; and `type` can be `1` for a 'before' marker and `2` for an 'after' marker. These keys point to an object that contains two properties: `chapter` and `index` where `chapter` is the index of the chapter the marker is present in and `index` is an index within the chapter's HTML string where the marker is present.
 
 For example, if we have an object at `markers['5-0-1']` that contains `{ chapter: 4, index: 1992 }`:
 
@@ -237,7 +237,7 @@ This means that item `5`'s search at array index `0` has a `before` that is pres
 
 xyBooks only supports EPUB format ebooks, which are rendered to HTML. xyBooks then manipulates this HTML to insert highlights by wrapping matching text with a `span` element. Due to how xyBooks handles highlighting, there is a potential problem where a search that matches a small amount of text will prevent a longer section of text from being matched because of the addition of span elements into the HTML.
 
-To handle this issue, xyBooks sorts searches based on length, so that the longest searches are ran first. This is done by looping through all of a set's items and then through all of an item's searches, comparing the length of the search object's `main` property, and building an array of the following object: `{ item, search }`. `item` is the id of the item and `search` is the index of the search within the item's searches array.
+To partially solve this issue, xyBooks sorts searches based on length, so that the longest searches are ran first. This is done by looping through all of a set's items and then through all of an item's searches, comparing the length of the search object's `main` property, and building an array of the following object: `{ item, search }`. `item` is the id of the item and `search` is the index of the search within the item's searches array.
 
 Now, xyBooks can loop through this new array and load the appropriate item and search as needed.
 
