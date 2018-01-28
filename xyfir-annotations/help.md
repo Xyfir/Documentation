@@ -1,6 +1,18 @@
 # Terminology
 
-Xyfir Annotations' annotation system is broken down into repositories called `annotation sets`. An `annotation set` is a set of `items` that contain annotations for a specific book. A `set item` is further broken down into `searches` and `annotations`. A `search` is a collection of `subsearches` (`main subsearch`, `before subsearch`, `after subsearch`) that together point to certain text within a book's content where the `item`'s `annotations` will be applied. An `annotation` is the specific annotation that will be applied to the book's content matched from the `search`. A `set item` can have multiple `searches` and multiple `annotations`.
+## Critical
+
+- The xyAnnotations annotation system is broken down into repositories called `annotation sets`.
+- An `annotation set` is a set of `items` that contain annotations for a specific book.
+- A `set item` is further broken down into `searches` and `annotations`. A set item can have multiple searches and multiple annotations.
+- A `search` is a collection of `subsearches` (`main subsearch`, `before subsearch`, `after subsearch`) that together point to certain text within a book's content where the item's annotations will be applied.
+- An `annotation` is the specific annotation (document, link, image, etc) that will be applied to the book's content matched by the search.
+
+## Useful
+
+- A `change` is either a proposed, accepted, or rejected modification that a user has suggested for an annotation set.
+- A `linked item` is an item within an annotation set that gets its data from an item in another annotation set. Any changes made to the source item will be reflected on the linked item.
+- A `global annotation set` is an annotation set that is created not to annotate a specific book or set of books, but instead to provide common, high quality items that other annotation sets can link to. Global annotation sets are managed by xyAnnotations moderators, however as always, anyone is free to submit change proposals.
 
 ## Visual Hierarchy
 
