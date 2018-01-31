@@ -95,13 +95,13 @@ If for whatever reason you need to delete a subscription key that you generated 
     id: number,
     book_title: string,
     book_authors: string,
-    set_title: string,
-    set_description: string
+    title: string,
+    description: string
   }]
 }
 ```
 
-**Note:** `set_description` may be in Markdown format. It is recommended to parse the Markdown to HTML or plain text. Otherwise you may see formatting characters in the set's description.
+**Note:** `description` may be in Markdown format. It is recommended to parse the Markdown to HTML or plain text. Otherwise you may see formatting characters in the set's description.
 
 ### Advanced Searches
 
@@ -113,7 +113,7 @@ Advanced searches allow you to provide different search queries for specific ann
 - `lastId`: *number* (optional) - Same variable as previously explained.
 - `bookTitle`: *string* - A search query for finding annotation sets by their book's title.
 - `bookAuthors`: *string* - A search query for finding annotation sets by their book's authors.
-- `setTitle`: *string* - A search query for finding annotation sets by their title.
+- `title`: *string* - A search query for finding annotation sets by their title.
 
 ## Downloading Annotation Sets
 
