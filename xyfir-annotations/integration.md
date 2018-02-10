@@ -239,13 +239,15 @@ xyBooks only supports EPUB format ebooks, which are rendered to HTML. xyBooks th
 
 To partially solve this issue, xyBooks sorts searches based on length, so that the longest searches are ran first. This is done by looping through all of a set's items and then through all of an item's searches, comparing the length of the search object's `main` property, and building an array of the following object: `{ item, search }`. `item` is the id of the item and `search` is the index of the search within the item's searches array.
 
+xyBooks also ensures that specific (has `before` and/or `after`) searches are sorted before global searches. So the order is longest specific searches -> shortest specific searches -> longest global searches -> shortest global searches.
+
 Now, xyBooks can loop through this new array and load the appropriate item and search as needed.
 
 ### Step 4: Running Searches, Wrapping Matches
 
 At this point we have two important variables that will now be used: `markers` and `searches`.
 
-xyBooks starts by looping through the `searches` array and then loading the appropriate search from the specified item and search index. xyBooks first runs a search using Regular Expressions on the current chapter's HTML string using `search.main`. Remember to escape regex characters in `search.main` if `search.regex` is false/undefined!
+xyBooks starts by looping through the `searches` array and then loading the appropriate search from the specified item and search index. xyBooks first runs a search using Regular Expressions on the current chapter's HTML string using `search.main`. Remember to escape regex characters in `search.main` if `search.regex` is `false`/`undefined`!
 
 If there were any matches, xyBooks then checks for both `search.before` and `search.after`. If either of those variables are truthy, it loads the corresponding objects from the `matches` object.
 
@@ -259,7 +261,7 @@ xyBooks now updates the chapter's HTML and moves on to the next loop of the `sea
 
 A function is setup that accepts an `item` argument which is the id of an item within the active annotation set. When this function is called, it pulls the `annotations` object array for the item from the annotation set and opens a fullscreen overlay that allows the user to view the item's annotations.
 
-xyBooks must also account for an issue that is in a ways the opposite of the issue described in Step 3. Since the longest searches are matched first, it is possible that a highlight might be *within* another highlight. xyBooks does not differentiate in the styling of highlights that exist within other highlights, so the user does not know that they might be clicking on a highlight different than what they believe they're clicking on. To solve this issue, xyBooks passes the click *up* to any parent element that is a `span` element with the class `annotation`.
+xyBooks must also account for an issue that is in a ways the opposite of the issue described in Step 3. Since the longest searches are matched first, it is possible that a highlight might be *within* another highlight. xyBooks does not differentiate in the styling of highlights that exist within other highlights, so the user does not know that they might be clicking on a highlight different than what they believe they're clicking on. To solve this issue, xyBooks offers a popup menu that allows the user to select the item they want to view when they click/tap on a nested highlight. That popup is only present if a nested highlight is being selected.
 
 ### Step 6: Unwrapping Highlights
 
