@@ -11,7 +11,7 @@
   - **'Accept on Match' Filters**
     - If the incoming mail matches *all* 'Accept on Match' filters and *does not* match any 'Reject on Match' filters, the mail is accepted.
 - **Modifiers**
-  - Modifiers are used to manipulate incoming mail that has passed all filters before it is redirected to a main email. 
+  - Modifiers are used to manipulate incoming mail that has passed all filters before it is redirected to a main email.
 - **Regular Expressions**
   - Regular expressions (also known as regex) are used to increase the abilities of your filters and modifiers. See [RegexOne.com](https://regexone.com/) for tutorials and explanations. Do *not* enable regular expressions if you don't know how to use them.
 - **Messages**
@@ -112,7 +112,7 @@ Modifiers give you expanded control over the content of the mail that gets sent 
     - `{{proxy-address}}` - The address of your proxy email that received the message.
     - `{{sender-domain}}` - The domain of the sender's address.
     - `{{sender-address}}` - The email address of the sender.
-    - `{{header('Header-Name')}}` - Allows you to get the value of a specified email header. `Header-Name` should be replaced with the name of the header whose value you wish to insert. If the specified header is not present in an email, `{{header('Header-Name')}}` will remain as-is, without being replaced or removed in the modified email.
+    - `{{header('Header-Name', 'Default Value')}}` - Allows you to get the value of a specified email header. `Header-Name` should be replaced with the name of the header whose value you wish to insert. If the specified header is not present in an email, `Default Value` be put in its place. Providing a default value is required!
 
 ### Global Modifiers
 
