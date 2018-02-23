@@ -39,9 +39,9 @@ Your discount will be applied to these base prices.
 ## Generating Subscriptions
 
 `POST https://annotations.xyfir.com/api/affiliate/subscriptions`
+- `days`: *number* - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
 - `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
 - `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
-- `subscription`: *number* - A numerical identifier for the subscription length. **1** = 30 days, **2** = 365 days
 
 ### Response
 
