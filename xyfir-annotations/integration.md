@@ -76,7 +76,7 @@ If for whatever reason you need to delete a subscription key that you generated 
 ## Finding Annotation Sets
 
 `GET https://annotations.xyfir.com/api/sets`
-- `search`: *string* - A search query for finding matching annotation sets. This can be a set title, a book title, or book authors.
+- `search`: *string* - A search query for finding matching annotation sets.
 - `sort`: *string* - Sort method for matched annotation sets
   - `top` - Sort by top rated sets
   - `newest` - Sort by newest created sets
@@ -85,6 +85,7 @@ If for whatever reason you need to delete a subscription key that you generated 
   - `desc` - Descending sort (greatest to least)
   - `asc` - Ascending sort (least to greatest)
 - `lastId`: *number* (optional) - Used for pagination. The last id in the previously returned list.
+- `global`: *boolean* (optional) - If true, global annotation sets will be included in results.
 
 
 ### Response
@@ -93,10 +94,24 @@ If for whatever reason you need to delete a subscription key that you generated 
 {
   sets: [{
     id: number,
-    book_title: string,
-    book_authors: string,
     title: string,
-    description: string
+    description: string,
+    stars: number,
+    comments?: number,
+    created: number,
+    updated: number,
+    username: string,
+    media: {
+      books: [{
+        id: number,
+        sets: number,
+        username: string,
+        title: string,
+        authors: string,
+        isbn: number,
+        olCoverId: number
+      }]
+    }
   }]
 }
 ```
@@ -111,8 +126,9 @@ Advanced searches allow you to provide different search queries for specific ann
 - `sort`: *string* - Same variable and possible values as previously explained.
 - `direction`: *string* - Same variable and possible values as previously explained.
 - `lastId`: *number* (optional) - Same variable as previously explained.
-- `bookTitle`: *string* - A search query for finding annotation sets by their book's title.
-- `bookAuthors`: *string* - A search query for finding annotation sets by their book's authors.
+- `bookTitle`: *string* - A search query for finding annotation sets by their books' title.
+- `bookSeries`: *string* - A search query for finding annotation sets by their books' series.
+- `bookAuthors`: *string* - A search query for finding annotation sets by their books' authors.
 - `title`: *string* - A search query for finding annotation sets by their title.
 
 ## Downloading Annotation Sets

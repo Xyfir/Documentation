@@ -3,7 +3,7 @@
 ## Critical
 
 - The xyAnnotations annotation system is broken down into repositories called `annotation sets`.
-- An `annotation set` is a set of `items` that contain annotations for a specific book.
+- An `annotation set` is a set of `items` that contain annotations for linked books or other media.
 - A `set item` is further broken down into `searches` and `annotations`. A set item can have multiple searches and multiple annotations.
 - A `search` is a collection of `subsearches` (`main subsearch`, `before subsearch`, `after subsearch`) that together point to certain text within a book's content where the item's annotations will be applied.
 - An `annotation` is the specific annotation (document, link, image, etc) that will be applied to the book's content matched by the search.
@@ -35,7 +35,9 @@ Continue reading for more in-depth descriptions.
 
 # Annotation Sets
 
-An annotation set is a central container for set items, change proposals, and discussions for a single book. An annotation set typically has a 'goal' specified in its description that is set by its creator and moderators. This goal should dictate what type of annotations the set contains and should drive the annotation set's evolution in the future into a specific direction. Because a set can serve so many different purposes, it is important that a goal is set early and is explained clearly in the set's description so that potential contributors can know how to help. Ideas for annotation set goals are: explanations of things referenced in the book (people, places, etc); criticism; translations from one language to another; background information and insights; etc.
+An annotation set is a central container for set items, change proposals, and discussions. An annotation set typically has a 'goal' specified in its description that is set by its creator and moderators. This goal should dictate what type of annotations the set contains and should drive the annotation set's evolution in the future into a specific direction. Because a set can serve so many different purposes, it is important that a goal is set early and is explained clearly in the set's description so that potential contributors can know how to help. Ideas for annotation set goals are: explanations of things referenced in the book (people, places, etc); criticism; translations from one language to another; background information and insights; etc.
+
+**Note** While Annotation Sets are mainly used for books, technically they can annotate any type of media. For simplicity, these docs will mainly assume that an annotation set is used to annotate one or more books.
 
 ## Moderators
 
@@ -216,6 +218,7 @@ A reference will only be converted to a link if the character *before* the refer
 - **Sets**: `s/1234`
 - **Items**: `i/1234`
 - **Discussions**: `d/1234`
-- **Forum**: `f/1234`
+- **Forums**: `f/1234`
 - **Changes**: `ch/1234`
-- **Comment**: `co/1234`
+- **Comments**: `co/1234`
+- **Books**: `b/1234`
