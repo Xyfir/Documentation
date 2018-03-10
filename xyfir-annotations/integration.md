@@ -130,6 +130,7 @@ Advanced searches allow you to provide different search queries for specific ann
 - `bookSeries`: *string* - A search query for finding annotation sets by their books' series.
 - `bookAuthors`: *string* - A search query for finding annotation sets by their books' authors.
 - `title`: *string* - A search query for finding annotation sets by their title.
+- `description`: *string* - A search query for finding annotation sets by their description.
 
 ## Downloading Annotation Sets
 
