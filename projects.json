@@ -76,6 +76,11 @@
         "location": "xyfir-annotations/developers",
         "description": "xyAnnotations' API reference and explanations on how to utilize it."
       },
+      "supported-readers": {
+        "name": "Ebook Readers",
+        "location": "xyfir-annotations/ebook-readers",
+        "description": "A list of authorized affiliates whose ebook reader systems support xyAnnotations."
+      },
       "legal": {
         "privacy": {
           "name": "Privacy Policy",
