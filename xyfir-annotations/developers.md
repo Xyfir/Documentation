@@ -1,4 +1,6 @@
-Prior to reading through the integration documentation, you should first familiarize yourself with the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md).
+Prior to reading through the developer documentation, you should first familiarize yourself with the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md).
+
+Currently only a small portion of the xyAnnotations API is publicly documented. If you need access to other parts of the API please contact us with the what you need access to and why you wish to utilize it.
 
 # Subscriptions
 
@@ -14,7 +16,7 @@ Your reader application must allow a user to:
 
 To make things easier for users who have a xyAnnotations subscription key that they wish to bring to your application, you can request access to their subscription key.
 
-Simply send the user to the following url: `https://annotations.xyfir.com/#/account/subscription/request`. Appended to that url should be `?redirect=REDIRECT_URL` where `REDIRECT_URL` is a url that the user will be redirected to after they approve or deny your request. The redirect url should contain the string `SUBSCRIPTION_KEY`, which will be replaced either by the user's subscription key, or by the number `0` if they decline the request.
+Simply send the user to the following url: `https://annotations.xyfir.com/account/subscription/request`. Appended to that url should be `?redirect=REDIRECT_URL` where `REDIRECT_URL` is a url that the user will be redirected to after they approve or deny your request. The redirect url should contain the string `SUBSCRIPTION_KEY`, which will be replaced either by the user's subscription key, or by the number `0` if they decline the request.
 
 For example if the redirect url was `https://example.com/?subscriptionKey=SUBSCRIPTION_KEY`, the user would be redirected to `https://example.com/?subscriptionKey=0` if they decline the request and `https://example.com/?subscriptionKey=THEIR_SUBSCRIPTION_KEY_HERE` if they allow it.
 
@@ -40,8 +42,8 @@ Your discount will be applied to these base prices.
 
 `POST https://annotations.xyfir.com/api/affiliate/subscriptions`
 - `days`: *number* - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
-- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
-- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
+- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
+- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
 
 ### Response
 
@@ -52,7 +54,7 @@ If the request was successful and `error` is false, `key` will contain the gener
 
 ## Paying for Subscriptions
 
-You can generate subscriptions anytime you want for free. However, if you want those subscriptions to last, they must be paid for. You can pay off generated subscriptions at any time in your [affiliate panel](https://annotations.xyfir.com/#/affiliate). Subscriptions that you generate will be deleted after 8 days if they have not been paid for. It is recommended that you pay for your generated subscriptions within 7 days to prevent a user's subscription key from being deleted.
+You can generate subscriptions anytime you want for free. However, if you want those subscriptions to last, they must be paid for. You can pay off generated subscriptions at any time in your [affiliate panel](https://annotations.xyfir.com/affiliate). Subscriptions that you generate will be deleted after 8 days if they have not been paid for. It is recommended that you pay for your generated subscriptions within 7 days to prevent a user's subscription key from being deleted.
 
 Affiliates found exploiting our subscription system will be banned.
 
@@ -61,8 +63,8 @@ Affiliates found exploiting our subscription system will be banned.
 If for whatever reason you need to delete a subscription key that you generated you can do so here. If the key has not been paid for it will be removed and you will not owe money on it.
 
 `DELETE https://annotations.xyfir.com/api/affiliate/subscriptions`
-- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
-- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/#/affiliate)
+- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
+- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
 - `subscriptionKey`: *string* - The subscription key previously generated
 
 ### Response

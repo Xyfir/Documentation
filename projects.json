@@ -71,10 +71,10 @@
         "location": "xyfir-annotations/help",
         "description": "Learn more about xyAnnotations' terminology and how to utilize its features."
       },
-      "integration": {
-        "name": "Integration For Ebook Reader Developers",
-        "location": "xyfir-annotations/integration",
-        "description": "Learn how to integrate Xyfir Annotations into your ebook reader."
+      "developers": {
+        "name": "Documentation for Developers",
+        "location": "xyfir-annotations/developers",
+        "description": "xyAnnotations' API reference and explanations on how to utilize it."
       },
       "legal": {
         "privacy": {
