@@ -136,23 +136,24 @@ Advanced searches allow you to provide different search queries for specific ann
 
 ## Downloading Annotation Sets
 
-`GET https://annotations.xyfir.com/api/annotations`
+`GET https://annotations.xyfir.com/api/sets/:SET/download`
+- `:SET`: *number* - The id of the annotation set you wish to download
 - `subscriptionKey`: *string* - The user's subscription key
-- `sets`: *json-string* - The annotation sets you wish to download set items from. The value should be a JSON string of an object array: `[{ id: number, version?: number }]`. You may request up to **3** annotation sets per request.
+- `version`: *number* (optional) - The version of the set that you have saved locally.
 
 ### Set Versions
 
-In `sets` you can optionally provide the current version of the set that you have saved on the client. `version` is a unix timestamp (in milliseconds, not seconds!) of the set's last update. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
+You can optionally provide the current version of the set that you have saved on the client. `version` is a unix timestamp (in milliseconds) of the set's last update. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
 
 ### Response
 
-Be warned, this response can be quite large for certain annotation sets, especially if you are downloading multiple sets.
+Be warned, this response can be quite large for certain annotation sets.
 
 ```ts
 {
   error: boolean, message?: string,
-  [setId: number]?: {
-    version: number,
+  set?: {
+    id: number, version: number,
     items?: [{
       id: number, title: string,
       searches: [{
@@ -164,17 +165,13 @@ Be warned, this response can be quite large for certain annotation sets, especia
         // keep reading for more info
       }]
     }]
-  },
-  [setId: number]?: { },
-  [setId: number]?: { }
+  }
 }
 ```
 
 If `error` is true, a `message` property may also be present that will give you an idea of what went wrong. An error usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
 
-`[setId]` is a placeholder for the ids of the requested annotation sets. This means if you requested the annotations for sets with the ids of `5,10,15` then the response would be `{error: false, 5: { ... }, 10: { ... }, 15: { ... }}`.
-
-If an annotation set you requested has the same version as you already have saved locally, then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different, then you can count on `items` being there.
+If the annotation set that you requested has the same version as the one you already have saved locally, then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different, then you can count on `items` being there.
 
 ## Searches
 
