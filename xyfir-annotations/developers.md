@@ -48,9 +48,9 @@ Your discount will be applied to these base prices.
 ### Response
 
 ```ts
-{ error: boolean, key?: string }
+{ key?: string, message?: string }
 ```
-If the request was successful and `error` is false, `key` will contain the generated subscription key.
+If the request was successful (status `200`), `key` will contain the generated subscription key. If it failed, `message` may be present to explain what went wrong.
 
 ## Paying for Subscriptions
 
@@ -70,8 +70,10 @@ If for whatever reason you need to delete a subscription key that you generated 
 ### Response
 
 ```ts
-{ error: boolean }
+{ message?: string }
 ```
+
+If the request failed (non-`200` status), `message` will explain what wrong.
 
 # Annotations
 
@@ -151,7 +153,7 @@ Be warned, this response can be quite large for certain annotation sets.
 
 ```ts
 {
-  error: boolean, message?: string,
+  message?: string,
   set?: {
     id: number, version: number,
     items?: [{
@@ -169,7 +171,7 @@ Be warned, this response can be quite large for certain annotation sets.
 }
 ```
 
-If `error` is true, a `message` property may also be present that will give you an idea of what went wrong. An error usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
+If the request failed (non-`200` status), the `message` property may also be present that will give you an idea of what went wrong. An error usually means that the user's subscription key is invalid, expired, or they've hit their download limit for the day.
 
 If the annotation set that you requested has the same version as the one you already have saved locally, then the `items` property will not be present. We recommend checking the returned `version` against the locally installed version. If it's different, then you can count on `items` being there.
 
