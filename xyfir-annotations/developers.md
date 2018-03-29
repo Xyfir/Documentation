@@ -233,9 +233,11 @@ Annotation objects of different types have different properties and values:
 - (7) Map
   - **value**: *string* - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
 
-## Highlighting Annotations
+## Highlighting Annotations in Content
 
-xyAnnotations just provides the data, and from there it's up to you to determine how you want your application to highlight the annotations within a book. You have complete freedom to implement xyAnnotations into your reader however you wish, but an outline of how Xyfir Books implements the api may be helpful when developing your own implementation. The following section will give a rough outline of how xyBooks uses the annotations returned from the api. xyBooks' implementation is not the perfect or recommended way, especially since it only works with book formats that render to HTML. There are many flaws and limitations with its configuration, but for now it can serve as a pointer in the right direction.
+xyAnnotations just provides the data, and from there it's up to you to determine how you want your application to highlight the annotations within a book. You have complete freedom to implement xyAnnotations into your reader however you wish, but an outline of how Xyfir Books implements the API may be helpful when developing your own implementation. The following section will give a rough outline of how xyBooks uses the annotations returned from the api. xyBooks' implementation is not the perfect or recommended way, especially since it only works with book formats that render to HTML. There are many flaws and limitations with its configuration, but for now it can serve as a pointer in the right direction.
+
+Take a look at Xyfir's [annotate](https://github.com/Xyfir/annotate) packages for libraries and examples for inserting annotations from xyAnnotations into content of various formats. What is described below is xyBooks own implementation of the [@xyfir/annotate-epubjs](https://github.com/Xyfir/annotate/tree/master/epubjs) and [@xyfir/annotate-react](https://github.com/Xyfir/annotate/tree/master/react) packages.
 
 ### Step 1: Downloading Annotations
 
@@ -265,7 +267,7 @@ Now, xyBooks can loop through this new array and load the appropriate item and s
 
 At this point we have two important variables that will now be used: `markers` and `searches`.
 
-xyBooks starts by looping through the `searches` array and then loading the appropriate search from the specified item and search index. xyBooks first runs a search using Regular Expressions on the current chapter's HTML string using `search.main`. Remember to escape regex characters in `search.main` if `search.regex` is `false`/`undefined`!
+xyBooks starts by looping through the `searches` array and then loading the appropriate search from the specified item and search index. xyBooks first runs a search using Regular Expressions on the current chapter's HTML string using `search.main`. Remember to [escape regex characters](https://github.com/sindresorhus/escape-string-regexp) in `search.main` if `search.regex` is `false`/`undefined`!
 
 If there were any matches, xyBooks then checks for both `search.before` and `search.after`. If either of those variables are truthy, it loads the corresponding objects from the `matches` object.
 
@@ -279,8 +281,8 @@ xyBooks now updates the chapter's HTML and moves on to the next loop of the `sea
 
 A function is setup that accepts an `item` argument which is the id of an item within the active annotation set. When this function is called, it pulls the `annotations` object array for the item from the annotation set and opens a fullscreen overlay that allows the user to view the item's annotations.
 
-xyBooks must also account for an issue that is in a ways the opposite of the issue described in Step 3. Since the longest searches are matched first, it is possible that a highlight might be *within* another highlight. xyBooks does not differentiate in the styling of highlights that exist within other highlights, so the user does not know that they might be clicking on a highlight different than what they believe they're clicking on. To solve this issue, xyBooks offers a popup menu that allows the user to select the item they want to view when they click/tap on a nested highlight. That popup is only present if a nested highlight is being selected.
+xyBooks must also account for an issue that is in a ways the opposite of the issue described in Step 3. Since the longest searches are matched first, it is possible that a highlight might be *within* another highlight. xyBooks does not differentiate in the styling of highlights that exist within other highlights, so the user does not know that they might be clicking on a highlight different than what they believe they're clicking on. To solve this issue, xyBooks currently only shows the deepest clicked highlight, however in the future will offer a popup menu that allows the user to select the item they want to view when they click/tap on a nested highlight. That popup should only be present if a nested highlight is being selected.
 
-### Step 6: Unwrapping Highlights
+### Step 6: Removing Highlights
 
-Should the user want to disable annotation highlights or switch to another annotation set, the current highlights must be removed. There are many ways to do this but xyBooks does it by 'unwrapping' all `span` elements within the chapter's HTML that has a class of `annotation`. The content within a `span.annotation` element is pulled out and put into its parent element. Afterward the `span.annotation` element is removed from the DOM.
+Should the user want to disable annotation highlights or switch to another annotation set, the current highlights must first be removed. There are many ways to do this but xyBooks does it by simply replacing the chapter's HTML with the unmodified HTML that was saved *before* the annotations were inserted.
