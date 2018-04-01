@@ -1,4 +1,4 @@
-For more technical documentation regarding implementing xyAnnotations into your system, please see the [documentation for developers]((https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md).
+For more technical documentation regarding implementing xyAnnotations into your system, please see the [documentation for developers](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md).
 
 # xyAnnotations Affiliate System
 
