@@ -1,4 +1,4 @@
-Prior to reading through the developer documentation, you should first familiarize yourself with the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md).
+Prior to reading through the developer documentation, you should first familiarize yourself with the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md) as well as the [affiliate docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/affiliates.md).
 
 Currently only a small portion of the xyAnnotations API is publicly documented. If you need access to other parts of the API please contact us with the what you need access to and why you wish to utilize it.
 
@@ -7,10 +7,6 @@ Currently only a small portion of the xyAnnotations API is publicly documented. 
 A user must have access to a Xyfir Annotations subscription in order to load annotations into your reader. A reader can purchase subscriptions directly from Xyfir Annotations or through your ebook reader system. When a user purchases a subscription they are given a subscription key that will allow them to download annotation sets.
 
 A subscription not purchased directly through Xyfir Annotations **cannot** be extended. This means a user must wait until their subscription expires to purchase a new one (thus generating a new key) or create an entirely new subscription (thus abandoning their old key).
-
-Your reader application must allow a user to:
-- Purchase a subscription key through your service (you can charge any price you wish)
-- Enter in a subscription key that was purchased directly through Xyfir Annotations or another affiliate
 
 ## Requesting a Subscription Key
 
@@ -22,23 +18,7 @@ For example if the redirect url was `https://example.com/?subscriptionKey=SUBSCR
 
 Remember to encode the value for the redirect variable before sending the user to the request page.
 
-## Subscription Pricing
-
-As an added incentive for our affiliates we offer the ability for our affiliates to generate subscriptions at a discount. The discount you receive is based on how many subscriptions you have previously generated (and then paid for). Your subscription discount is 1% for every 100 generated subscriptions paid for with a minimum of 10% and a maximum of 25%.
-
-This discount allows you to either:
-- Mark up prices and make a profit
-- Sell subscriptions at a discount and break even
-- Sell subscriptions at a slight discount and still make a small profit
-
-### Base Prices
-
-Your discount will be applied to these base prices.
-- **One Month** (30 Days) - $1.50
-- **One Year** (365 Days) - $12.00
-
-
-## Generating Subscriptions
+## Generating Individual Subscription Keys (ISK's)
 
 `POST https://annotations.xyfir.com/api/affiliate/subscriptions`
 - `days`: *number* - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
@@ -52,11 +32,11 @@ Your discount will be applied to these base prices.
 ```
 If the request was successful (status `200`), `key` will contain the generated subscription key. If it failed, `message` may be present to explain what went wrong.
 
-## Paying for Subscriptions
+## Using a General Subscription Key (GSK)
 
-You can generate subscriptions anytime you want for free. However, if you want those subscriptions to last, they must be paid for. You can pay off generated subscriptions at any time in your [affiliate panel](https://annotations.xyfir.com/affiliate). Subscriptions that you generate will be deleted after 8 days if they have not been paid for. It is recommended that you pay for your generated subscriptions within 7 days to prevent a user's subscription key from being deleted.
+All affiliates receive a single GSK that can be retrieved in the affiliate panel alongside your API key. Your GSK works just the same as an ISK, except that they are not linked to individual users, and you are charged per annotation set downloaded.
 
-Affiliates found exploiting our subscription system will be banned.
+While ISK's can safely be given to users, you should keep your GSK private to prevent someone from using it and leaving you with the bill.
 
 ## Deleting Subscriptions
 
