@@ -18,7 +18,7 @@ A *subscription key* gives the key holder the ability to download annotations fr
 
 Each affiliate account receives a single GSK that gives your entire account the ability to download annotations at any time without the need for having any users on your platform who've purchased subscription keys.
 
-GSK's are charged *per annotation set download*, at a current rate of **$0.01 USD** per set download. This means if your application downloads 500 sets via your GSK, you will owe xyAnnotations $5.00. GSK's must be paid off manually through the xyAnnotations affiliate panel at least every 30 days if the key has accrued costs of at least $5.00. Not paying off your GSK will prevent it from being able to download sets.
+GSK's are charged *per annotation set download*, at a current rate of **$0.012 USD** per set download. This means if your application downloads 500 sets via your GSK, you will owe xyAnnotations $6.00 before factoring in your discount. GSK's must be paid off manually through the xyAnnotations affiliate panel at least every 30 days if the key has accrued costs of at least $5.00. Not paying off your GSK will prevent it from being able to download sets.
 
 ### Individual Subscription Keys (ISK)
 
