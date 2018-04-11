@@ -1,7 +1,5 @@
 Xyfir Accounts takes care of most of the problems encountered when creating an account system. We will take care of the registration, logins, security, forgotten passwords, and much more. You'll still have a small part in login and registration, but for the most part integrating Xyfir Accounts with your service requires very little work.
 
-Xyfir Accounts is also currently the only way to retrieve a user's Xyfir Ads profile ID. Meaning if you use Xyfir Ads on your service, integrating Xyfir Accounts will allow you to better personalize advertisements for your users.
-
 # Creating a Service
 
 The first step in integrating Xyfir Accounts with your service is by adding your service to our database. You can start this process in the [Developer Dashboard](https://accounts.xyfir.com/#/dashboard/developer). Navigate to the *Create Service* section, fill out the form, and once you've created your service we can begin adding Xyfir Accounts' functionality to your service. Be sure to grab your service's identifier number after you create your service. Your service's id is found next to your service's name in parentheses when viewing your service's info.
@@ -57,10 +55,6 @@ Once you've received the `xid` and `auth` token of the user logging in, you must
   // Explains error when error is true
   message: String,
 
-  // The user's Xyfir Ads profile identifier
-  // Can be ignored if your service does not use xyAds
-  xadid: String,
-
   // Explained in depth later in documentation
   // Can be safely ignored if service does not need access tokens
   accessToken: String,
@@ -75,18 +69,14 @@ Once you've received the `xid` and `auth` token of the user logging in, you must
 
   // 1 - Male, 2 - Female, 3 - Other
   gender: Number,
-  
+
   // Country and region short codes as found in the following repository:
   // https://github.com/benkeen/country-region-data
   // https://www.npmjs.com/package/country-region-data
   country: String, region: String,
-  
+
   // In the following format: YYYY-MM-DD
-  birthdate: String,
-  
-  // Base64 encoded data url of image.
-  // Max size 2mb; no resolution limits or requirements
-  picture: String
+  birthdate: String
 }
 ```
 
