@@ -2,6 +2,7 @@
   "ptorx": {
     "name": "Ptorx",
     "link": "https://ptorx.com/",
+    "icon": "https://ptorx.com/static/icons/android-chrome-256x256.png",
     "description": "Proxy emails for an extra layer of security, privacy, and control for your emails.",
     "documentation": {
       "help": {
@@ -24,6 +25,7 @@
   "xyfir-accounts": {
     "name": "Xyfir Accounts",
     "link": "https://accounts.xyfir.com/",
+    "icon": "https://www.xyfir.com/static/icons/android-chrome-256x256.png",
     "description": "Account management system for the Xyfir Network.",
     "documentation": {
       "integration": {
@@ -46,6 +48,7 @@
   "xyfir-ads": {
     "name": "Xyfir Ads",
     "link": "https://github.com/Xyfir/Ads",
+    "icon": "https://www.xyfir.com/static/icons/android-chrome-256x256.png",
     "description": "Advertisement system for the entire Xyfir Network.",
     "documentation": {
       "info": {
@@ -64,6 +67,7 @@
   "xyfir-annotations": {
     "name": "Xyfir Annotations",
     "link": "https://annotations.xyfir.com/",
+    "icon": "https://annotations.xyfir.com/static/icons/android-chrome-256x256.png",
     "description": "A single platform for storing, finding, and managing interactive annotations for ebooks.",
     "documentation": {
       "help": {
@@ -96,6 +100,7 @@
   "xyfir-books": {
     "name": "Xyfir Books",
     "link": "https://books.xyfir.com/",
+    "icon": "https://books.xyfir.com/static/icons/android-chrome-256x256.png",
     "description": "An all-in-one cloud-synced ebook reader, storage, and management system.",
     "documentation": {
       "help": {
@@ -118,6 +123,7 @@
   "xyfir-buttons": {
     "name": "Xyfir Buttons",
     "link": "https://chrome.google.com/webstore/detail/xyfir-buttons/pkinkjdmfgcfmdbdpmfbebhiedohnpnd",
+    "icon": "https://www.xyfir.com/static/icons/android-chrome-256x256.png",
     "description": "Control the web with floating buttons.",
     "documentation": {
       "legal": {
