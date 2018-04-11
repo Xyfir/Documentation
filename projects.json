@@ -123,7 +123,7 @@
   "xyfir-buttons": {
     "name": "Xyfir Buttons",
     "link": "https://chrome.google.com/webstore/detail/xyfir-buttons/pkinkjdmfgcfmdbdpmfbebhiedohnpnd",
-    "icon": "https://www.xyfir.com/static/icons/android-chrome-256x256.png",
+    "icon": "https://www.xyfir.com/static/icons/xyfir-buttons/android-chrome-256x256.png",
     "description": "Control the web with floating buttons.",
     "documentation": {
       "legal": {
