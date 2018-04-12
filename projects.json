@@ -67,7 +67,7 @@
   "xyfir-annotations": {
     "name": "Xyfir Annotations",
     "link": "https://annotations.xyfir.com/",
-    "icon": "https://annotations.xyfir.com/static/icons/android-chrome-256x256.png",
+    "icon": "https://www.xyfir.com/static/icons/xyfir-annotations/android-chrome-256x256.png",
     "description": "A single platform for storing, finding, and managing interactive annotations for ebooks.",
     "documentation": {
       "help": {
