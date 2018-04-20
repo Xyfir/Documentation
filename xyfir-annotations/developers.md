@@ -21,15 +21,17 @@ Remember to encode the value for the redirect variable before sending the user t
 ## Generating Individual Subscription Keys (ISK's)
 
 `POST https://annotations.xyfir.com/api/affiliate/subscriptions`
-- `days`: *number* - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
-- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
-- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
+
+* `days`: _number_ - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
+* `affiliateId`: _number_ - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
+* `affiliateKey`: _string_ - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
 
 ### Response
 
 ```ts
 { key?: string, message?: string }
 ```
+
 If the request was successful (status `200`), `key` will contain the generated subscription key. If it failed, `message` may be present to explain what went wrong.
 
 ## Using a General Subscription Key (GSK)
@@ -43,9 +45,10 @@ While ISK's can safely be given to users, you should keep your GSK private to pr
 If for whatever reason you need to delete a subscription key that you generated you can do so here. If the key has not been paid for it will be removed and you will not owe money on it.
 
 `DELETE https://annotations.xyfir.com/api/affiliate/subscriptions`
-- `affiliateId`: *number* - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
-- `affiliateKey`: *string* - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
-- `subscriptionKey`: *string* - The subscription key previously generated
+
+* `affiliateId`: _number_ - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
+* `affiliateKey`: _string_ - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
+* `subscriptionKey`: _string_ - The subscription key previously generated
 
 ### Response
 
@@ -60,43 +63,47 @@ If the request failed (non-`200` status), `message` will explain what wrong.
 ## Finding Annotation Sets
 
 `GET https://annotations.xyfir.com/api/sets`
-- `search`: *string* - A search query for finding matching annotation sets.
-- `sort`: *string* - Sort method for matched annotation sets
-  - `top` - Sort by top rated sets
-  - `newest` - Sort by newest created sets
-  - `updated` - Sort by recently updated sets
-- `direction`: *string* - The direction to sort the sets
-  - `desc` - Descending sort (greatest to least)
-  - `asc` - Ascending sort (least to greatest)
-- `lastId`: *number* (optional) - Used for pagination. The last id in the previously returned list.
-- `global`: *boolean* (optional) - If true, global annotation sets will be included in results.
 
+* `search`: _string_ - A search query for finding matching annotation sets.
+* `sort`: _string_ - Sort method for matched annotation sets
+  * `top` - Sort by top rated sets
+  * `newest` - Sort by newest created sets
+  * `updated` - Sort by recently updated sets
+* `direction`: _string_ - The direction to sort the sets
+  * `desc` - Descending sort (greatest to least)
+  * `asc` - Ascending sort (least to greatest)
+* `lastId`: _number_ (optional) - Used for pagination. The last id in the previously returned list.
+* `global`: _boolean_ (optional) - If true, global annotation sets will be included in results.
 
 ### Response
 
 ```ts
 {
-  sets: [{
-    id: number,
-    title: string,
-    description: string,
-    stars: number,
-    comments?: number,
-    created: number,
-    updated: number,
-    username: string,
-    media: {
-      books: [{
-        id: number,
-        sets: number,
-        username: string,
-        title: string,
-        authors: string,
-        isbn: number,
-        olCoverId: number
-      }]
+  sets: [
+    {
+      id: number,
+      title: string,
+      description: string,
+      stars: number,
+      comments: number,
+      created: number,
+      updated: number,
+      username: string,
+      media: {
+        books: [
+          {
+            id: number,
+            sets: number,
+            username: string,
+            title: string,
+            authors: string,
+            isbn: number,
+            olCoverId: number
+          }
+        ]
+      }
     }
-  }]
+  ];
 }
 ```
 
@@ -107,47 +114,69 @@ If the request failed (non-`200` status), `message` will explain what wrong.
 Advanced searches allow you to provide different search queries for specific annotation set fields. All variables must be present in the query string, even if they have no value. Only sets that match **all** provided queries will be returned.
 
 `GET https://annotations.xyfir.com/api/sets`
-- `sort`: *string* - Same variable and possible values as previously explained.
-- `direction`: *string* - Same variable and possible values as previously explained.
-- `lastId`: *number* (optional) - Same variable as previously explained.
-- `bookTitle`: *string* - A search query for finding annotation sets by their books' title.
-- `bookSeries`: *string* - A search query for finding annotation sets by their books' series.
-- `bookAuthors`: *string* - A search query for finding annotation sets by their books' authors.
-- `title`: *string* - A search query for finding annotation sets by their title.
-- `description`: *string* - A search query for finding annotation sets by their description.
+
+* `sort`: _string_ - Same variable and possible values as previously explained.
+* `direction`: _string_ - Same variable and possible values as previously explained.
+* `lastId`: _number_ (optional) - Same variable as previously explained.
+* `bookTitle`: _string_ - A search query for finding annotation sets by their books' title.
+* `bookSeries`: _string_ - A search query for finding annotation sets by their books' series.
+* `bookAuthors`: _string_ - A search query for finding annotation sets by their books' authors.
+* `title`: _string_ - A search query for finding annotation sets by their title.
+* `description`: _string_ - A search query for finding annotation sets by their description.
 
 ## Downloading Annotation Sets
 
 `GET https://annotations.xyfir.com/api/sets/:SET/download`
-- `:SET`: *number* - The id of the annotation set you wish to download
-- `subscriptionKey`: *string* - The user's subscription key
-- `version`: *number* (optional) - The version of the set that you have saved locally.
+
+* `:SET`: _number_ - The id of the annotation set you wish to download
+* `subscriptionKey`: _string_ - The user's subscription key
+* `version`: _number_ (optional) - The version of the set that you have saved locally.
+
+### Minification
+
+There are also minification options available to decrease the size of, and number of variables within the response. To enable them, you can set their value to anything, however we recommend `true` or `1`. Leave their value blank or don't include them in the request if you do not want to enable any of the minification options.
+
+* `minify[numberedBooleans]`: _boolean_ - Converts boolean values (a search's `regex`) from `true` and `false` to `1` and `0`.
+* `minify[removeFalsy]`: _boolean_ - Removes `regex`, `before`, and `after` values from searches if they're [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy).
+* `minify[searchStrings]`: _boolean_ - Convert search objects where `regex`, `before`, and `after` are falsy into strings containing just the `main` subsearch. For example `[{ main: 'Example', regex: false, before: '', after: '' }, ...]` becomes `['Example', ...]`.
+* `minify[inferTitle]`: _boolean_ - `title` is removed from the item object if it can be infered from the first search element's `main` subsearch. This means if `title` is missing you should retrieve it from `searches[0].main` or `searches[0]` if it's a string. The `title` prop will still be present if the item has a title different than the first search element's `main` subsearch.
+
+Enabling all of the minify options can have a _huge_ impact on response size and times. They not only save bandwidth, but also decrease parse times, memory usage, and storage space in the likely event that you save these sets locally. It is _highly_ recommended that you build your application to use as many of these minification options as possible.
 
 ### Set Versions
 
-You can optionally provide the current version of the set that you have saved on the client. `version` is a unix timestamp (in milliseconds) of the set's last update. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you *do* provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
+You can optionally provide the current version of the set that you have saved on the client. `version` is a unix timestamp (in milliseconds) of the set's last update. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you _do_ provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
 
 ### Response
 
-Be warned, this response can be quite large for certain annotation sets.
+Be warned, this response can be quite large for certain annotation sets, especially without minification.
 
-```ts
+Note that this is the original, unminified response. The schema may differ based on minification options.
+
+```js
 {
-  message?: string,
   set?: {
-    id: number, version: number,
+    id: Number,
+    version: Number,
     items?: [{
-      id: number, title: string,
+      id: Number,
+      title: String,
       searches: [{
-        main: string, regex?: boolean, before?: string, after?: string
+        main: String,
+        regex?: Boolean,
+        before?: String,
+        after?: String
       }],
       annotations: [{
-        type: number, name: string, value: string
-        // other properties may be present based on `type`
-        // keep reading for more info
+        type: Number,
+        name: String,
+        value: String
+        // Other properties may be present based on `type`
+        // Explained in detail later
       }]
     }]
-  }
+  },
+  message?: String
 }
 ```
 
@@ -170,17 +199,17 @@ Every set item contains one or more searches that are used to find content in a 
 }
 ```
 
-- `main`: *string*
-  - This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
-- `regex`: *boolean* (optional)
-  - When true, `main`, `before`, and `after` are regular expressions.
-  - This property has three possible values: `undefined` (missing, treat as false), `false`, and `true`.
-- `before`: *string* (optional)
-  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come *before* the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
-  - This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
-- `after`: *string* (optional)
-  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come *after* the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
-  - This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
+* `main`: _string_
+  * This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
+* `regex`: _boolean_ (optional)
+  * When true, `main`, `before`, and `after` are regular expressions.
+  * This property has three possible values: `undefined` (missing, treat as false), `false`, and `true`.
+* `before`: _string_ (optional)
+  * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come _before_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
+  * This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
+* `after`: _string_ (optional)
+  * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come _after_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
+  * This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
 
 ## Annotations
 
@@ -192,26 +221,26 @@ See the various annotation types explained in the [user help docs](https://githu
 
 All annotation objects contain the following properties:
 
-- **type**: *number* - A number between 1 and 7.
-- **name**: *string* - A short name/title/description that explains the annotation.
+* **type**: _number_ - A number between 1 and 7.
+* **name**: _string_ - A short name/title/description that explains the annotation.
 
 Annotation objects of different types have different properties and values:
 
-- (1) Document
-  - **value**: *string* - A [Markdown](https://en.wikipedia.org/wiki/Markdown) document string.
-- (2) Link
-  - **value**: *string* - A link that starts with 'http://' or 'https://'.
-- (3) Web Search
-  - **value**: *string* - A search query to be used in a search engine like Google or Bing.
-  - **context**: *string* (optional) - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
-- (4) Image
-  - **value**: *string|string[]* - Either a single image link or an album of images if an array. Each link will be a direct link to a JPG, JPEG, PNG, or GIF image.
-- (5) Video
-  - **value**: *string|string[]* - Either a single video link or a playlist of videos if an array. Each link will be either a direct video link (MP4 or WEBM) or an embed link for YouTube or Vimeo.
-- (6) Audio
-  - **value**: *string|string[]* - Either a single audio file link or a playlist of audio files if an array. Each link *should* be a direct link to an audio file.
-- (7) Map
-  - **value**: *string* - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
+* (1) Document
+  * **value**: _string_ - A [Markdown](https://en.wikipedia.org/wiki/Markdown) document string.
+* (2) Link
+  * **value**: _string_ - A link that starts with 'http://' or 'https://'.
+* (3) Web Search
+  * **value**: _string_ - A search query to be used in a search engine like Google or Bing.
+  * **context**: _string_ (optional) - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. If not provided, the reader application may optionally generate one using the book's metadata. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
+* (4) Image
+  * **value**: _string|string[]_ - Either a single image link or an album of images if an array. Each link will be a direct link to a JPG, JPEG, PNG, or GIF image.
+* (5) Video
+  * **value**: _string|string[]_ - Either a single video link or a playlist of videos if an array. Each link will be either a direct video link (MP4 or WEBM) or an embed link for YouTube or Vimeo.
+* (6) Audio
+  * **value**: _string|string[]_ - Either a single audio file link or a playlist of audio files if an array. Each link _should_ be a direct link to an audio file.
+* (7) Map
+  * **value**: _string_ - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
 
 ## Highlighting Annotations in Content
 
@@ -251,7 +280,7 @@ xyBooks starts by looping through the `searches` array and then loading the appr
 
 If there were any matches, xyBooks then checks for both `search.before` and `search.after`. If either of those variables are truthy, it loads the corresponding objects from the `matches` object.
 
-Now it loops through the matches returned from the regex search and gets their start and end indexes within the current chapter's HTML string. It throws out any matches that come *before* `search.before` or *after* `search.after` if the search is not global.
+Now it loops through the matches returned from the regex search and gets their start and end indexes within the current chapter's HTML string. It throws out any matches that come _before_ `search.before` or _after_ `search.after` if the search is not global.
 
 The matches that are left are now wrapped in a `span` element with a class name of `annotation` and an `onclick` attribute that calls a function that is passed the annotation set item's id.
 
@@ -261,8 +290,8 @@ xyBooks now updates the chapter's HTML and moves on to the next loop of the `sea
 
 A function is setup that accepts an `item` argument which is the id of an item within the active annotation set. When this function is called, it pulls the `annotations` object array for the item from the annotation set and opens a fullscreen overlay that allows the user to view the item's annotations.
 
-xyBooks must also account for an issue that is in a ways the opposite of the issue described in Step 3. Since the longest searches are matched first, it is possible that a highlight might be *within* another highlight. xyBooks does not differentiate in the styling of highlights that exist within other highlights, so the user does not know that they might be clicking on a highlight different than what they believe they're clicking on. To solve this issue, xyBooks currently only shows the deepest clicked highlight, however in the future will offer a popup menu that allows the user to select the item they want to view when they click/tap on a nested highlight. That popup should only be present if a nested highlight is being selected.
+xyBooks must also account for an issue that is in a ways the opposite of the issue described in Step 3. Since the longest searches are matched first, it is possible that a highlight might be _within_ another highlight. xyBooks does not differentiate in the styling of highlights that exist within other highlights, so the user does not know that they might be clicking on a highlight different than what they believe they're clicking on. To solve this issue, xyBooks currently only shows the deepest clicked highlight, however in the future will offer a popup menu that allows the user to select the item they want to view when they click/tap on a nested highlight. That popup should only be present if a nested highlight is being selected.
 
 ### Step 6: Removing Highlights
 
-Should the user want to disable annotation highlights or switch to another annotation set, the current highlights must first be removed. There are many ways to do this but xyBooks does it by simply replacing the chapter's HTML with the unmodified HTML that was saved *before* the annotations were inserted.
+Should the user want to disable annotation highlights or switch to another annotation set, the current highlights must first be removed. There are many ways to do this but xyBooks does it by simply replacing the chapter's HTML with the unmodified HTML that was saved _before_ the annotations were inserted.
