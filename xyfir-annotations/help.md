@@ -176,6 +176,10 @@ The reader also doubles as an editor for the set's items. You can add, edit, and
 
 If you are the creator of, or a moderator for the annotation set, any additions, removals, or modifications will be made directly to the annotation set immediately. If you are only a normal user, any edits you make will create a change proposal. The annotation set will remain unchanged until the set creator or a moderator accepts your change.
 
+## Public & Unlisted
+
+Marking your annotation set as `Public` means that other users will be able to find it through searches and other means, without needing the id of the annotation set to access it directly. If your annotation is `Unlisted`, it cannot easily be found, however anyone who knows its id can still access it. Not only can you view it directly, but you can also search for it within xyAnnotations or applications that support xyAnnotations using the following syntax: `s/1234`, where `1234` is the id of your set.
+
 # Formatting Descriptions and Posts
 
 Descriptions and posts on xyAnnotations support [Markdown](https://daringfireball.net/projects/markdown/syntax) which allows you to format your text.
