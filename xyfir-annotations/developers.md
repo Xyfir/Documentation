@@ -246,7 +246,11 @@ Annotation objects of different types have different properties and values:
 
 xyAnnotations just provides the data, and from there it's up to you to determine how you want your application to highlight the annotations within a book. You have complete freedom to implement xyAnnotations into your reader however you wish, but an outline of how Xyfir Books implements the API may be helpful when developing your own implementation. The following section will give a rough outline of how xyBooks uses the annotations returned from the api. xyBooks' implementation is not the perfect or recommended way, especially since it only works with book formats that render to HTML. There are many flaws and limitations with its configuration, but for now it can serve as a pointer in the right direction.
 
-Take a look at Xyfir's [annotate](https://github.com/Xyfir/annotate) packages for libraries and examples for inserting annotations from xyAnnotations into content of various formats. What is described below is xyBooks own implementation of the [@xyfir/annotate-epubjs](https://github.com/Xyfir/annotate/tree/master/epubjs) and [@xyfir/annotate-react](https://github.com/Xyfir/annotate/tree/master/react) packages.
+### Resources
+
+Take a look at Xyfir's [annotate](https://github.com/Xyfir/annotate) packages for libraries and examples for inserting and viewing annotations from xyAnnotations within content of various formats. What is described below is xyBooks' own implementation of the [@xyfir/annotate-epubjs](https://github.com/Xyfir/annotate/tree/master/epubjs) and [@xyfir/annotate-react](https://github.com/Xyfir/annotate/tree/master/react) packages that also explains some of the lower-level techniques used by the `@xyfir/annotate-*` packages themselves.
+
+Should you wish to save yourself some work, you can also utilize the built in annotation viewer within xyAnnotations by opening the following link whenever a user clicks a highlight within a book in your reader: `https://annotations.xyfir.com/sets/:set/items/:item?view=true`. You can send the user to this link within their preferred browser, display it within an in-app browser, or even show it in an iframe. `:set` is the id of the annotation set, and `:item` is the id of the item to view.
 
 ### Step 1: Downloading Annotations
 
