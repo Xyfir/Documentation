@@ -8,7 +8,7 @@ For every **one** account you create and pay off, your discount will increase by
 
 # Paying Off Created Accounts
 
-Using the [Affiliate Panel](https://ptorx.com/affiliate), you can pay off your created accounts any time you wish. You have **31** days to pay off your owed accounts. Once **32** days of no payment has been hit, _all_ of your unpaid accounts will be deleted from Ptorx, regardless of their creation date.
+Using the [Affiliate Panel](https://ptorx.com/affiliate), you can pay off your created accounts any time you wish. You have **31** days to pay off your owed accounts. Once **32** days of no payment has been hit, any unpaid accounts that are at least 32 days old will be deleted from Ptorx.
 
 It is recommended that you pay off your created accounts once or twice a month to be safe and not risk losing any accounts.
 
