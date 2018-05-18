@@ -2,6 +2,14 @@ Prior to reading through the developer documentation, you should first familiari
 
 Currently only a small portion of the xyAnnotations API is publicly documented. If you need access to other parts of the API please contact us with the what you need access to and why you wish to utilize it.
 
+# API Authentication
+
+In order to make requests to the xyAnnotations API, you will need to authenticate with one of three different keys: `access`, `affiliate`, or `subscription`. Different keys are needed for different requests. Access keys are used for general access to the API and will be mostly ignored in this documentation for now. Affiliate keys are used for actions that only an affiliate can perform. Subscription keys are used solely for downloading annotation sets and their items.
+
+xyAnnotations uses basic HTTP authentication, where the 'user' is the type of key, and the 'password' is the key itself. For example, a request to get your account's notifications using an access key would look like: `GET https://access:atAf5RtW...@annotations.xyfir.com/api/notifications`.
+
+You must provide the appropriate 'user' and 'pass' with every request.
+
 # Subscriptions
 
 A user must have access to a Xyfir Annotations subscription in order to load annotations into your reader. A reader can purchase subscriptions directly from Xyfir Annotations or through your ebook reader system. When a user purchases a subscription they are given a subscription key that will allow them to download annotation sets.
@@ -20,11 +28,10 @@ Remember to encode the value for the redirect variable before sending the user t
 
 ## Generating Individual Subscription Keys (ISK's)
 
-`POST https://annotations.xyfir.com/api/affiliate/subscriptions`
+`POST` to `https://annotations.xyfir.com/api/affiliate/subscriptions`
 
 * `days`: _number_ - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
-* `affiliateId`: _number_ - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
-* `affiliateKey`: _string_ - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
+* `affiliate` authentication required.
 
 ### Response
 
@@ -44,11 +51,10 @@ While ISK's can safely be given to users, you should keep your GSK private to pr
 
 If for whatever reason you need to delete a subscription key that you generated you can do so here. If the key has not been paid for it will be removed and you will not owe money on it.
 
-`DELETE https://annotations.xyfir.com/api/affiliate/subscriptions`
+`DELETE` to `https://annotations.xyfir.com/api/affiliate/subscriptions`
 
-* `affiliateId`: _number_ - Your affiliate ID found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
-* `affiliateKey`: _string_ - Your service's api key, generated and found in your [affiliate panel](https://annotations.xyfir.com/affiliate)
 * `subscriptionKey`: _string_ - The subscription key previously generated
+* `affiliate` authentication required.
 
 ### Response
 
@@ -62,7 +68,7 @@ If the request failed (non-`200` status), `message` will explain what wrong.
 
 ## Finding Annotation Sets
 
-`GET https://annotations.xyfir.com/api/sets`
+`GET` to `https://annotations.xyfir.com/api/sets`
 
 * `search`: _string_ - A search query for finding matching annotation sets.
 * `sort`: _string_ - Sort method for matched annotation sets
@@ -77,28 +83,28 @@ If the request failed (non-`200` status), `message` will explain what wrong.
 
 ### Response
 
-```ts
+```js
 {
   sets: [
     {
-      id: number,
-      title: string,
-      description: string,
-      stars: number,
-      comments: number,
-      created: number,
-      updated: number,
-      username: string,
+      id: Number,
+      title: String,
+      description: String,
+      stars: Number,
+      comments: Number,
+      created: Number,
+      updated: Number,
+      username: String,
       media: {
         books: [
           {
-            id: number,
-            sets: number,
-            username: string,
-            title: string,
-            authors: string,
-            isbn: number,
-            olCoverId: number
+            id: Number,
+            sets: Number,
+            username: String,
+            title: String,
+            authors: String,
+            isbn: Number,
+            olCoverId: Number
           }
         ]
       }
@@ -113,7 +119,7 @@ If the request failed (non-`200` status), `message` will explain what wrong.
 
 Advanced searches allow you to provide different search queries for specific annotation set fields. All variables must be present in the query string, even if they have no value. Only sets that match **all** provided queries will be returned.
 
-`GET https://annotations.xyfir.com/api/sets`
+`GET` to `https://annotations.xyfir.com/api/sets`
 
 * `sort`: _string_ - Same variable and possible values as previously explained.
 * `direction`: _string_ - Same variable and possible values as previously explained.
@@ -126,22 +132,23 @@ Advanced searches allow you to provide different search queries for specific ann
 
 ## Downloading Annotation Sets
 
-`GET https://annotations.xyfir.com/api/sets/:SET/download`
+`GET` to `https://annotations.xyfir.com/api/sets/:SET/download`
 
 * `:SET`: _number_ - The id of the annotation set you wish to download
-* `subscriptionKey`: _string_ - The user's subscription key
 * `version`: _number_ (optional) - The version of the set that you have saved locally.
+* `minify`: _boolean_ (optional) - Minify the response. Set to `1` or `true` to enable.
+* `subscription` authentication required.
 
 ### Minification
 
-There are also minification options available to decrease the size of, and number of variables within the response. To enable them, you can set their value to anything, however we recommend `true` or `1`. Leave their value blank or don't include them in the request if you do not want to enable any of the minification options.
+You can also optionally enable minification to decrease the size of, and number of variables within the response. Enabling `minify` provides the following transformations:
 
-* `minify[numberedBooleans]`: _boolean_ - Converts boolean values (a search's `regex`) from `true` and `false` to `1` and `0`.
-* `minify[removeFalsy]`: _boolean_ - Removes `regex`, `before`, and `after` values from searches if they're [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy).
-* `minify[searchStrings]`: _boolean_ - Convert search objects where `regex`, `before`, and `after` are falsy into strings containing just the `main` subsearch. For example `[{ main: 'Example', regex: false, before: '', after: '' }, ...]` becomes `['Example', ...]`.
-* `minify[inferTitle]`: _boolean_ - `title` is removed from the item object if it can be infered from the first search element's `main` subsearch. This means if `title` is missing you should retrieve it from `searches[0].main` or `searches[0]` if it's a string. The `title` prop will still be present if the item has a title different than the first search element's `main` subsearch.
+* Converts boolean values (a search's `regex`) from `true` and `false` to `1` and `0`.
+* Removes `regex`, `before`, and `after` values from searches if they're [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy).
+* Convert search objects where `regex`, `before`, and `after` are falsy into strings containing just the `main` subsearch. For example `[{ main: 'Example', regex: false, before: '', after: '' }, ...]` becomes `['Example', ...]`.
+* `title` is removed from the item object if it can be infered from the first search element's `main` subsearch. This means if `title` is missing you should retrieve it from `searches[0].main` or `searches[0]` if it's a string. The `title` prop will still be present if the item has a title different than the first search element's `main` subsearch.
 
-Enabling all of the minify options can have a _huge_ impact on response size and times. They not only save bandwidth, but also decrease parse times, memory usage, and storage space in the likely event that you save these sets locally. It is _highly_ recommended that you build your application to use as many of these minification options as possible.
+Enabling `minify` can have a _huge_ impact on response size and times. They not only save bandwidth, but also decrease parse times, memory usage, and storage space in the likely event that you save these sets locally. It is _highly_ recommended that you build your application to support minified annotation set items.
 
 ### Set Versions
 
@@ -151,7 +158,7 @@ You can optionally provide the current version of the set that you have saved on
 
 Be warned, this response can be quite large for certain annotation sets, especially without minification.
 
-Note that this is the original, unminified response. The schema may differ based on minification options.
+**This is the original, unminified response:**
 
 ```js
 {
@@ -163,16 +170,45 @@ Note that this is the original, unminified response. The schema may differ based
       title: String,
       searches: [{
         main: String,
-        regex?: Boolean,
-        before?: String,
-        after?: String
+        regex: Boolean,
+        before: String,
+        after: String
       }],
       annotations: [{
         type: Number,
         name: String,
         value: String
         // Other properties may be present based on `type`
-        // Explained in detail later
+      }]
+    }]
+  },
+  message?: String
+}
+```
+
+**This is the minified response:**
+
+```js
+{
+  set?: {
+    id: Number,
+    version: Number,
+    items?: [{
+      id: Number,
+      title?: String,
+      searches: [
+        String | {
+          main: String,
+          regex?: Number,
+          before?: String,
+          after?: String
+        }
+      ],
+      annotations: [{
+        type: Number,
+        name: String,
+        value: String
+        // Other properties may be present based on `type`
       }]
     }]
   },
@@ -190,26 +226,36 @@ Every set item contains one or more searches that are used to find content in a 
 
 ### Object
 
-```ts
+**Normal:**
+
+```js
 {
-  main: string,
-  after?: string,
-  regex?: boolean,
-  before?: string
+  main: String,
+  after: String,
+  regex: Boolean,
+  before: String
 }
 ```
 
 * `main`: _string_
   * This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
-* `regex`: _boolean_ (optional)
+* `regex`: _boolean_
   * When true, `main`, `before`, and `after` are regular expressions.
-  * This property has three possible values: `undefined` (missing, treat as false), `false`, and `true`.
-* `before`: _string_ (optional)
+* `before`: _string_
   * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come _before_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
-  * This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
-* `after`: _string_ (optional)
+* `after`: _string_
   * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come _after_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
-  * This property has three possible values: `undefined` (ignore), an empty string (ignore), and a non-empty string (use).
+
+**Minified:**
+
+```js
+String | {
+  main: String,
+  after?: String,
+  regex?: Number,
+  before?: String
+}
+```
 
 ## Annotations
 
