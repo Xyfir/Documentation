@@ -124,13 +124,15 @@ If multiple links are provided it becomes an album.
 
 #### (5) Video Annotation
 
-A direct `HTTP`/`HTTPS` link to a `WEBM` or `MP4` video file, or a YouTube or Vimeo _embed_ link.
+A video on YouTube or Vimeo. You can provide either the normal view link to the video, or the embed link to the video.
 
-If multiple links are provided it becomes a playlist.
+If multiple videos are provided it becomes a playlist.
+
+You cannot mix videos from different sources within a single annotation.
 
 #### (6) Audio Annotation
 
-A _direct_ `HTTP`/`HTTPS` link to an audio file, no specific format is required.
+A song or other audio track on SoundCloud. This must be the normal view link (`https://soundcloud.com/:author/:track`).
 
 If multiple links are provided it becomes a playlist.
 
