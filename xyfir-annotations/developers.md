@@ -89,7 +89,7 @@ If the request failed (non-`200` status), `message` will explain what wrong.
     {
       id: Number,
       title: String,
-      description: String,
+      summary: String,
       stars: Number,
       comments: Number,
       created: Number,
@@ -113,8 +113,6 @@ If the request failed (non-`200` status), `message` will explain what wrong.
 }
 ```
 
-**Note:** `description` may be in Markdown format. It is recommended to parse the Markdown to HTML or plain text. Otherwise you may see formatting characters in the set's description.
-
 ### Advanced Searches
 
 Advanced searches allow you to provide different search queries for specific annotation set fields. All variables must be present in the query string, even if they have no value. Only sets that match **all** provided queries will be returned.
@@ -128,9 +126,70 @@ Advanced searches allow you to provide different search queries for specific ann
 * `bookSeries`: _string_ - A search query for finding annotation sets by their books' series.
 * `bookAuthors`: _string_ - A search query for finding annotation sets by their books' authors.
 * `title`: _string_ - A search query for finding annotation sets by their title.
-* `description`: _string_ - A search query for finding annotation sets by their description.
+* `summary`: _string_ - A search query for finding annotation sets by their summary.
+* `language`: _string_ (optional) - 3-letter language code.
+
+## Get Annotation Set
+
+Get the full metadata for an annotation set. Does not include its items.
+
+`GET` to `https://annotations.xyfir.com/api/sets/:SET`
+
+* `:SET`: _number_ - The id of the annotation set you wish to get the data for
+
+### Response
+
+```js
+{
+  id: Number,
+  items: Number,
+  stars: Number,
+  title: String,
+  global: Boolean,
+  public: Boolean,
+  created: Number,
+  updated: Number,
+  summary: String,
+  changes: Number,
+  starred: Boolean,
+  comments: Number,
+  language: String,
+  comments: Number,
+  description: String,
+  discussion_id: Number,
+  user: {
+    id: Number,
+    name: String,
+    reputation: Number
+  },
+  fork: {
+    id: Number,
+    title: String
+  },
+  moderators: [{
+    id: Number,
+    name: String,
+    reputation: Number
+  }],
+  media: {
+    books: [{
+      id: Number,
+      sets: Number,
+      isbn: Number,
+      title: String,
+      authors: String,
+      username: String,
+      olCoverId: Number
+    }]
+  }
+}
+```
+
+**Note:** `description` may be in Markdown format. It is recommended to parse the Markdown to HTML or plain text, otherwise you may see formatting characters in the set's description.
 
 ## Downloading Annotation Sets
+
+Download an annotation set's items.
 
 `GET` to `https://annotations.xyfir.com/api/sets/:SET/download`
 
@@ -267,26 +326,28 @@ See the various annotation types explained in the [user help docs](https://githu
 
 All annotation objects contain the following properties:
 
-* **type**: _number_ - A number between 1 and 7.
-* **name**: _string_ - A short name/title/description that explains the annotation.
+* `type`: `number` - An integer between 1 and 7.
+* `name`: `string` - A short (50 characters) name/title/description that explains the annotation.
 
 Annotation objects of different types have different properties and values:
 
-* (1) Document
-  * **value**: _string_ - A [Markdown](https://en.wikipedia.org/wiki/Markdown) document string.
-* (2) Link
-  * **value**: _string_ - A link that starts with 'http://' or 'https://'.
-* (3) Web Search
-  * **value**: _string_ - A search query to be used in a search engine like Google or Bing.
-  * **context**: _string_ (optional) - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. If not provided, the reader application may optionally generate one using the book's metadata. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
-* (4) Image
-  * **value**: _string|string[]_ - Either a single image link or an album of images if an array. Each link will be a direct link to a JPG, JPEG, PNG, or GIF image.
-* (5) Video
-  * **value**: _string|string[]_ - Either a single video link or a playlist of videos if an array. Each link will be either a direct video link (MP4 or WEBM) or an embed link for YouTube or Vimeo.
-* (6) Audio
-  * **value**: _string|string[]_ - Either a single audio file link or a playlist of audio files if an array. Each link _should_ be a direct link to an audio file.
-* (7) Map
-  * **value**: _string_ - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
+* **(1)** Document
+  * `value`: `string` - A Markdown ([CommonMark](https://spec.commonmark.org/) + [GFM](https://github.github.com/gfm/)) document string.
+* **(2)** Link
+  * `value`: `string` - A link that starts with `"http://"` or `"https://"`.
+* **(3)** Web Search
+  * `value`: `string` - A search query to be used in a search engine like Google or Bing.
+  * `context`: `string` _optional_ - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. If not provided, the reader application may optionally generate one using the book's metadata. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
+* **(4)** Image
+  * `value`: `string|string[]` - Either a single image link or an album of images if an array. Each link will be a direct link to a JPG, JPEG, PNG, or GIF image.
+* **(5)** Video
+  * `value`: `string|string[]` - Either a single video ID or an array of video ID's. Each ID will point to a video on YouTube or Vimeo. You cannot mix videos from different sources.
+  * `source`: `string` - The source that the video ID's belong to. Possible values: `"youtube"` or `"vimeo"`. Other sources may be added in the future.
+* **(6)** Audio
+  * `value`: `string|string[]` - Either a single audio track ID or an array of audio track ID's. Each ID will point to a track on SoundCloud.
+  * `source`: `string` - The source that the audio ID's belong to. Possible values: `"soundcloud"`. Other sources may be added in the future.
+* **(7)** Map
+  * `value`: `string` - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
 
 ## Highlighting Annotations in Content
 
