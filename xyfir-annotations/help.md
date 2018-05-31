@@ -13,6 +13,7 @@
 * A `change` is either a proposed, accepted, or rejected modification that a user has suggested for an annotation set.
 * A `linked item` is an item within an annotation set that gets its data from an item in another annotation set. Any changes made to the source item will be reflected on the linked item.
 * A `global annotation set` is an annotation set that is created not to annotate a specific book or set of books, but instead to provide common, high quality items that other annotation sets can link to. Global annotation sets are managed by xyAnnotations moderators, however as always, anyone is free to submit change proposals.
+* A `free annotation set` is an annotation set whose contents are licensed with an open-source license ([CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/us/), [GFDL](https://www.gnu.org/licenses/fdl-1.3.en.html), or others). Free annotation sets can be downloaded in their entirety using the API (see [Downloading Annotation Sets](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md#downloading-annotation-sets)) without need of any account, paid, or affiliate credentials. Additionally, free annotation sets will not contain advertisements, affiliate links, or anything similar.
 
 ## Visual Hierarchy
 

@@ -1,6 +1,6 @@
-Prior to reading through the developer documentation, you should first familiarize yourself with the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md) as well as the [affiliate docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/affiliates.md).
+Prior to reading through the developer documentation, you should first familiarize yourself with the [user help docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md) as well as the [affiliate docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/affiliates.md) if you're an affiliate.
 
-Currently only a small portion of the xyAnnotations API is publicly documented. If you need access to other parts of the API please contact us with the what you need access to and why you wish to utilize it.
+Currently only a small portion of the xyAnnotations API is publicly documented and available for third-party use. If you need access to other parts of the API please contact us with the what you need access to and why you wish to utilize it.
 
 # API Authentication
 
@@ -16,7 +16,7 @@ A user must have access to a Xyfir Annotations subscription in order to load ann
 
 A subscription not purchased directly through Xyfir Annotations **cannot** be extended. This means a user must wait until their subscription expires to purchase a new one (thus generating a new key) or create an entirely new subscription (thus abandoning their old key).
 
-## Requesting a Subscription Key
+## Requesting Your User's Subscription Key
 
 To make things easier for users who have a xyAnnotations subscription key that they wish to bring to your application, you can request access to their subscription key.
 
@@ -212,6 +212,14 @@ Enabling `minify` can have a _huge_ impact on response size and times. They not 
 ### Set Versions
 
 You can optionally provide the current version of the set that you have saved on the client. `version` is a unix timestamp (in milliseconds) of the set's last update. If the locally installed version matches the server version we won't bother returning all the info you already have. It is highly recommended you _do_ provide the version if you have downloaded and stored the set previously as our API rate limits subscription keys based on how many sets it has downloaded in a day. If a set's version has not been changed, it will not count as a download for that subscription key.
+
+### Downloading Free Annotation Sets
+
+Some annotations sets may have a special license that requires them to be made available without any restrictions. For these annotation sets, you can download them via our API without needing a subscription key. Simply provide `subscription` for the HTTP authentication 'user' as you usually would, and then provide `1` for the HTTP authentication password. `1` is a valid subscription key that will allow you to download these free annotation sets, and _only_ free annotation sets.
+
+If you have an actual subscription key, don't worry, that key can download all of the sets on the site. There is no need to use the `1` key if you have a paid subscription key.
+
+**Example:** `https://subscription:1@annotations.xyfir.com/api/sets/123/download` assuming `123` is the id of a free annotation set.
 
 ### Response
 
