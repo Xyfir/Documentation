@@ -7,6 +7,7 @@ This privacy policy has been compiled to better serve those who are concerned wi
 When ordering, registering, linking services to your account, or at other times on our site, as appropriate, you may be asked to enter your email address or other details to help you with your experience. Your information is only stored by Ptorx when you make actions that would require Ptorx to do so. For example when creating an account, proxy email, or other digital items in our app.
 
 We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:
+
 - To personalize your experience and to allow us to deliver the type of content and product offerings in which you are most interested.
 - To improve our website in order to better serve you.
 
@@ -26,7 +27,7 @@ Ptorx uses [MailGun](https://www.mailgun.com/)'s email infrastructure. All incom
 ## Cookies
 
 Cookies are small files that a site or its service provider transfers to your computer's hard drive through your browser (if you allow) that enables the site's or service provider's systems to recognize your browser and capture and remember certain information.
-    
+
 We use cookies as a required part of our login process that keep you logged in for your session. If you turn cookies off, Ptorx will not function properly.
 
 ## Third-Party Disclosure
@@ -42,17 +43,17 @@ We do not allow third-party behavioral tracking.
 CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law's reach stretches well beyond California to require any person or company in the United States (and conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals or companies with whom it is being shared. - See more at: http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf
 
 According to CalOPPA, we agree to the following:
+
 - Users can visit our site anonymously.
 - Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first significant page after entering our website.
 - Our Privacy Policy link includes the word 'Privacy' and can be easily be found on the page specified above.
-- You will be notified of any Privacy Policy changes:
-    - On our Privacy Policy Page
-- Can change your personal information:
-    - Through Xyfir Accounts dashboard
+- You will be notified of any Privacy Policy changes: on our Privacy Policy page
+- Can change your personal information: through the Xyfir Accounts dashboard
 
 ## Do Not Track
 
 We don't honor Do Not Track signals because:
+
 - Minimal tracking is required for users to login and for our service to work properly.
 - Minimal tracking data is only stored temporarily.
 
@@ -67,6 +68,7 @@ We do not specifically market to children under the age of 13 years old.
 The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information.
 
 In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:
+
 - We will notify you via email within 7 business days
 - We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or government agencies to investigate and/or prosecute non-compliance by data processors.
 
@@ -75,24 +77,26 @@ In order to be in line with Fair Information Practices we will take the followin
 The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations.
 
 We collect your email address in order to:
+
 - Send information, respond to inquiries, and/or other requests or questions
 - Process orders and to send information and updates pertaining to orders
 - Send you additional information related to your product and/or service
 
 To be in accordance with CANSPAM, we agree to the following:
+
 - Not use false or misleading subjects or email addresses.
 - Identify the message as an advertisement in some reasonable way.
 - Include the physical address of our business or site headquarters.
 - Monitor third-party email marketing services for compliance, if one is used.
 - Honor opt-out/unsubscribe requests quickly.
-  - If at any time you would like to unsubscribe from receiving future emails, you can email us at *contact@xyfir.com* and we will promptly remove you from **ALL** correspondence.
+  - If at any time you would like to unsubscribe from receiving future emails, you can email us at _contact@xyfir.com_ and we will promptly remove you from **ALL** correspondence.
 
 ## Contact Us
 
 If there are any questions regarding this privacy policy, you may contact us using the information below.
 
-ptorx.com \
-3170 Huula Dr \
-Oceanside, California 92058 \
-United States of America \
-contact@xyfir.com
+- ptorx.com
+- 3170 Huula Dr
+- Oceanside, California 92058
+- United States of America
+- contact@xyfir.com

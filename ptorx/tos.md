@@ -4,9 +4,9 @@ These terms and conditions outline the rules and regulations for the use of Ptor
 
 Ptorx (operated by Xyfir, LLC) is located at:
 
-3170 Huula Dr  \
-Oceanside, California 92058  \
-United States of America
+- 3170 Huula Dr
+- Oceanside, California 92058
+- United States of America
 
 By accessing Ptorx's website or using its applications we assume you accept these terms and conditions in full. Do not continue to use Ptorx's website or applications if you do not accept all of the terms and conditions stated on this page.
 The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", "You" and "Your" refers to you, the person accessing this website and accepting the Company's terms and conditions. "The Company", "Ourselves", "We", "Our" and "Us", refers to our Company. "Party", "Parties", or "Us", refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client's needs in respect of provision of the Company's stated services/products, in accordance with and subject to, prevailing law of United States. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
@@ -24,6 +24,7 @@ Most of the modern day interactive web sites use cookies to enable us to retriev
 Unless otherwise stated, Ptorx and/or its licensors own the intellectual property rights for all material on Ptorx. All intellectual property rights are reserved. You may view and/or print pages from https://ptorx.com/ for your own personal use subject to restrictions set in these terms and conditions.
 
 You must not:
+
 - Republish material from https://ptorx.com/
 - Sell, rent or sub-license material from https://ptorx.com/
 - Reproduce, duplicate or copy material from https://ptorx.com/
@@ -38,6 +39,7 @@ Certain parts of this website offer the opportunity for users to post and exchan
 Ptorx reserves the right to monitor all UGC and to remove any UGC which it considers in its absolute discretion to be inappropriate, offensive or otherwise in breach of these Terms and Conditions.
 
 You warrant and represent that:
+
 - You are entitled to post UGC on our website and have all necessary licenses and consents to do so;
 - The UGC does not infringe any intellectual property right, including without limitation copyright, patent or trademark, or other proprietary right of any third party;
 - The UGC does not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material or material which is an invasion of privacy
@@ -48,6 +50,7 @@ You hereby grant to Ptorx a non-exclusive royalty-free license to use, reproduce
 ## Hyperlinking to our Content
 
 The following organizations may link to our Web site without prior written approval:
+
 - Government agencies;
 - Search engines;
 - News organizations;
@@ -57,6 +60,7 @@ The following organizations may link to our Web site without prior written appro
 These organizations may link to our home page, to publications or to other Web site information so long as the link: (a) is not in any way misleading; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party's site.
 
 We may consider and approve in our sole discretion other link requests from the following types of organizations:
+
 - commonly-known consumer and/or business information sources such as Chambers of Commerce, American Automobile Association, AARP and Consumers Union;
 - dot.com community sites;
 - associations or other groups representing charities, including charity giving sites;
@@ -72,6 +76,7 @@ These organizations may link to our home page, to publications or to other Web s
 If you are among the organizations listed in paragraph 2 above and are interested in linking to our website, you must notify us by sending an e-mail to contact@xyfir.com. Please include your name, your organization name, contact information (such as a phone number and/or e-mail address) as well as the URL of your site, a list of any URLs from which you intend to link to our Web site, and a list of the URL(s) on our site to which you would like to link. Allow 2-3 weeks for a response.
 
 Approved organizations may hyperlink to our Web site as follows:
+
 - By use of our corporate name; or
 - By use of the uniform resource locator (Web address) being linked to; or
 - By use of any other description of our Web site or material being linked to that makes sense within the context and format of content on the linking party's site.
@@ -103,19 +108,17 @@ Ptorx is not responsible for the actions or content posted of other users who ut
 
 We make no guarantees about the results of free or paid services offered on our site.
 
-## Paid Subscriptions
-
-A paid subscription to our service is a one-time payment that gives you special access or features on our service for a specified amount of time. When a subscription expires, we do not automatically renew your subscription. Abuse of our service or a chargeback on payments will result in account termination.
-
 ## Abuse
 
 Abusing our services will result in an account termination. Abuse of our service includes but is not limited to:
+
 - Using Ptorx to send email blasts
 - Using Ptorx to send mass emails to a single or multiple addresses
 - Using Ptorx to send spam, phishing emails, malware, scams, etc
-- Using Ptorx to break the terms of service of other third-party services
-- Creating multiple free-trial accounts on Ptorx
+- Using Ptorx to expoit, and/or break the terms of service of other third-party services
+- Creating multiple accounts on Ptorx to abuse the referral or free credits system
 - Using Ptorx emails in any way that may harm the reputations of Ptorx, Xyfir, or any of our affiliates
+- Making purchases, and then initiating chargebacks
 
 ## Termination
 
