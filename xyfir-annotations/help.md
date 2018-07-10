@@ -1,36 +1,40 @@
+[![xyAnnotations demonstration video](https://i.imgur.com/5t2r9N6.png)](https://www.youtube.com/watch?v=0xbucbG6R1U "xyAnnotations demonstration video")
+
+[xyAnnotations demonstration video](https://www.youtube.com/watch?v=0xbucbG6R1U)
+
 # Terminology
 
 ## Critical
 
-* The xyAnnotations annotation system is broken down into repositories called `annotation sets`.
-* An `annotation set` is a set of `items` that contain annotations for linked books or other media.
-* A `set item` is further broken down into `searches` and `annotations`. A set item can have multiple searches and multiple annotations.
-* A `search` is a collection of `subsearches` (`main subsearch`, `before subsearch`, `after subsearch`) that together point to certain text within a book's content where the item's annotations will be applied.
-* An `annotation` is the specific annotation (document, link, image, etc) that will be applied to the book's content matched by the search.
+- The xyAnnotations annotation system is broken down into repositories called `annotation sets`.
+- An `annotation set` is a set of `items` that contain annotations for linked books or other media.
+- A `set item` is further broken down into `searches` and `annotations`. A set item can have multiple searches and multiple annotations.
+- A `search` is a collection of `subsearches` (`main subsearch`, `before subsearch`, `after subsearch`) that together point to certain text within a book's content where the item's annotations will be applied.
+- An `annotation` is the specific annotation (document, link, image, etc) that will be applied to the book's content matched by the search.
 
 ## Useful
 
-* A `change` is either a proposed, accepted, or rejected modification that a user has suggested for an annotation set.
-* A `linked item` is an item within an annotation set that gets its data from an item in another annotation set. Any changes made to the source item will be reflected on the linked item.
-* A `global annotation set` is an annotation set that is created not to annotate a specific book or set of books, but instead to provide common, high quality items that other annotation sets can link to. Global annotation sets are managed by xyAnnotations moderators, however as always, anyone is free to submit change proposals.
-* A `free annotation set` is an annotation set whose contents are licensed with an open-source license ([CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/us/), [GFDL](https://www.gnu.org/licenses/fdl-1.3.en.html), or others). Free annotation sets can be downloaded in their entirety using the API (see [Downloading Annotation Sets](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md#downloading-annotation-sets)) without need of any account, paid, or affiliate credentials. Additionally, free annotation sets will not contain advertisements, affiliate links, or anything similar.
+- A `change` is either a proposed, accepted, or rejected modification that a user has suggested for an annotation set.
+- A `linked item` is an item within an annotation set that gets its data from an item in another annotation set. Any changes made to the source item will be reflected on the linked item.
+- A `global annotation set` is an annotation set that is created not to annotate a specific book or set of books, but instead to provide common, high quality items that other annotation sets can link to. Global annotation sets are managed by xyAnnotations moderators, however as always, anyone is free to submit change proposals.
+- A `free annotation set` is an annotation set whose contents are licensed with an open-source license ([CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/us/), [GFDL](https://www.gnu.org/licenses/fdl-1.3.en.html), or others). Free annotation sets can be downloaded in their entirety using the API (see [Downloading Annotation Sets](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md#downloading-annotation-sets)) without need of any account, paid, or affiliate credentials. Additionally, free annotation sets will not contain advertisements, affiliate links, or anything similar.
 
 ## Visual Hierarchy
 
-* Annotation set
-  * Set item
-    * Search
-      * Main subsearch
-      * Before subsearch
-      * After subsearch
-    * Annotation
+- Annotation set
+  - Set item
+    - Search
+      - Main subsearch
+      - Before subsearch
+      - After subsearch
+    - Annotation
 
 ## Notes
 
-* `Annotation sets` are typically shortened to just `sets`.
-* `Set items` are typically shortened to just `items`.
-* In certain contexts `annotations` may be used to refer to all of the items within a single `annotation set`.
-* In certain contexts, a `search` may be used to refer to a single `set item` search, or to a `main`, `before`, or `after` subsearch within a single `set item` search.
+- `Annotation sets` are typically shortened to just `sets`.
+- `Set items` are typically shortened to just `items`.
+- In certain contexts `annotations` may be used to refer to all of the items within a single `annotation set`.
+- In certain contexts, a `search` may be used to refer to a single `set item` search, or to a `main`, `before`, or `after` subsearch within a single `set item` search.
 
 Continue reading for more in-depth descriptions.
 
@@ -58,16 +62,16 @@ A set item's searches point to sections of a book where the item's annotations s
 
 Searches contain the following values:
 
-* **Main Subsearch**
-  * This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
-* **Searches are Regular Expressions**
-  * This is a true/false value that tells whether the subsearch queries (main/before/after) are just normal strings or regular expressions.
-* **Before Subsearch**
-  * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come _before_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
-  * Imagine the book's content: `... :before-search-match: ... :main-search-match: ...`. If `:before-search-match:` does not come _before_ `:main-search-match:`, then `:main-search-match:` will _not_ be accepted.
-* **After Subsearch**
-  * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come _after_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
-  * Imagine the book's content: `... :main-search-match: ... :after-search-match: ...`. If `:after-search-match:` does not come _after_ `:main-search-match:`, then `:main-search-match:` will _not_ be accepted.
+- **Main Subsearch**
+  - This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
+- **Searches are Regular Expressions**
+  - This is a true/false value that tells whether the subsearch queries (main/before/after) are just normal strings or regular expressions.
+- **Before Subsearch**
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come _before_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
+  - Imagine the book's content: `... :before-search-match: ... :main-search-match: ...`. If `:before-search-match:` does not come _before_ `:main-search-match:`, then `:main-search-match:` will _not_ be accepted.
+- **After Subsearch**
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come _after_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
+  - Imagine the book's content: `... :main-search-match: ... :after-search-match: ...`. If `:after-search-match:` does not come _after_ `:main-search-match:`, then `:main-search-match:` will _not_ be accepted.
 
 #### Notes
 
@@ -163,11 +167,11 @@ Annotation set changes work on a review system. Any user on xyAnnotations can pr
 
 ### Statuses
 
-* **None:** This is the default state and typically means that the set creator and set moderators have not yet seen the change and applied a status to it.
-* **Considering:** This means that the change proposal is being considered and is open for discussion from the set's collaborators.
-* **Rejected:** The proposal was reviewed by the creator and/or moderator(s) and consequently rejected. A rejected change proposal can still have its status changed to 'Considering' or 'Accepted' anytime after being rejected.
-* **Accepted:** The proposal was reviewed by the creator and/or moderator(s) and implemented into the annotation set. This cannot be undone.
-* **Deleted:** Technically not a status because the change is completely removed from xyAnnotations, but the set creator and moderators can delete a change should they wish.
+- **None:** This is the default state and typically means that the set creator and set moderators have not yet seen the change and applied a status to it.
+- **Considering:** This means that the change proposal is being considered and is open for discussion from the set's collaborators.
+- **Rejected:** The proposal was reviewed by the creator and/or moderator(s) and consequently rejected. A rejected change proposal can still have its status changed to 'Considering' or 'Accepted' anytime after being rejected.
+- **Accepted:** The proposal was reviewed by the creator and/or moderator(s) and implemented into the annotation set. This cannot be undone.
+- **Deleted:** Technically not a status because the change is completely removed from xyAnnotations, but the set creator and moderators can delete a change should they wish.
 
 ## Reader
 
@@ -195,11 +199,11 @@ If you reference a user within a comment, it is considered a 'mention' and that 
 
 A reference will only be converted to a link if the character _before_ the reference is a space or the beginning of a line.
 
-* **Users**: `u/AutoAnnotator` or `u/1234`
-* **Sets**: `s/1234`
-* **Items**: `i/5678`
-* **Discussions**: `d/1234`
-* **Forums**: `f/5678`
-* **Changes**: `ch/1234`
-* **Comments**: `co/5678`
-* **Books**: `b/1234`
+- **Users**: `u/AutoAnnotator` or `u/1234`
+- **Sets**: `s/1234`
+- **Items**: `i/5678`
+- **Discussions**: `d/1234`
+- **Forums**: `f/5678`
+- **Changes**: `ch/1234`
+- **Comments**: `co/5678`
+- **Books**: `b/1234`
