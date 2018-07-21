@@ -48,6 +48,10 @@ There are some limitations with this feature:
 
 The replies will be sent to the original sender using the address of the proxy email that received the message.
 
+## Template
+
+To save time when creating instant or custom proxy emails, you can set one of your existing proxy emails as a _template_, meaning that its settings (except for address) will be used during the creation process: either prefilled into the custom form, or automatically used for the instant creator.
+
 # Filters
 
 Filters can be used to whitelist or blacklist what type of incoming mail is allowed to be redirected to your main address.
