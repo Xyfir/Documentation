@@ -10,7 +10,7 @@ When ordering, registering, linking services to your account, or at other times 
 
 ### When do we collect information?
 
-We collect information from you when you register on our site, enter information on our site, or when you view or click ads served from Xyfir Ads. View [Xyfir Ads' Privacy Policy](https://xyfir.com/#/documentation/xyfir-ads/privacy) for the privacy policy regarding ads served via Xyfir Ads.
+We collect information from you when you register on our site, enter information on our site, or when you view or click ads served from Xyfir Ads. View [Xyfir Ads' Privacy Policy](https://www.xyfir.com/documentation/xyfir-ads/privacy) for the privacy policy regarding ads served via Xyfir Ads.
 
 ### How do we use your information?
 
@@ -29,7 +29,7 @@ We may use the information we collect from you when you register, make a purchas
 ## Do we use 'cookies'?
 
 Yes. Cookies are small files that a site or its service provider transfers to your computer's hard drive through your Web browser (if you allow) that enables the site's or service provider's systems to recognize your browser and capture and remember certain information.
-  
+
 ### We use cookies to:
 
 - Cookies are a required part of our login process that keep you logged in for your session.

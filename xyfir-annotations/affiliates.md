@@ -6,7 +6,7 @@ Our affiliate system allows you to integrate annotations from our site into your
 
 ## Becoming an Affiliate
 
-To become an affiliate is simple. [Send us a message](https://www.xyfir.com/#/contact) with a short description of how you'd like to utilize our annotations, and we'll help get your affiliate account setup.
+To become an affiliate is simple. [Send us a message](https://www.xyfir.com/contact) with a short description of how you'd like to utilize our annotations, and we'll help get your affiliate account setup.
 
 ## Subscriptions
 

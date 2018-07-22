@@ -2,7 +2,7 @@
 
 There is a single monthly fee that advertisers will pay for a 'slot' in Xyfir Ads' repository. The total slots count and the price for each slot will change as Xyfir grows and demand for advertisements increase.
 
-Purchasing a slot adds your advertisement to this repository starting on the first day of the month *after* you purchased the slot. Your advertisement will remain in the repository until the amount of months that you purchased have passed.
+Purchasing a slot adds your advertisement to this repository starting on the first day of the month _after_ you purchased the slot. Your advertisement will remain in the repository until the amount of months that you purchased have passed.
 
 If you purchase more than one month, you can change or update your advertisement once every month. Simply resubmit the form with your new ad's information and in the 'notes' field mention which slot (that you own) you would like the ad to replace.
 
@@ -10,7 +10,7 @@ You may submit the form multiple times if you would like to purchase more than o
 
 If there are no available slots for the next month and your ad is approved you can optionally choose to reserve the next available slot.
 
-You can request an ad slot by filling out the form [here](https://xyfir.com/#/advertise). Your ad will then be reviewed and you will be contacted if we have any questions, or if your ad has been approved or denied. Once your ad is approved we can begin the payment process. Payment will be made with card or Bitcoin via Stripe. The amount of months you would like to purchase the slot for will be set during the payment process, and not during the initial slot-requesting phase.
+You can request an ad slot by filling out the form [here](https://www.xyfir.com/advertise). Your ad will then be reviewed and you will be contacted if we have any questions, or if your ad has been approved or denied. Once your ad is approved we can begin the payment process. Payment will be made with card or Bitcoin via Stripe. The amount of months you would like to purchase the slot for will be set during the payment process, and not during the initial slot-requesting phase.
 
 # Ad Types
 
@@ -40,4 +40,4 @@ Follow these guidelines or expect your slot request to be denied:
 
 ---
 
-By submitting a request to purchase an ad slot you agree to the terms located [here](https://xyfir.com/#/documentation/xyfir-ads/tos).
+By submitting a request to purchase an ad slot you agree to the terms located [here](https://www.xyfir.com/documentation/xyfir-ads/tos).

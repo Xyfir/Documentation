@@ -31,7 +31,7 @@ Note that this format is strictly for what xyMarket calls *structured* threads. 
   - Possible values are: `Physical Item`, `Physical Service`, `Digital Item`, `Digital Service`.
 - `**Category**`
   - This allows the bot to properly categorize your sales thread in the Daily Thread.
-  - The category you choose must match *exactly* (even capitalization) with one in the dropdown list found [here](https://xyfir.com/#/market).
+  - The category you choose must match *exactly* (even capitalization) with one in the dropdown list found [here](https://www.xyfir.com/market).
 - `**Description**`
   - Describe what you're selling.
   - While multiple lines here are supported, you should try and keep this as short as possible.

@@ -1,4 +1,4 @@
-This sections contains only documentation that is relevant to both buyers and sellers. Please check the [buyer](https://xyfir.com/#/documentation/xyfir-market/buyers) and/or [seller](https://xyfir.com/#/documentation/xyfir-market/sellers) docs for more information!
+This sections contains only documentation that is relevant to both buyers and sellers. Please check the [buyer](https://www.xyfir.com/documentation/xyfir-market/buyers) and/or [seller](https://www.xyfir.com/documentation/xyfir-market/sellers) docs for more information!
 
 # Confirm Order
 

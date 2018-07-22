@@ -195,7 +195,7 @@ Descriptions and posts on xyAnnotations support [Markdown](https://daringfirebal
 
 xyAnnotations adds special syntax on top of Markdown that allows you to easily reference things on xyAnnotations like annotation sets, items, users, etc.
 
-If you reference a user within a comment, it is considered a 'mention' and that user will be notified that you mentioned them. You can delete your comment to remove the notification from their account that you mentioned them. If you wish to avoid mentioning someone, you should directly link to their account, using `[u/AutoAnnotator](#/u/AutoAnnotator)` instead of `u/AutoAnnotator`.
+If you reference a user within a comment, it is considered a 'mention' and that user will be notified that you mentioned them. You can delete your comment to remove the notification from their account that you mentioned them. If you wish to avoid mentioning someone, you should directly link to their account, using `[u/AutoAnnotator](/u/AutoAnnotator)` instead of `u/AutoAnnotator`.
 
 A reference will only be converted to a link if the character _before_ the reference is a space or the beginning of a line.
 

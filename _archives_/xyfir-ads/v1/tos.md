@@ -1,6 +1,6 @@
 # Xyfir Ads Terms of Service
 
-These terms and conditions outline the rules and regulations for the use of Xyfir Ads' Website. 
+These terms and conditions outline the rules and regulations for the use of Xyfir Ads' Website.
 
 Xyfir Ads (operated by Xyfir, LLC) is located at:
 3170 Huula Dr \
@@ -102,11 +102,11 @@ We make no guarantees about the results of free or paid services offered on our 
 
 ## Advertisers
 
-Advertisers who use our service should be aware of our advertisement guidelines and approval process available [here](https://xyfir.com/#/documentation/xyfir-ads/advertisers).
+Advertisers who use our service should be aware of our advertisement guidelines and approval process available [here](https://www.xyfir.com/documentation/xyfir-ads/advertisers).
 
 ## Publishers
 
-Publishers who use our service to receive advertisements should be aware of our publisher guidelines available [here](https://xyfir.com/#/documentation/xyfir-ads/publishers).
+Publishers who use our service to receive advertisements should be aware of our publisher guidelines available [here](https://www.xyfir.com/documentation/xyfir-ads/publishers).
 
 ## Termination
 

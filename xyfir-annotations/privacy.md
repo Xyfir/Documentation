@@ -10,11 +10,12 @@ When ordering, registering, linking services to your account, or at other times 
 
 ### When do we collect information?
 
-We collect information from you when you register on our site, enter information on our site, or when you view or click ads served from Xyfir Ads. View [Xyfir Ads' Privacy Policy](https://xyfir.com/#/documentation/xyfir-ads/privacy) for the privacy policy regarding ads served via Xyfir Ads.
+We collect information from you when you register on our site, enter information on our site, or when you view or click ads served from Xyfir Ads. View [Xyfir Ads' Privacy Policy](https://www.xyfir.com/documentation/xyfir-ads/privacy) for the privacy policy regarding ads served via Xyfir Ads.
 
 ### How do we use your information?
 
 We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:
+
 - To personalize your experience and to allow us to deliver the type of content and product offerings in which you are most interested.
 - To improve our website in order to better serve you.
 
@@ -28,7 +29,7 @@ We may use the information we collect from you when you register, make a purchas
 ## Do we use 'cookies'?
 
 Yes. Cookies are small files that a site or its service provider transfers to your computer's hard drive through your Web browser (if you allow) that enables the site's or service provider's systems to recognize your browser and capture and remember certain information.
-    
+
 ### We use cookies to:
 
 - Cookies are a required part of our login process that keep you logged in for your session.
@@ -59,13 +60,14 @@ CalOPPA is the first state law in the nation to require commercial websites and 
 - Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first significant page after entering our website.
 - Our Privacy Policy link includes the word 'Privacy' and can be easily be found on the page specified above.
 - You will be notified of any Privacy Policy changes:
-    - On our Privacy Policy Page
+  - On our Privacy Policy Page
 - Can change your personal information:
-    - Through Xyfir Accounts dashboard
+  - Through Xyfir Accounts dashboard
 
 ## How does our site handle Do Not Track signals?
 
 We don't honor Do Not Track signals because:
+
 - Minimal tracking is required for users to login and for our service to work properly.
 - Minimal tracking data is only stored temporarily (maximum 24 hours).
 
@@ -80,6 +82,7 @@ We do not specifically market to children under the age of 13 years old.
 The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information.
 
 In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:
+
 - We will notify you via email within 7 business days
 - We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or government agencies to investigate and/or prosecute non-compliance by data processors.
 
@@ -88,17 +91,19 @@ In order to be in line with Fair Information Practices we will take the followin
 The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations.
 
 ### We collect your email address in order to:
+
 - Send information, respond to inquiries, and/or other requests or questions
 - Process orders and to send information and updates pertaining to orders
 - Send you additional information related to your product and/or service
 
 ### To be in accordance with CANSPAM, we agree to the following:
+
 - Not use false or misleading subjects or email addresses.
 - Identify the message as an advertisement in some reasonable way.
 - Include the physical address of our business or site headquarters.
 - Monitor third-party email marketing services for compliance, if one is used.
 - Honor opt-out/unsubscribe requests quickly.
-    - If at any time you would like to unsubscribe from receiving future emails, you can email us at *contact@xyfir.com* and we will promptly remove you from **ALL** correspondence.
+  - If at any time you would like to unsubscribe from receiving future emails, you can email us at _contact@xyfir.com_ and we will promptly remove you from **ALL** correspondence.
 
 ## Contacting Us
 

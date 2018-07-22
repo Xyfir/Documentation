@@ -2,7 +2,7 @@ The bulk of all interaction with this subreddit and the sales threads within it 
 
 xyMarketBot in most cases acts on a one-minute loop, where every one minute it checks for new commands and actions to respond to. xyMarketBot will most likely not respond immediately to your action, but if you don't receive a response within a little over a minute something probably went wrong. Almost always xyMarketBot will notify you if something went wrong, however there are a few instances where it will not respond to invalid commands or actions.
 
-You should avoid attempting to send commands to expired or removed threads except when it is explicitly stated that a command will be accepted (for instance the `repost` command). 
+You should avoid attempting to send commands to expired or removed threads except when it is explicitly stated that a command will be accepted (for instance the `repost` command).
 
 # r/xyMarketStats User Thread
 
@@ -81,7 +81,7 @@ If the sales thread has Autobuy enabled, you will receive your item immediately 
 
 # Posting a Structured Sales Thread
 
-While you can write out the sturctured sales thread yourself, it is highly recommended you use [this form](https://xyfir.com/#/market).
+While you can write out the sturctured sales thread yourself, it is highly recommended you use [this form](https://www.xyfir.com/market).
 
 **Required** fields are:
 
@@ -335,7 +335,7 @@ get stats for u/xyMarketBot
 
 A trade is any transfer of one set of items/currency for another set of items/currency with another user that took place in a way that was *not* tracked by xyMarket, and is not considered on 'order'.
 
-It is recommended that the seller or creator of a sales thread is the one to initiate a trade confirmation but in the end it doesn't really matter. 
+It is recommended that the seller or creator of a sales thread is the one to initiate a trade confirmation but in the end it doesn't really matter.
 
 Trades can be confirmed privately via private message or publicly via comments. If you wish to confirm a trade publicly, it is recommended to do so on the sales thread itself, or on one of the user's stats threads. You can however, confirm a trade anywhere you like.
 
