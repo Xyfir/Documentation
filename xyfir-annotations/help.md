@@ -149,9 +149,7 @@ If the map is just a static image, use the **Image** annotation type.
 
 #### Linking to External Content
 
-When linking to external content (links, images, videos, audio, maps), be sure that the site you're linking to allows you to do so.
-
-You should also check if the site has any restrictions in place, like a [CSP](https://en.wikipedia.org/wiki/Content_Security_Policy) that will prevent another site from embedding their content, as this can prevent ebook readers from properly rendering the content you linked to.
+When linking to external content (links, images, videos, audio, maps), be sure that the site you're linking to allows you to do so. First check their TOS, and secondly check to make sure that it is actually possible and that their site does not block requests from unknown domains, as this may prevent ebook readers from properly rendering the content you linked to.
 
 ### Generating Annotations
 
@@ -159,7 +157,7 @@ xyAnnotations has a built-in feature for easily generating simple searches and a
 
 If you populate an annotation set strictly with items from this feature and you make little to no changes to the generated items it is recommended to title your set 'Generated Annotations' or at least note in the description that all the items were automatically generated so that other users know what to expect.
 
-A fully automated solution is available if you wish to automatically generate annotations for an entire library of ebooks. See [auto-annotator](https://github.com/Xyfir/auto-annotator).
+A fully automated solution is available if you wish to automatically generate annotations for an entire library of ebooks. See [annotate-cli](https://github.com/Xyfir/annotate/tree/master/cli).
 
 ## Changes
 
