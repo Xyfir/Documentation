@@ -30,8 +30,8 @@ Remember to encode the value for the redirect variable before sending the user t
 
 `POST` to `https://annotations.xyfir.com/api/affiliate/subscriptions`
 
-* `days`: _number_ - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
-* `affiliate` authentication required.
+- `days`: `number` - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
+- `affiliate` authentication required.
 
 ### Response
 
@@ -53,8 +53,8 @@ If for whatever reason you need to delete a subscription key that you generated 
 
 `DELETE` to `https://annotations.xyfir.com/api/affiliate/subscriptions`
 
-* `subscriptionKey`: _string_ - The subscription key previously generated
-* `affiliate` authentication required.
+- `subscriptionKey`: `string` - The subscription key previously generated
+- `affiliate` authentication required.
 
 ### Response
 
@@ -70,16 +70,17 @@ If the request failed (non-`200` status), `message` will explain what wrong.
 
 `GET` to `https://annotations.xyfir.com/api/sets`
 
-* `search`: _string_ - A search query for finding matching annotation sets.
-* `sort`: _string_ - Sort method for matched annotation sets
-  * `top` - Sort by top rated sets
-  * `newest` - Sort by newest created sets
-  * `updated` - Sort by recently updated sets
-* `direction`: _string_ - The direction to sort the sets
-  * `desc` - Descending sort (greatest to least)
-  * `asc` - Ascending sort (least to greatest)
-* `lastId`: _number_ (optional) - Used for pagination. The last id in the previously returned list.
-* `global`: _boolean_ (optional) - If true, global annotation sets will be included in results.
+- `search`: `string` - A search query for finding matching annotation sets.
+- `sort`: `string` - Sort method for matched annotation sets
+  - `top` - Sort by top rated sets
+  - `newest` - Sort by newest created sets
+  - `updated` - Sort by recently updated sets
+- `direction`: `string` - The direction to sort the sets
+  - `desc` - Descending sort (greatest to least)
+  - `asc` - Ascending sort (least to greatest)
+- `lastId`: `number` _optional_ - Used for pagination. The last id in the previously returned list.
+- `global`: `boolean` _optional_ - If true, global annotation sets will be included in results.
+- `ao: boolean` _optional_ - If true, annotation sets and books marked as 'Adults-Only' will be included in results.
 
 ### Response
 
@@ -119,15 +120,17 @@ Advanced searches allow you to provide different search queries for specific ann
 
 `GET` to `https://annotations.xyfir.com/api/sets`
 
-* `sort`: _string_ - Same variable and possible values as previously explained.
-* `direction`: _string_ - Same variable and possible values as previously explained.
-* `lastId`: _number_ (optional) - Same variable as previously explained.
-* `bookTitle`: _string_ - A search query for finding annotation sets by their books' title.
-* `bookSeries`: _string_ - A search query for finding annotation sets by their books' series.
-* `bookAuthors`: _string_ - A search query for finding annotation sets by their books' authors.
-* `title`: _string_ - A search query for finding annotation sets by their title.
-* `summary`: _string_ - A search query for finding annotation sets by their summary.
-* `language`: _string_ (optional) - 3-letter language code.
+- `sort`: `string` - Same variable and possible values as previously explained.
+- `direction`: `string` - Same
+- `lastId`: `number` _optional_ - Same
+- `global`: `boolean` _optional_ - Same
+- `ao`: `boolean` _optional_ - Same
+- `bookTitle`: `string` - A search query for finding annotation sets by their books' title.
+- `bookSeries`: `string` - A search query for finding annotation sets by their books' series.
+- `bookAuthors`: `string` - A search query for finding annotation sets by their books' authors.
+- `title`: `string` - A search query for finding annotation sets by their title.
+- `summary`: `string` - A search query for finding annotation sets by their summary.
+- `language`: `string` _optional_ - 3-letter language code.
 
 ## Get Annotation Set
 
@@ -135,7 +138,7 @@ Get the full metadata for an annotation set. Does not include its items.
 
 `GET` to `https://annotations.xyfir.com/api/sets/:SET`
 
-* `:SET`: _number_ - The id of the annotation set you wish to get the data for
+- `:SET`: `number` - The id of the annotation set you wish to get the data for
 
 ### Response
 
@@ -193,19 +196,19 @@ Download an annotation set's items.
 
 `GET` to `https://annotations.xyfir.com/api/sets/:SET/download`
 
-* `:SET`: _number_ - The id of the annotation set you wish to download
-* `version`: _number_ (optional) - The version of the set that you have saved locally.
-* `minify`: _boolean_ (optional) - Minify the response. Set to `1` or `true` to enable.
-* `subscription` authentication required.
+- `:SET`: `number` - The id of the annotation set you wish to download
+- `version`: `number` _optional_ - The version of the set that you have saved locally.
+- `minify`: `boolean` _optional_ - Minify the response. Set to `1` or `true` to enable.
+- `subscription` authentication required.
 
 ### Minification
 
 You can also optionally enable minification to decrease the size of, and number of variables within the response. Enabling `minify` provides the following transformations:
 
-* Converts boolean values (a search's `regex`) from `true` and `false` to `1` and `0`.
-* Removes `regex`, `before`, and `after` values from searches if they're [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy).
-* Convert search objects where `regex`, `before`, and `after` are falsy into strings containing just the `main` subsearch. For example `[{ main: 'Example', regex: false, before: '', after: '' }, ...]` becomes `['Example', ...]`.
-* `title` is removed from the item object if it can be infered from the first search element's `main` subsearch. This means if `title` is missing you should retrieve it from `searches[0].main` or `searches[0]` if it's a string. The `title` prop will still be present if the item has a title different than the first search element's `main` subsearch.
+- Converts boolean values (a search's `regex`) from `true` and `false` to `1` and `0`.
+- Removes `regex`, `before`, and `after` values from searches if they're [falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy).
+- Convert search objects where `regex`, `before`, and `after` are falsy into strings containing just the `main` subsearch. For example `[{ main: 'Example', regex: false, before: '', after: '' }, ...]` becomes `['Example', ...]`.
+- `title` is removed from the item object if it can be infered from the first search element's `main` subsearch. This means if `title` is missing you should retrieve it from `searches[0].main` or `searches[0]` if it's a string. The `title` prop will still be present if the item has a title different than the first search element's `main` subsearch.
 
 Enabling `minify` can have a _huge_ impact on response size and times. They not only save bandwidth, but also decrease parse times, memory usage, and storage space in the likely event that you save these sets locally. It is _highly_ recommended that you build your application to support minified annotation set items.
 
@@ -304,14 +307,14 @@ Every set item contains one or more searches that are used to find content in a 
 }
 ```
 
-* `main`: _string_
-  * This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
-* `regex`: _boolean_
-  * When true, `main`, `before`, and `after` are regular expressions.
-* `before`: _string_
-  * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come _before_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
-* `after`: _string_
-  * This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come _after_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
+- `main`: `string`
+  - This is the actual search query that will be searched for and highlighted within the book's content. This is either a normal string of characters or a regular expression if the search is marked as a regular expression.
+- `regex`: `boolean`
+  - When true, `main`, `before`, and `after` are regular expressions.
+- `before`: `string`
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "before" subsearch does not come _before_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
+- `after`: `string`
+  - This is another string or regex search query that prevents a potential match for the "main" subsearch query from being accepted if the match for the "after" subsearch does not come _after_ the match for the "main" subsearch. This search query should only have a single match within a book's entire content.
 
 **Minified:**
 
@@ -334,28 +337,28 @@ See the various annotation types explained in the [user help docs](https://githu
 
 All annotation objects contain the following properties:
 
-* `type`: `number` - An integer between 1 and 7.
-* `name`: `string` - A short (50 characters) name/title/description that explains the annotation.
+- `type`: `number` - An integer between 1 and 7.
+- `name`: `string` - A short (50 characters) name/title/description that explains the annotation.
 
 Annotation objects of different types have different properties and values:
 
-* **(1)** Document
-  * `value`: `string` - A Markdown ([CommonMark](https://spec.commonmark.org/) + [GFM](https://github.github.com/gfm/)) document string.
-* **(2)** Link
-  * `value`: `string` - A link that starts with `"http://"` or `"https://"`.
-* **(3)** Web Search
-  * `value`: `string` - A search query to be used in a search engine like Google or Bing.
-  * `context`: `string` _optional_ - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. If not provided, the reader application may optionally generate one using the book's metadata. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
-* **(4)** Image
-  * `value`: `string|string[]` - Either a single image link or an album of images if an array. Each link will be a direct link to a JPG, JPEG, PNG, or GIF image.
-* **(5)** Video
-  * `value`: `string|string[]` - Either a single video ID or an array of video ID's. Each ID will point to a video on YouTube or Vimeo. You cannot mix videos from different sources.
-  * `source`: `string` - The source that the video ID's belong to. Possible values: `"youtube"` or `"vimeo"`. Other sources may be added in the future.
-* **(6)** Audio
-  * `value`: `string|string[]` - Either a single audio track ID or an array of audio track ID's. Each ID will point to a track on SoundCloud.
-  * `source`: `string` - The source that the audio ID's belong to. Possible values: `"soundcloud"`. Other sources may be added in the future.
-* **(7)** Map
-  * `value`: `string` - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
+- **(1)** Document
+  - `value`: `string` - A Markdown ([CommonMark](https://spec.commonmark.org/) + [GFM](https://github.github.com/gfm/)) document string.
+- **(2)** Link
+  - `value`: `string` - A link that starts with `"http://"` or `"https://"`.
+- **(3)** Web Search
+  - `value`: `string` - A search query to be used in a search engine like Google or Bing.
+  - `context`: `string` _optional_ - A value that should be appended or prepended to `value` (separated by a space) if the user chooses add context to their search. If not provided, the reader application may optionally generate one using the book's metadata. See [contextual web searches](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/help.md#contextual-web-searches).
+- **(4)** Image
+  - `value`: `string|string[]` - Either a single image link or an album of images if an array. Each link will be a direct link to a JPG, JPEG, PNG, or GIF image.
+- **(5)** Video
+  - `value`: `string|string[]` - Either a single video ID or an array of video ID's. Each ID will point to a video on YouTube or Vimeo. You cannot mix videos from different sources.
+  - `source`: `string` - The source that the video ID's belong to. Possible values: `"youtube"` or `"vimeo"`. Other sources may be added in the future.
+- **(6)** Audio
+  - `value`: `string|string[]` - Either a single audio track ID or an array of audio track ID's. Each ID will point to a track on SoundCloud.
+  - `source`: `string` - The source that the audio ID's belong to. Possible values: `"soundcloud"`. Other sources may be added in the future.
+- **(7)** Map
+  - `value`: `string` - Either a link to an interactive map or a search query to be used with a real-world map like Google Maps.
 
 ## Highlighting Annotations in Content
 
