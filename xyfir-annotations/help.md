@@ -18,6 +18,7 @@
 - A `linked item` is an item within an annotation set that gets its data from an item in another annotation set. Any changes made to the source item will be reflected on the linked item.
 - A `global annotation set` is an annotation set that is created not to annotate a specific book or set of books, but instead to provide common, high quality items that other annotation sets can link to. Global annotation sets are managed by xyAnnotations moderators, however as always, anyone is free to submit change proposals.
 - A `free annotation set` is an annotation set whose contents are licensed with an open-source license ([CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/us/), [GFDL](https://www.gnu.org/licenses/fdl-1.3.en.html), or others). Free annotation sets can be downloaded in their entirety using the API (see [Downloading Annotation Sets](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md#downloading-annotation-sets)) without need of any account, paid, or affiliate credentials. Additionally, free annotation sets will not contain advertisements, affiliate links, or anything similar.
+- An `adults-only` (or `AO`) set or book means that the target content has been marked by the creator or a moderator as possibly containing content that is unsuitable for minors. It's up to the community to mark things accordingly wherever it's deemed appropriate. This tag is typically not used lightly.
 
 ## Visual Hierarchy
 
@@ -37,6 +38,16 @@
 - In certain contexts, a `search` may be used to refer to a single `set item` search, or to a `main`, `before`, or `after` subsearch within a single `set item` search.
 
 Continue reading for more in-depth descriptions.
+
+# Using Annotations in Your Books
+
+There are three ways to embed annotations from annotation sets into your ebooks:
+
+1. **Read the book directly on xyAnnotations.** _This feature is mainly used by annotators._ If your ebook is in EPUB format (or you can convert it to EPUB), you can upload the file directly to the xyAnnotations reader from the _Read_ section which can be found when viewing the annotation set whose items you wish to embed into your book.
+2. **Download the annotations from within an ebook reader app or device that _natively_ supports xyAnnotations.** _This is the best method if it's available to you._ Check [here](https://annotations.xyfir.com/forums/6/104) for a list of readers that natively support our API. If your ebook reader supports it, you'll need to refer to that app/device's documentation regarding how to download an annotation set from xyAnnotations into your books.
+3. **Upload an ebook to have xyAnnotations embed the annotations directly into the file.** _This is the most commonly used method._ Use the [Annotate My Ebook](https://annotations.xyfir.com/annotate-my-ebook) tool.
+
+There's also a fourth option, but it has the contingencies that **a)** you read on a Kindle _device_; and **b)** the annotation set you wish to use is like a dictionary, in that it's full of terms and explanatory content. In this case you can have the annotation set converted to a Kindle dictionary that you'd need to install on your device, and then you would highlight terms within your book and view the 'definitions' of them from the custom dictionary. More info is available in the [Annotate My Ebook](https://annotations.xyfir.com/annotate-my-ebook) tool.
 
 # Annotation Sets
 
