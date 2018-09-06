@@ -1,41 +1,54 @@
-For more technical documentation regarding implementing xyAnnotations into your system, please see the [documentation for developers](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md).
+Our affiliate system allows you to integrate annotations from our database into your apps, sites, or devices, while also providing the opportunity to make a profit reselling subscriptions and access to our content.
 
-# xyAnnotations Affiliate System
+_For technical docs regarding implementing xyAnnotations into your system, use the [developer docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md)._
 
-Our affiliate system allows you to integrate annotations from our site into your applications, sites, or devices, while also providing the opportunity to make a profit reselling xyAnnotations subscriptions or access to xyAnnotations.
+_To become an affiliate, [send us a message](https://www.xyfir.com/contact) with a short description of how you'd like to utilize our API, and we'll set up your affiliate account._
 
-## Becoming an Affiliate
+# What is xyAnnotations?
 
-To become an affiliate is simple. [Send us a message](https://www.xyfir.com/contact) with a short description of how you'd like to utilize our annotations, and we'll help get your affiliate account setup.
+xyAnnotations is like the [Genius](https://genius.com) of ebooks, similar because it hosts machine and user-created annotations, but in addition, it also supports the unique ability to have its annotations integrated directly into an ebook's content. Through our [Annotate My Ebook](https://annotations.xyfir.com/annotate-my-ebook) tool, there are many methods that allow us to support the bulk of ebook reader apps/devices that read EPUB or MOBI format ebooks.
 
-## Subscriptions
+So if xyAnnotations likely already works on your reader: **why should you become an affiliate?** In addition to Annotate My Ebook, we also offer an API that allows other ebook reader systems to natively support our annotations, offering a much-improved experience for your users, and also through our affiliate system providing the opportunity for your company to profit. It's important to note that our API is not limited to any single type of device, platform, or ebook file format.
 
-The most important thing to understand about our affiliate system is how xyAnnotations subscriptions work, and how you can utilize them within your own applications.
+# Demonstrations
 
-A *subscription key* gives the key holder the ability to download annotations from our site. There are two types of subscription keys: *General Subscription Keys* and *Individual Subscription Keys*, also referred to as *GSK's* and *ISK's* respectively. Both keys give the same amount of access to our annotations, however their pricing, their involvement with your users, and how you can profit using them differs.
+Take a few minutes to view the apps themselves, plus two videos of them in action. The videos are short demonstrations that by no means show the full range of features.
 
-### General Subscription Keys (GSK)
+- [Video #1](https://www.youtube.com/watch?v=0xbucbG6R1U)
+- [Video #2](https://www.youtube.com/watch?v=5bjqJL1qDiw)
+- [xyAnnotations](https://annotations.xyfir.com)
+- [Supported Ebook Readers](https://annotations.xyfir.com/forums/6/104) — A list of reader apps with native xyAnnotations support
 
-Each affiliate account receives a single GSK that gives your entire account the ability to download annotations at any time without the need for having any users on your platform who've purchased subscription keys.
+In case it is not already obvious, it should be made clear that xyAnnotations only provides you the data for the annotations, and then the ebook reader developers can integrate that data in whatever way and interface they think is best. Just because one app does things one way, doesn't mean that's how it has to be done in your own reader.
 
-GSK's are charged *per annotation set download*, at a current rate of **$0.012 USD** per set download. This means if your application downloads 500 sets via your GSK, you will owe xyAnnotations $6.00 before factoring in your discount. GSK's must be paid off manually through the xyAnnotations affiliate panel at least every 30 days if the key has accrued costs of at least $5.00. Not paying off your GSK will prevent it from being able to download sets.
+# What Readers Think About Us
 
-### Individual Subscription Keys (ISK)
+Proving that there's a real demand for our product, we've been getting a lot of positive and constructive feedback on Reddit, Wikia, and numerous other forums. Here are just a few:
 
-In addition to GSK's, your affiliate account gives you the ability to generate ISK's, which are linked to individual users on your platform. ISK's can either be hidden from the user and used in the background when they go to download a set; or you can give them access to the key which would give them the ability to take that key and use it on other platforms that accept subscription keys from xyAnnotations.
+- https://www.reddit.com/r/Stormlight_Archive/comments/8zm41d/
+- https://www.reddit.com/r/WoT/comments/8sa2g7/
+- https://www.reddit.com/r/tolkienfans/comments/8mzsjz/
 
-ISK's cost **$1.50 USD** for 30 days or **$12.00 USD** for 365 days. You must manually pay off ISK's every 7 days. Not paying off your ISK's will result in them being deleted from our system.
+We post often around those aforementioned sites, bringing in tens of thousands of views for certain posts. Some of that traffic would undoubtedly find its way to you should your app be one of the few to natively support our system.
 
-You may not use a single ISK for multiple different users on your platform. Likewise, you may not generate more than one key for a single user by switching keys every week to avoid payment.
+# Why Become an Affiliate?
 
-### Discount
+1. Excluding development time, there's **no upfront cost to using our API**. Once your affiliate account is created we'll help get you or your team on track towards implementing the API. We have [open source libraries](https://github.com/Xyfir/annotate) available to use and study to greatly speed up your development process. We're available to answer questions whenever you need help and can even provide custom code for your applications if needed.
 
-All affiliates receive a discount that increases one percent every **$800 USD** spent. The minimum discount is 10%, and the maximum discount is 25%. Your discount will be applied to your total owed every time you pay off a GSK or ISK.
+2. Companies that integrate our API can sell subscriptions directly through their own site or app while **making a profit on each of those sales**. A subscription lets a user search and download annotations from any ebook reader that natively supports it. Developers have a lot of freedom in how they can price, sell, and integrate subscriptions into their reader. In addition to having the freedom to increase the price you sell at, the cost of each subscription decreases as you sell more. This not only opens up a new source of revenue for your company but also a potentially on-going revenue stream should the buyers decide to keep their subscriptions going. We also offer an optional, non-subscription, cost-per-download system for affiliates that allows much more flexibility in how you charge (or don't charge) your users.
 
-### Pricing
+3. While we'd appreciate if you didn't, xyAnnotations and its **branding can be completely hidden** from your users should you wish to do so. We have no requirements that you must advertise that you support _Xyfir Annotations_ or _xyAnnotations_ and there's no need to link or display our site directly if you decide not to. You can utilize our API and brand the features that we offer however you think is appropriate for your business.
 
-You are free to charge any amount for ISK's and any amount for access to xyAnnotations via your GSK. Not only are you free to price these however you wish, there are also no restrictions on how you charge your users, if at all. It does not matter whether you sell subscriptions as an additional package, include it in the price of your application, or whatever other setup you deem is appropriate for your system.
+4. If your ebook reader is one of the first to integrate our API it will allow you to **market features that your competitors lack**. While few people currently know what xyAnnotations is, explaining the annotation system that your reader supports will likely attract some new users.
 
-## Marketing
+5. We are very open to making small or large changes to our system based on your feedback and requests. **xyAnnotations is constantly being improved** and your feedback would be heard loud and clear. We listen to our users, and we listen to our affiliates.
 
-Like pricing, xyAnnotations places no restrictions on how you market features or packages that utilize xyAnnotations. You can explicitly state that you support xyAnnotations, or you can make no mention of it whatsoever and market the features xyAnnotations provides you however you feel is best for your product.
+6. Our automated systems have and continue to generate **tens of millions of individual annotations** from many sources of varying quality for large quantities of ebooks (tens of thousands, to millions). While the annotations that the automated systems generate are generally limited and don't always reach the quality of user-created content, it has greatly increased the pool of content available. As users join us both the quantity and quality of annotations will go up, further making us a **valuable service to support**. We continue to seek new sources for machine-generated annotations, new sources of user-generated content to convert to annotations, and partnerships with high-quality content creators who can help us fill xyAnnotations with amazing content.
+
+## Affiliate Discount
+
+All affiliates receive a variable discount on their subscription keys that increase one percent every **$800 USD** spent. The minimum discount is 10%, and the maximum discount is 25%. Your discount will be applied to your total owed every time you pay off a GSK or ISK.
+
+## Become an Affiliate
+
+Ready to become an affiliate? [Send us a message](https://www.xyfir.com/contact) with a short description of how you'd like to utilize our API, and we'll set up your affiliate account.
