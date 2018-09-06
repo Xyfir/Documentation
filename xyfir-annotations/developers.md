@@ -12,28 +12,34 @@ You must provide the appropriate 'user' and 'pass' with every request.
 
 # Subscriptions
 
-A user must have access to a Xyfir Annotations subscription in order to load annotations into your reader. A reader can purchase subscriptions directly from Xyfir Annotations or through your ebook reader system. When a user purchases a subscription they are given a subscription key that will allow them to download annotation sets.
+The most important thing to understand about our affiliate system is how xyAnnotations subscriptions work, and how you can utilize them within your own applications. A _subscription key_ gives the key holder the ability to download annotations from our site. There are two types of subscription keys: _General Subscription Keys_ (GSK) and _Individual Subscription Keys_ (ISK). Both keys give the same amount of access to our annotations, however their pricing, their involvement with your users, and how you can profit with them differs.
 
-A subscription not purchased directly through Xyfir Annotations **cannot** be extended. This means a user must wait until their subscription expires to purchase a new one (thus generating a new key) or create an entirely new subscription (thus abandoning their old key).
+A reader can purchase subscriptions directly from xyAnnotations or through your ebook reader system. A subscription not purchased directly through xyAnnotations currently **cannot** be extended. This means a user must wait until their subscription expires to purchase a new one (thus generating a new key) or create an entirely new subscription (thus abandoning their old key).
 
-## Requesting Your User's Subscription Key
+## Request a User's Subscription Key
 
 To make things easier for users who have a xyAnnotations subscription key that they wish to bring to your application, you can request access to their subscription key.
 
-Simply send the user to the following url: `https://annotations.xyfir.com/account/subscription/request`. Appended to that url should be `?redirect=REDIRECT_URL` where `REDIRECT_URL` is a url that the user will be redirected to after they approve or deny your request. The redirect url should contain the string `SUBSCRIPTION_KEY`, which will be replaced either by the user's subscription key, or by the number `0` if they decline the request.
+Simply send the user to the following url: https://annotations.xyfir.com/account/subscription/request?redirect=REDIRECT_URL, where `REDIRECT_URL` is a url that the user will be redirected to after they approve or deny your request. The redirect url should contain the string `SUBSCRIPTION_KEY`, which will be replaced either by the user's subscription key, or by the number `0` if they decline the request. Remember to encode the value for the redirect variable before sending the user to the request page.
 
-For example if the redirect url was `https://example.com/?subscriptionKey=SUBSCRIPTION_KEY`, the user would be redirected to `https://example.com/?subscriptionKey=0` if they decline the request and `https://example.com/?subscriptionKey=THEIR_SUBSCRIPTION_KEY_HERE` if they allow it.
+## Individual Subscription Keys (ISK)
 
-Remember to encode the value for the redirect variable before sending the user to the request page.
+In addition to GSK's, your affiliate account gives you the ability to generate ISK's, which are linked to individual users on your platform. ISK's can either be hidden from the user and used in the background when they go to download a set; or you can give them access to the key which would give them the ability to take that key and use it on other platforms that accept subscription keys from xyAnnotations.
 
-## Generating Individual Subscription Keys (ISK's)
+ISK's cost **$1.50 USD** for 30 days or **$12.00 USD** for 365 days. You must manually pay off ISK's every 7 days. Not paying off your ISK's will result in them being deleted from our system.
+
+You may not use a single ISK for multiple different users on your platform. Likewise, you may not generate more than one key for a single user by switching keys every week to avoid payment.
+
+### Generate an ISK
 
 `POST` to `https://annotations.xyfir.com/api/affiliate/subscriptions`
+
+#### Request
 
 - `days`: `number` - The amount of days the subscription key will last for. Currently, only the values `30` and `365` are allowed.
 - `affiliate` authentication required.
 
-### Response
+#### Response
 
 ```ts
 { key?: string, message?: string }
@@ -41,11 +47,11 @@ Remember to encode the value for the redirect variable before sending the user t
 
 If the request was successful (status `200`), `key` will contain the generated subscription key. If it failed, `message` may be present to explain what went wrong.
 
-## Using a General Subscription Key (GSK)
+## General Subscription Keys (GSK)
 
-All affiliates receive a single GSK that can be retrieved in the affiliate panel alongside your API key. Your GSK works just the same as an ISK, except that they are not linked to individual users, and you are charged per annotation set downloaded.
+All affiliates receive a single GSK that can be retrieved in the affiliate panel alongside your API key. Your GSK works just the same as an ISK, except that they are not linked to individual users, and you are charged per annotation set downloaded. While ISK's can safely be given to users, you should keep your GSK private to prevent someone from using it and leaving you with the bill.
 
-While ISK's can safely be given to users, you should keep your GSK private to prevent someone from using it and leaving you with the bill.
+GSK's are charged at a current rate of **$0.012 USD** per set download. This means if your application downloads 500 sets via your GSK, you will owe xyAnnotations $6.00 before factoring in your discount. GSK's must be paid off manually through the xyAnnotations affiliate panel at least every 30 days if the key has accrued costs of at least $5.00. Not paying off your GSK will prevent it from being able to download sets.
 
 ## Deleting Subscriptions
 
