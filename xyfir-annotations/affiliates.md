@@ -1,5 +1,7 @@
 Our affiliate system allows you to integrate annotations from our database into your apps, sites, or devices, while also providing the opportunity to make a profit reselling subscriptions and access to our content.
 
+_Already an affiliate? Here's the [Affiliate Panel](https://annotations.xyfir.com/affiliate)._
+
 _For technical docs regarding implementing xyAnnotations into your system, use the [developer docs](https://github.com/Xyfir/Documentation/blob/master/xyfir-annotations/developers.md)._
 
 _To become an affiliate, [send us a message](https://www.xyfir.com/contact) with a short description of how you'd like to utilize our API, and we'll set up your affiliate account._
