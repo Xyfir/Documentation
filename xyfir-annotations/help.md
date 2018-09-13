@@ -196,6 +196,14 @@ If you are the creator of, or a moderator for the annotation set, any additions,
 
 Marking your annotation set as `Public` means that other users will be able to find it through searches and other means, without needing the id of the annotation set to access it directly. If your annotation is `Unlisted`, it cannot easily be found, however anyone who knows its id can still access it. Not only can you view it directly, but you can also search for it within xyAnnotations or applications that support xyAnnotations using the following syntax: `s/1234`, where `1234` is the id of your set.
 
+# Books
+
+Our database of ebooks is there to aid in finding annotation sets for the books you'd like to annotate. Our database is very simple, consisting of title, authors, series, and some useful identifiers, preferring to use those identifiers to link where possible to other ebook authorities like [Amazon](https://www.amazon.com), [Goodreads](https://www.goodreads.com/), or [OpenLibrary](https://openlibrary.org/) for more information instead of hosting our own data. For instance, 'our' covers are actually provided courtesy of OpenLibrary, and our loaded using the ISBN's linked to the book.
+
+In an attempt to keep our database simple and organized, ISBN 10, ISBN 13, and ASIN codes are _unique_, meaning only a single book in our entire database can hold any one of those codes. Please contact a site moderator or post in the forums if another book already is linked to one of the codes you wish to link to another book, if that book is not complete or has some issue with its metadata.
+
+While anyone may add a book to our database, if the verified author of that book joins the site and requests ownership of their books, we'll transfer control of any of their books already on xyAnnotations to the author so that they can manage their books appropriately.
+
 # Formatting Descriptions and Posts
 
 Descriptions and posts on xyAnnotations support [Markdown](https://daringfireball.net/projects/markdown/syntax) which allows you to format your text.
