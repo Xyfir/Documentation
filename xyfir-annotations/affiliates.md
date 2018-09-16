@@ -16,10 +16,13 @@ So if xyAnnotations likely already works on your reader: **why should you become
 
 Take a few minutes to view the apps themselves, plus two videos of them in action. The videos are short demonstrations that by no means show the full range of features.
 
-- [Video #1](https://www.youtube.com/watch?v=0xbucbG6R1U)
-- [Video #2](https://www.youtube.com/watch?v=5bjqJL1qDiw)
-- [xyAnnotations](https://annotations.xyfir.com)
-- [Supported Ebook Readers](https://annotations.xyfir.com/forums/6/104) — A list of reader apps with native xyAnnotations support
+[Video #1](https://youtu.be/0xbucbG6R1U "xy:video:youtube")
+
+[Video #2](https://youtu.be/5bjqJL1qDiw "xy:video:youtube")
+
+[xyAnnotations](https://annotations.xyfir.com)
+
+[Supported Ebook Readers](https://annotations.xyfir.com/forums/6/104) — A list of reader apps with native xyAnnotations support
 
 In case it is not already obvious, it should be made clear that xyAnnotations only provides you the data for the annotations, and then the ebook reader developers can integrate that data in whatever way and interface they think is best. Just because one app does things one way, doesn't mean that's how it has to be done in your own reader.
 

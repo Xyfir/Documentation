@@ -1,6 +1,4 @@
-[![xyAnnotations demonstration video](https://i.imgur.com/5t2r9N6.png)](https://www.youtube.com/watch?v=0xbucbG6R1U "xyAnnotations demonstration video")
-
-[xyAnnotations demonstration video](https://www.youtube.com/watch?v=0xbucbG6R1U)
+[xyAnnotations demonstration video](https://youtu.be/0xbucbG6R1U "xy:video:youtube")
 
 # Terminology
 

@@ -6,8 +6,9 @@ xyAnnotations is like the [Genius](https://genius.com) of ebooks, similar becaus
 
 Take a look at our demonstration videos to get a better idea of its capabilities:
 
-- [Video #1](https://www.youtube.com/watch?v=0xbucbG6R1U)
-- [Video #2](https://www.youtube.com/watch?v=5bjqJL1qDiw)
+[Video #1](https://youtu.be/0xbucbG6R1U "xy:video:youtube")
+
+[Video #2](https://youtu.be/5bjqJL1qDiw "xy:video:youtube")
 
 # Why annotate with xyAnnotations?
 
