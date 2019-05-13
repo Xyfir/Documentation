@@ -1,1 +1,1 @@
-Pull requests improving or adding to our documentation will be accepted.
+Documentation for active project versions will no longer be stored here.
